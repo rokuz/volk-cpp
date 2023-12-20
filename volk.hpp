@@ -65,7 +65,6 @@
 #endif
 
 #include <cstdint>
-#include <string_view>
 
 class Volk final {
 public:
@@ -1501,12 +1500,12 @@ public:
 #undef ALIGNMENT_ARRAY
 
 private:
-  void genLoadLoader(void* context, PFN_vkVoidFunction (Volk::*load)(void*, std::string_view)) noexcept;
-  void genLoadInstance(void* context, PFN_vkVoidFunction (Volk::*load)(void*, std::string_view)) noexcept;
-  void genLoadDevice(void* context, PFN_vkVoidFunction (Volk::*load)(void*, std::string_view)) noexcept;
-  [[nodiscard]] PFN_vkVoidFunction vkGetInstanceProcAddrStub(void* context, std::string_view name) noexcept;
-  [[nodiscard]] PFN_vkVoidFunction vkGetDeviceProcAddrStub(void* context, std::string_view name) noexcept;
-  [[nodiscard]] PFN_vkVoidFunction nullProcAddrStub(void* context, std::string_view name) noexcept;
+  void genLoadLoader(void* context, PFN_vkVoidFunction (Volk::*load)(void*, char const*)) noexcept;
+  void genLoadInstance(void* context, PFN_vkVoidFunction (Volk::*load)(void*, char const*)) noexcept;
+  void genLoadDevice(void* context, PFN_vkVoidFunction (Volk::*load)(void*, char const*)) noexcept;
+  [[nodiscard]] PFN_vkVoidFunction vkGetInstanceProcAddrStub(void* context, char const* name) noexcept;
+  [[nodiscard]] PFN_vkVoidFunction vkGetDeviceProcAddrStub(void* context, char const* name) noexcept;
+  [[nodiscard]] PFN_vkVoidFunction nullProcAddrStub(void* context, char const* name) noexcept;
   
   VkResult status_ = VK_SUCCESS;
   void * loadedModule_ = nullptr;

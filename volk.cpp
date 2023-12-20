@@ -1,26 +1,14 @@
-/* This file is part of volk library; see volk.hpp for version/license details */
+/* This file is part of volk-cpp library; see volk.hpp for version/license details */
 /* clang-format off */
 #include "volk.hpp"
 
 #ifdef _WIN32
-  typedef const char* LPCSTR;
-  typedef struct HINSTANCE__* HINSTANCE;
-  typedef HINSTANCE HMODULE;
-  #if defined(_MINWINDEF_)
-    /* minwindef.h defines FARPROC, and attempting to redefine it may conflict with -Wstrict-prototypes */
-  #elif defined(_WIN64)
-    typedef __int64 (__stdcall* FARPROC)(void);
-  #else
-    typedef int (__stdcall* FARPROC)(void);
+  #ifndef WIN32_LEAN_AND_MEAN
+    #define WIN32_LEAN_AND_MEAN
   #endif
+  #include <windows.h>
 #else
   #include <dlfcn.h>
-#endif
-
-#ifdef _WIN32
-__declspec(dllimport) HMODULE __stdcall LoadLibraryA(LPCSTR);
-__declspec(dllimport) FARPROC __stdcall GetProcAddress(HMODULE, LPCSTR);
-__declspec(dllimport) int __stdcall FreeLibrary(HMODULE);
 #endif
 
 Volk::Volk(PFN_vkGetInstanceProcAddr handler /* = nullptr */) noexcept {
@@ -34,7 +22,7 @@ Volk::Volk(PFN_vkGetInstanceProcAddr handler /* = nullptr */) noexcept {
     }
     
     // note: function pointer is cast through void function pointer to silence cast-function-type warning on gcc8
-    vkGetInstanceProcAddr = (PFN_vkGetInstanceProcAddr)(void(*)(void))GetProcAddress(module, "vkGetInstanceProcAddr");
+    vkGetInstanceProcAddr = (PFN_vkGetInstanceProcAddr)(void(*)(void))GetProcAddress(m, "vkGetInstanceProcAddr");
 #elif defined(__APPLE__)
     auto m = dlopen("libvulkan.dylib", RTLD_NOW | RTLD_LOCAL);
     if (!m) {
@@ -67,8 +55,7 @@ Volk::Volk(PFN_vkGetInstanceProcAddr handler /* = nullptr */) noexcept {
   genLoadLoader(nullptr, &Volk::vkGetInstanceProcAddrStub);
 }
 
-Volk::~Volk() noexcept
-{
+Volk::~Volk() noexcept {
   if (loadedModule_) {
 #if defined(_WIN32)
     FreeLibrary((HMODULE)loadedModule_);
@@ -134,21 +121,21 @@ VkDevice Volk::getLoadedDevice() noexcept {
   return loadedDevice_;
 }
 
-PFN_vkVoidFunction Volk::vkGetInstanceProcAddrStub(void* context, std::string_view name) noexcept {
-  return vkGetInstanceProcAddr(static_cast<VkInstance>(context), name.data());
+PFN_vkVoidFunction Volk::vkGetInstanceProcAddrStub(void* context, char const* name) noexcept {
+  return vkGetInstanceProcAddr(static_cast<VkInstance>(context), name);
 }
 
-PFN_vkVoidFunction Volk::vkGetDeviceProcAddrStub(void* context, std::string_view name) noexcept {
-  return vkGetDeviceProcAddr(static_cast<VkDevice>(context), name.data());
+PFN_vkVoidFunction Volk::vkGetDeviceProcAddrStub(void* context, char const* name) noexcept {
+  return vkGetDeviceProcAddr(static_cast<VkDevice>(context), name);
 }
 
-PFN_vkVoidFunction Volk::nullProcAddrStub(void* context, std::string_view name) noexcept {
+PFN_vkVoidFunction Volk::nullProcAddrStub(void* context, char const* name) noexcept {
   (void)context;
   (void)name;
   return nullptr;
 }
 
-void Volk::genLoadLoader(void* context, PFN_vkVoidFunction (Volk::*load)(void*, std::string_view)) noexcept {
+void Volk::genLoadLoader(void* context, PFN_vkVoidFunction (Volk::*load)(void*, char const*)) noexcept {
   /* VOLK_CPP_GENERATE_LOAD_LOADER */
 #if defined(VK_VERSION_1_0)
   vkCreateInstance = (PFN_vkCreateInstance)(this->*(load))(context, "vkCreateInstance");
@@ -161,7 +148,7 @@ void Volk::genLoadLoader(void* context, PFN_vkVoidFunction (Volk::*load)(void*, 
   /* VOLK_CPP_GENERATE_LOAD_LOADER */
 }
 
-void Volk::genLoadInstance(void* context, PFN_vkVoidFunction (Volk::*load)(void*, std::string_view)) noexcept {
+void Volk::genLoadInstance(void* context, PFN_vkVoidFunction (Volk::*load)(void*, char const*)) noexcept {
   /* VOLK_CPP_GENERATE_LOAD_INSTANCE */
 #if defined(VK_VERSION_1_0)
   vkCreateDevice = (PFN_vkCreateDevice)(this->*(load))(context, "vkCreateDevice");
@@ -375,7 +362,7 @@ void Volk::genLoadInstance(void* context, PFN_vkVoidFunction (Volk::*load)(void*
   /* VOLK_CPP_GENERATE_LOAD_INSTANCE */
 }
 
-void Volk::genLoadDevice(void* context, PFN_vkVoidFunction (Volk::*load)(void*, std::string_view)) noexcept {
+void Volk::genLoadDevice(void* context, PFN_vkVoidFunction (Volk::*load)(void*, char const*)) noexcept {
   /* VOLK_CPP_GENERATE_LOAD_DEVICE */
 #if defined(VK_VERSION_1_0)
   vkAllocateCommandBuffers = (PFN_vkAllocateCommandBuffers)(this->*(load))(context, "vkAllocateCommandBuffers");
