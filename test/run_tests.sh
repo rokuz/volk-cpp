@@ -9,8 +9,8 @@ function reset_build {
         mkdir -p $DIR
     done
 }
-function run_volk_test {
-    for FILE in "./volk_test" "./volk_test.exe" "Debug/volk_test.exe" "Release/volk_test.exe"
+function run_volk_cpp_test {
+    for FILE in "./volk_cpp_test" "./volk_cpp_test.exe" "Debug/volk_cpp_test.exe" "Release/volk_cpp_test.exe"
     do
         if [ -f $FILE ]; then
             echo "Running test:"
@@ -19,7 +19,7 @@ function run_volk_test {
             break
         fi
     done
-    echo "volk_test return code: $RC"
+    echo "volk_cpp_test return code: $RC"
 }
 
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
@@ -27,7 +27,7 @@ pushd $SCRIPT_DIR/..
 
 reset_build
 pushd _build
-cmake -DCMAKE_INSTALL_PREFIX=../_installed -DVOLK_INSTALL=ON .. || exit 1
+cmake -DCMAKE_INSTALL_PREFIX=../_installed -DVOLK_CPP_INSTALL=ON .. || exit 1
 cmake --build . --target install || exit 1
 popd
 
@@ -40,7 +40,7 @@ reset_build
 pushd _build
 cmake .. || exit 1
 cmake --build . || exit 1
-run_volk_test
+run_volk_cpp_test
 popd
 popd
 
@@ -53,7 +53,7 @@ reset_build
 pushd _build
 cmake .. || exit 1
 cmake --build . || exit 1
-run_volk_test
+run_volk_cpp_test
 popd
 popd
 
@@ -66,7 +66,7 @@ reset_build
 pushd _build
 cmake .. || exit 1
 cmake --build . || exit 1
-run_volk_test
+run_volk_cpp_test
 popd
 popd
 
@@ -79,7 +79,7 @@ reset_build
 pushd _build
 cmake -DCMAKE_INSTALL_PREFIX=../../../_installed/lib/cmake .. || exit 1
 cmake --build . || exit 1
-run_volk_test
+run_volk_cpp_test
 popd
 popd
 
