@@ -6,4 +6,4 @@ C++20 port of [volk library](https://github.com/zeux/volk).
 
 This library is available to anybody free of charge, under the terms of MIT License (see LICENSE.md).
 
-[volk license](https://github.com/zeux/volk/LICENSE.md)
+Original [volk license](https://github.com/zeux/volk/blob/master/LICENSE.md).
