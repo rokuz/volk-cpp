@@ -51,6 +51,9 @@
     #ifdef VK_ENABLE_BETA_EXTENSIONS
       #include <vulkan/vulkan_beta.h>
     #endif
+  #elif defined(__APPLE__)
+    #include <vulkan/vulkan.h>
+    #include <vulkan/vulkan_metal.h>
   #else
     #include <vulkan/vulkan.h>
   #endif
