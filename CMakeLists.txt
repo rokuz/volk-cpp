@@ -4,7 +4,7 @@ cmake_policy(SET CMP0048 NEW) # project(... VERSION ...) support
 
 project(volk_cpp VERSION
 # VOLK_CPP_GENERATE_VERSION
-274
+276
 # VOLK_CPP_GENERATE_VERSION
 )
 
