@@ -566,6 +566,9 @@ void Volk::genLoadDevice(void* context, PFN_vkVoidFunction (Volk::*load)(void*, 
   vkGetExecutionGraphPipelineNodeIndexAMDX = (PFN_vkGetExecutionGraphPipelineNodeIndexAMDX)(this->*(load))(context, "vkGetExecutionGraphPipelineNodeIndexAMDX");
   vkGetExecutionGraphPipelineScratchSizeAMDX = (PFN_vkGetExecutionGraphPipelineScratchSizeAMDX)(this->*(load))(context, "vkGetExecutionGraphPipelineScratchSizeAMDX");
 #endif /* defined(VK_AMDX_shader_enqueue) */
+#if defined(VK_AMD_anti_lag)
+  vkAntiLagUpdateAMD = (PFN_vkAntiLagUpdateAMD)(this->*(load))(context, "vkAntiLagUpdateAMD");
+#endif /* defined(VK_AMD_anti_lag) */
 #if defined(VK_AMD_buffer_marker)
   vkCmdWriteBufferMarkerAMD = (PFN_vkCmdWriteBufferMarkerAMD)(this->*(load))(context, "vkCmdWriteBufferMarkerAMD");
 #endif /* defined(VK_AMD_buffer_marker) */
