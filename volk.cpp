@@ -650,6 +650,9 @@ void Volk::genLoadDevice(void* context, PFN_vkVoidFunction (Volk::*load)(void*, 
   vkAcquireFullScreenExclusiveModeEXT = (PFN_vkAcquireFullScreenExclusiveModeEXT)(this->*(load))(context, "vkAcquireFullScreenExclusiveModeEXT");
   vkReleaseFullScreenExclusiveModeEXT = (PFN_vkReleaseFullScreenExclusiveModeEXT)(this->*(load))(context, "vkReleaseFullScreenExclusiveModeEXT");
 #endif /* defined(VK_EXT_full_screen_exclusive) */
+#if defined(VK_EXT_full_screen_exclusive) && (defined(VK_KHR_device_group) || defined(VK_VERSION_1_1))
+  vkGetDeviceGroupSurfacePresentModes2EXT = (PFN_vkGetDeviceGroupSurfacePresentModes2EXT)(this->*(load))(context, "vkGetDeviceGroupSurfacePresentModes2EXT");
+#endif /* defined(VK_EXT_full_screen_exclusive) && (defined(VK_KHR_device_group) || defined(VK_VERSION_1_1)) */
 #if defined(VK_EXT_hdr_metadata)
   vkSetHdrMetadataEXT = (PFN_vkSetHdrMetadataEXT)(this->*(load))(context, "vkSetHdrMetadataEXT");
 #endif /* defined(VK_EXT_hdr_metadata) */
@@ -927,6 +930,13 @@ void Volk::genLoadDevice(void* context, PFN_vkVoidFunction (Volk::*load)(void*, 
   vkAcquireProfilingLockKHR = (PFN_vkAcquireProfilingLockKHR)(this->*(load))(context, "vkAcquireProfilingLockKHR");
   vkReleaseProfilingLockKHR = (PFN_vkReleaseProfilingLockKHR)(this->*(load))(context, "vkReleaseProfilingLockKHR");
 #endif /* defined(VK_KHR_performance_query) */
+#if defined(VK_KHR_pipeline_binary)
+  vkCreatePipelineBinariesKHR = (PFN_vkCreatePipelineBinariesKHR)(this->*(load))(context, "vkCreatePipelineBinariesKHR");
+  vkDestroyPipelineBinaryKHR = (PFN_vkDestroyPipelineBinaryKHR)(this->*(load))(context, "vkDestroyPipelineBinaryKHR");
+  vkGetPipelineBinaryDataKHR = (PFN_vkGetPipelineBinaryDataKHR)(this->*(load))(context, "vkGetPipelineBinaryDataKHR");
+  vkGetPipelineKeyKHR = (PFN_vkGetPipelineKeyKHR)(this->*(load))(context, "vkGetPipelineKeyKHR");
+  vkReleaseCapturedPipelineDataKHR = (PFN_vkReleaseCapturedPipelineDataKHR)(this->*(load))(context, "vkReleaseCapturedPipelineDataKHR");
+#endif /* defined(VK_KHR_pipeline_binary) */
 #if defined(VK_KHR_pipeline_executable_properties)
   vkGetPipelineExecutableInternalRepresentationsKHR = (PFN_vkGetPipelineExecutableInternalRepresentationsKHR)(this->*(load))(context, "vkGetPipelineExecutableInternalRepresentationsKHR");
   vkGetPipelineExecutablePropertiesKHR = (PFN_vkGetPipelineExecutablePropertiesKHR)(this->*(load))(context, "vkGetPipelineExecutablePropertiesKHR");
@@ -1198,18 +1208,15 @@ void Volk::genLoadDevice(void* context, PFN_vkVoidFunction (Volk::*load)(void*, 
 #if (defined(VK_EXT_extended_dynamic_state3) && defined(VK_NV_coverage_reduction_mode)) || (defined(VK_EXT_shader_object) && defined(VK_NV_coverage_reduction_mode))
   vkCmdSetCoverageReductionModeNV = (PFN_vkCmdSetCoverageReductionModeNV)(this->*(load))(context, "vkCmdSetCoverageReductionModeNV");
 #endif /* (defined(VK_EXT_extended_dynamic_state3) && defined(VK_NV_coverage_reduction_mode)) || (defined(VK_EXT_shader_object) && defined(VK_NV_coverage_reduction_mode)) */
-#if (defined(VK_EXT_full_screen_exclusive) && defined(VK_KHR_device_group)) || (defined(VK_EXT_full_screen_exclusive) && defined(VK_VERSION_1_1))
-  vkGetDeviceGroupSurfacePresentModes2EXT = (PFN_vkGetDeviceGroupSurfacePresentModes2EXT)(this->*(load))(context, "vkGetDeviceGroupSurfacePresentModes2EXT");
-#endif /* (defined(VK_EXT_full_screen_exclusive) && defined(VK_KHR_device_group)) || (defined(VK_EXT_full_screen_exclusive) && defined(VK_VERSION_1_1)) */
 #if (defined(VK_EXT_host_image_copy)) || (defined(VK_EXT_image_compression_control))
   vkGetImageSubresourceLayout2EXT = (PFN_vkGetImageSubresourceLayout2EXT)(this->*(load))(context, "vkGetImageSubresourceLayout2EXT");
 #endif /* (defined(VK_EXT_host_image_copy)) || (defined(VK_EXT_image_compression_control)) */
 #if (defined(VK_EXT_shader_object)) || (defined(VK_EXT_vertex_input_dynamic_state))
   vkCmdSetVertexInputEXT = (PFN_vkCmdSetVertexInputEXT)(this->*(load))(context, "vkCmdSetVertexInputEXT");
 #endif /* (defined(VK_EXT_shader_object)) || (defined(VK_EXT_vertex_input_dynamic_state)) */
-#if (defined(VK_KHR_descriptor_update_template) && defined(VK_KHR_push_descriptor)) || (defined(VK_KHR_push_descriptor) && defined(VK_VERSION_1_1)) || (defined(VK_KHR_push_descriptor) && defined(VK_KHR_descriptor_update_template))
+#if (defined(VK_KHR_descriptor_update_template) && defined(VK_KHR_push_descriptor)) || (defined(VK_KHR_push_descriptor) && (defined(VK_VERSION_1_1) || defined(VK_KHR_descriptor_update_template)))
   vkCmdPushDescriptorSetWithTemplateKHR = (PFN_vkCmdPushDescriptorSetWithTemplateKHR)(this->*(load))(context, "vkCmdPushDescriptorSetWithTemplateKHR");
-#endif /* (defined(VK_KHR_descriptor_update_template) && defined(VK_KHR_push_descriptor)) || (defined(VK_KHR_push_descriptor) && defined(VK_VERSION_1_1)) || (defined(VK_KHR_push_descriptor) && defined(VK_KHR_descriptor_update_template)) */
+#endif /* (defined(VK_KHR_descriptor_update_template) && defined(VK_KHR_push_descriptor)) || (defined(VK_KHR_push_descriptor) && (defined(VK_VERSION_1_1) || defined(VK_KHR_descriptor_update_template))) */
 #if (defined(VK_KHR_device_group) && defined(VK_KHR_surface)) || (defined(VK_KHR_swapchain) && defined(VK_VERSION_1_1))
   vkGetDeviceGroupPresentCapabilitiesKHR = (PFN_vkGetDeviceGroupPresentCapabilitiesKHR)(this->*(load))(context, "vkGetDeviceGroupPresentCapabilitiesKHR");
   vkGetDeviceGroupSurfacePresentModesKHR = (PFN_vkGetDeviceGroupSurfacePresentModesKHR)(this->*(load))(context, "vkGetDeviceGroupSurfacePresentModesKHR");
