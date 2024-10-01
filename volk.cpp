@@ -630,6 +630,17 @@ void Volk::genLoadDevice(void* context, PFN_vkVoidFunction (Volk::*load)(void*, 
 #if defined(VK_EXT_device_fault)
   vkGetDeviceFaultInfoEXT = (PFN_vkGetDeviceFaultInfoEXT)(this->*(load))(context, "vkGetDeviceFaultInfoEXT");
 #endif /* defined(VK_EXT_device_fault) */
+#if defined(VK_EXT_device_generated_commands)
+  vkCmdExecuteGeneratedCommandsEXT = (PFN_vkCmdExecuteGeneratedCommandsEXT)(this->*(load))(context, "vkCmdExecuteGeneratedCommandsEXT");
+  vkCmdPreprocessGeneratedCommandsEXT = (PFN_vkCmdPreprocessGeneratedCommandsEXT)(this->*(load))(context, "vkCmdPreprocessGeneratedCommandsEXT");
+  vkCreateIndirectCommandsLayoutEXT = (PFN_vkCreateIndirectCommandsLayoutEXT)(this->*(load))(context, "vkCreateIndirectCommandsLayoutEXT");
+  vkCreateIndirectExecutionSetEXT = (PFN_vkCreateIndirectExecutionSetEXT)(this->*(load))(context, "vkCreateIndirectExecutionSetEXT");
+  vkDestroyIndirectCommandsLayoutEXT = (PFN_vkDestroyIndirectCommandsLayoutEXT)(this->*(load))(context, "vkDestroyIndirectCommandsLayoutEXT");
+  vkDestroyIndirectExecutionSetEXT = (PFN_vkDestroyIndirectExecutionSetEXT)(this->*(load))(context, "vkDestroyIndirectExecutionSetEXT");
+  vkGetGeneratedCommandsMemoryRequirementsEXT = (PFN_vkGetGeneratedCommandsMemoryRequirementsEXT)(this->*(load))(context, "vkGetGeneratedCommandsMemoryRequirementsEXT");
+  vkUpdateIndirectExecutionSetPipelineEXT = (PFN_vkUpdateIndirectExecutionSetPipelineEXT)(this->*(load))(context, "vkUpdateIndirectExecutionSetPipelineEXT");
+  vkUpdateIndirectExecutionSetShaderEXT = (PFN_vkUpdateIndirectExecutionSetShaderEXT)(this->*(load))(context, "vkUpdateIndirectExecutionSetShaderEXT");
+#endif /* defined(VK_EXT_device_generated_commands) */
 #if defined(VK_EXT_discard_rectangles)
   vkCmdSetDiscardRectangleEXT = (PFN_vkCmdSetDiscardRectangleEXT)(this->*(load))(context, "vkCmdSetDiscardRectangleEXT");
 #endif /* defined(VK_EXT_discard_rectangles) */
@@ -1122,6 +1133,9 @@ void Volk::genLoadDevice(void* context, PFN_vkVoidFunction (Volk::*load)(void*, 
   vkGetDescriptorSetHostMappingVALVE = (PFN_vkGetDescriptorSetHostMappingVALVE)(this->*(load))(context, "vkGetDescriptorSetHostMappingVALVE");
   vkGetDescriptorSetLayoutHostMappingInfoVALVE = (PFN_vkGetDescriptorSetLayoutHostMappingInfoVALVE)(this->*(load))(context, "vkGetDescriptorSetLayoutHostMappingInfoVALVE");
 #endif /* defined(VK_VALVE_descriptor_set_host_mapping) */
+#if (defined(VK_EXT_depth_clamp_control)) || (defined(VK_EXT_shader_object) && defined(VK_EXT_depth_clamp_control))
+  vkCmdSetDepthClampRangeEXT = (PFN_vkCmdSetDepthClampRangeEXT)(this->*(load))(context, "vkCmdSetDepthClampRangeEXT");
+#endif /* (defined(VK_EXT_depth_clamp_control)) || (defined(VK_EXT_shader_object) && defined(VK_EXT_depth_clamp_control)) */
 #if (defined(VK_EXT_extended_dynamic_state)) || (defined(VK_EXT_shader_object))
   vkCmdBindVertexBuffers2EXT = (PFN_vkCmdBindVertexBuffers2EXT)(this->*(load))(context, "vkCmdBindVertexBuffers2EXT");
   vkCmdSetCullModeEXT = (PFN_vkCmdSetCullModeEXT)(this->*(load))(context, "vkCmdSetCullModeEXT");
