@@ -343,6 +343,9 @@ void Volk::genLoadInstance(void* context, PFN_vkVoidFunction (Volk::*load)(void*
 #if defined(VK_NV_cooperative_matrix)
   vkGetPhysicalDeviceCooperativeMatrixPropertiesNV = (PFN_vkGetPhysicalDeviceCooperativeMatrixPropertiesNV)(this->*(load))(context, "vkGetPhysicalDeviceCooperativeMatrixPropertiesNV");
 #endif /* defined(VK_NV_cooperative_matrix) */
+#if defined(VK_NV_cooperative_matrix2)
+  vkGetPhysicalDeviceCooperativeMatrixFlexibleDimensionsPropertiesNV = (PFN_vkGetPhysicalDeviceCooperativeMatrixFlexibleDimensionsPropertiesNV)(this->*(load))(context, "vkGetPhysicalDeviceCooperativeMatrixFlexibleDimensionsPropertiesNV");
+#endif /* defined(VK_NV_cooperative_matrix2) */
 #if defined(VK_NV_coverage_reduction_mode)
   vkGetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNV = (PFN_vkGetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNV)(this->*(load))(context, "vkGetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNV");
 #endif /* defined(VK_NV_coverage_reduction_mode) */
@@ -572,6 +575,9 @@ void Volk::genLoadDevice(void* context, PFN_vkVoidFunction (Volk::*load)(void*, 
 #if defined(VK_AMD_buffer_marker)
   vkCmdWriteBufferMarkerAMD = (PFN_vkCmdWriteBufferMarkerAMD)(this->*(load))(context, "vkCmdWriteBufferMarkerAMD");
 #endif /* defined(VK_AMD_buffer_marker) */
+#if defined(VK_AMD_buffer_marker) && (defined(VK_VERSION_1_3) || defined(VK_KHR_synchronization2))
+  vkCmdWriteBufferMarker2AMD = (PFN_vkCmdWriteBufferMarker2AMD)(this->*(load))(context, "vkCmdWriteBufferMarker2AMD");
+#endif /* defined(VK_AMD_buffer_marker) && (defined(VK_VERSION_1_3) || defined(VK_KHR_synchronization2)) */
 #if defined(VK_AMD_display_native_hdr)
   vkSetLocalDimmingAMD = (PFN_vkSetLocalDimmingAMD)(this->*(load))(context, "vkSetLocalDimmingAMD");
 #endif /* defined(VK_AMD_display_native_hdr) */
@@ -993,12 +999,6 @@ void Volk::genLoadDevice(void* context, PFN_vkVoidFunction (Volk::*load)(void*, 
   vkCmdWriteTimestamp2KHR = (PFN_vkCmdWriteTimestamp2KHR)(this->*(load))(context, "vkCmdWriteTimestamp2KHR");
   vkQueueSubmit2KHR = (PFN_vkQueueSubmit2KHR)(this->*(load))(context, "vkQueueSubmit2KHR");
 #endif /* defined(VK_KHR_synchronization2) */
-#if defined(VK_KHR_synchronization2) && defined(VK_AMD_buffer_marker)
-  vkCmdWriteBufferMarker2AMD = (PFN_vkCmdWriteBufferMarker2AMD)(this->*(load))(context, "vkCmdWriteBufferMarker2AMD");
-#endif /* defined(VK_KHR_synchronization2) && defined(VK_AMD_buffer_marker) */
-#if defined(VK_KHR_synchronization2) && defined(VK_NV_device_diagnostic_checkpoints)
-  vkGetQueueCheckpointData2NV = (PFN_vkGetQueueCheckpointData2NV)(this->*(load))(context, "vkGetQueueCheckpointData2NV");
-#endif /* defined(VK_KHR_synchronization2) && defined(VK_NV_device_diagnostic_checkpoints) */
 #if defined(VK_KHR_timeline_semaphore)
   vkGetSemaphoreCounterValueKHR = (PFN_vkGetSemaphoreCounterValueKHR)(this->*(load))(context, "vkGetSemaphoreCounterValueKHR");
   vkSignalSemaphoreKHR = (PFN_vkSignalSemaphoreKHR)(this->*(load))(context, "vkSignalSemaphoreKHR");
@@ -1053,6 +1053,9 @@ void Volk::genLoadDevice(void* context, PFN_vkVoidFunction (Volk::*load)(void*, 
   vkCmdSetCheckpointNV = (PFN_vkCmdSetCheckpointNV)(this->*(load))(context, "vkCmdSetCheckpointNV");
   vkGetQueueCheckpointDataNV = (PFN_vkGetQueueCheckpointDataNV)(this->*(load))(context, "vkGetQueueCheckpointDataNV");
 #endif /* defined(VK_NV_device_diagnostic_checkpoints) */
+#if defined(VK_NV_device_diagnostic_checkpoints) && (defined(VK_VERSION_1_3) || defined(VK_KHR_synchronization2))
+  vkGetQueueCheckpointData2NV = (PFN_vkGetQueueCheckpointData2NV)(this->*(load))(context, "vkGetQueueCheckpointData2NV");
+#endif /* defined(VK_NV_device_diagnostic_checkpoints) && (defined(VK_VERSION_1_3) || defined(VK_KHR_synchronization2)) */
 #if defined(VK_NV_device_generated_commands)
   vkCmdBindPipelineShaderGroupNV = (PFN_vkCmdBindPipelineShaderGroupNV)(this->*(load))(context, "vkCmdBindPipelineShaderGroupNV");
   vkCmdExecuteGeneratedCommandsNV = (PFN_vkCmdExecuteGeneratedCommandsNV)(this->*(load))(context, "vkCmdExecuteGeneratedCommandsNV");
