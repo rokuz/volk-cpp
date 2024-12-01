@@ -20,7 +20,7 @@
 #endif
 
 /* VOLK_CPP_GENERATE_VERSION_DEFINE */
-#define VOLK_CPP_HEADER_VERSION 300
+#define VOLK_CPP_HEADER_VERSION 302
 /* VOLK_CPP_GENERATE_VERSION_DEFINE */
 
 #ifndef VK_NO_PROTOTYPES
@@ -1240,9 +1240,10 @@ public:
 #endif /* defined(VK_NVX_binary_import) */
 #if defined(VK_NVX_image_view_handle)
   PFN_vkGetImageViewAddressNVX vkGetImageViewAddressNVX = nullptr;
+  PFN_vkGetImageViewHandle64NVX vkGetImageViewHandle64NVX = nullptr;
   PFN_vkGetImageViewHandleNVX vkGetImageViewHandleNVX = nullptr;
 #else 
-  ALIGNMENT_ARRAY(131, 2);
+  ALIGNMENT_ARRAY(131, 3);
 #endif /* defined(VK_NVX_image_view_handle) */
 #if defined(VK_NV_acquire_winrt_display)
   PFN_vkAcquireWinrtDisplayNV vkAcquireWinrtDisplayNV = nullptr;
