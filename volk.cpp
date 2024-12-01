@@ -1032,6 +1032,7 @@ void Volk::genLoadDevice(void* context, PFN_vkVoidFunction (Volk::*load)(void*, 
 #endif /* defined(VK_NVX_binary_import) */
 #if defined(VK_NVX_image_view_handle)
   vkGetImageViewAddressNVX = (PFN_vkGetImageViewAddressNVX)(this->*(load))(context, "vkGetImageViewAddressNVX");
+  vkGetImageViewHandle64NVX = (PFN_vkGetImageViewHandle64NVX)(this->*(load))(context, "vkGetImageViewHandle64NVX");
   vkGetImageViewHandleNVX = (PFN_vkGetImageViewHandleNVX)(this->*(load))(context, "vkGetImageViewHandleNVX");
 #endif /* defined(VK_NVX_image_view_handle) */
 #if defined(VK_NV_clip_space_w_scaling)
