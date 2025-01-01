@@ -560,6 +560,27 @@ void Volk::genLoadDevice(void* context, PFN_vkVoidFunction (Volk::*load)(void*, 
   vkQueueSubmit2 = (PFN_vkQueueSubmit2)(this->*(load))(context, "vkQueueSubmit2");
   vkSetPrivateData = (PFN_vkSetPrivateData)(this->*(load))(context, "vkSetPrivateData");
 #endif /* defined(VK_VERSION_1_3) */
+#if defined(VK_VERSION_1_4)
+  vkCmdBindDescriptorSets2 = (PFN_vkCmdBindDescriptorSets2)(this->*(load))(context, "vkCmdBindDescriptorSets2");
+  vkCmdBindIndexBuffer2 = (PFN_vkCmdBindIndexBuffer2)(this->*(load))(context, "vkCmdBindIndexBuffer2");
+  vkCmdPushConstants2 = (PFN_vkCmdPushConstants2)(this->*(load))(context, "vkCmdPushConstants2");
+  vkCmdPushDescriptorSet = (PFN_vkCmdPushDescriptorSet)(this->*(load))(context, "vkCmdPushDescriptorSet");
+  vkCmdPushDescriptorSet2 = (PFN_vkCmdPushDescriptorSet2)(this->*(load))(context, "vkCmdPushDescriptorSet2");
+  vkCmdPushDescriptorSetWithTemplate = (PFN_vkCmdPushDescriptorSetWithTemplate)(this->*(load))(context, "vkCmdPushDescriptorSetWithTemplate");
+  vkCmdPushDescriptorSetWithTemplate2 = (PFN_vkCmdPushDescriptorSetWithTemplate2)(this->*(load))(context, "vkCmdPushDescriptorSetWithTemplate2");
+  vkCmdSetLineStipple = (PFN_vkCmdSetLineStipple)(this->*(load))(context, "vkCmdSetLineStipple");
+  vkCmdSetRenderingAttachmentLocations = (PFN_vkCmdSetRenderingAttachmentLocations)(this->*(load))(context, "vkCmdSetRenderingAttachmentLocations");
+  vkCmdSetRenderingInputAttachmentIndices = (PFN_vkCmdSetRenderingInputAttachmentIndices)(this->*(load))(context, "vkCmdSetRenderingInputAttachmentIndices");
+  vkCopyImageToImage = (PFN_vkCopyImageToImage)(this->*(load))(context, "vkCopyImageToImage");
+  vkCopyImageToMemory = (PFN_vkCopyImageToMemory)(this->*(load))(context, "vkCopyImageToMemory");
+  vkCopyMemoryToImage = (PFN_vkCopyMemoryToImage)(this->*(load))(context, "vkCopyMemoryToImage");
+  vkGetDeviceImageSubresourceLayout = (PFN_vkGetDeviceImageSubresourceLayout)(this->*(load))(context, "vkGetDeviceImageSubresourceLayout");
+  vkGetImageSubresourceLayout2 = (PFN_vkGetImageSubresourceLayout2)(this->*(load))(context, "vkGetImageSubresourceLayout2");
+  vkGetRenderingAreaGranularity = (PFN_vkGetRenderingAreaGranularity)(this->*(load))(context, "vkGetRenderingAreaGranularity");
+  vkMapMemory2 = (PFN_vkMapMemory2)(this->*(load))(context, "vkMapMemory2");
+  vkTransitionImageLayout = (PFN_vkTransitionImageLayout)(this->*(load))(context, "vkTransitionImageLayout");
+  vkUnmapMemory2 = (PFN_vkUnmapMemory2)(this->*(load))(context, "vkUnmapMemory2");
+#endif /* defined(VK_VERSION_1_4) */
 #if defined(VK_AMDX_shader_enqueue)
   vkCmdDispatchGraphAMDX = (PFN_vkCmdDispatchGraphAMDX)(this->*(load))(context, "vkCmdDispatchGraphAMDX");
   vkCmdDispatchGraphIndirectAMDX = (PFN_vkCmdDispatchGraphIndirectAMDX)(this->*(load))(context, "vkCmdDispatchGraphIndirectAMDX");
@@ -690,9 +711,11 @@ void Volk::genLoadDevice(void* context, PFN_vkVoidFunction (Volk::*load)(void*, 
 #endif /* defined(VK_EXT_line_rasterization) */
 #if defined(VK_EXT_mesh_shader)
   vkCmdDrawMeshTasksEXT = (PFN_vkCmdDrawMeshTasksEXT)(this->*(load))(context, "vkCmdDrawMeshTasksEXT");
-  vkCmdDrawMeshTasksIndirectCountEXT = (PFN_vkCmdDrawMeshTasksIndirectCountEXT)(this->*(load))(context, "vkCmdDrawMeshTasksIndirectCountEXT");
   vkCmdDrawMeshTasksIndirectEXT = (PFN_vkCmdDrawMeshTasksIndirectEXT)(this->*(load))(context, "vkCmdDrawMeshTasksIndirectEXT");
 #endif /* defined(VK_EXT_mesh_shader) */
+#if defined(VK_EXT_mesh_shader) && (defined(VK_KHR_draw_indirect_count) || defined(VK_VERSION_1_2))
+  vkCmdDrawMeshTasksIndirectCountEXT = (PFN_vkCmdDrawMeshTasksIndirectCountEXT)(this->*(load))(context, "vkCmdDrawMeshTasksIndirectCountEXT");
+#endif /* defined(VK_EXT_mesh_shader) && (defined(VK_KHR_draw_indirect_count) || defined(VK_VERSION_1_2)) */
 #if defined(VK_EXT_metal_objects)
   vkExportMetalObjectsEXT = (PFN_vkExportMetalObjectsEXT)(this->*(load))(context, "vkExportMetalObjectsEXT");
 #endif /* defined(VK_EXT_metal_objects) */
@@ -1091,10 +1114,12 @@ void Volk::genLoadDevice(void* context, PFN_vkVoidFunction (Volk::*load)(void*, 
   vkCmdDecompressMemoryNV = (PFN_vkCmdDecompressMemoryNV)(this->*(load))(context, "vkCmdDecompressMemoryNV");
 #endif /* defined(VK_NV_memory_decompression) */
 #if defined(VK_NV_mesh_shader)
-  vkCmdDrawMeshTasksIndirectCountNV = (PFN_vkCmdDrawMeshTasksIndirectCountNV)(this->*(load))(context, "vkCmdDrawMeshTasksIndirectCountNV");
   vkCmdDrawMeshTasksIndirectNV = (PFN_vkCmdDrawMeshTasksIndirectNV)(this->*(load))(context, "vkCmdDrawMeshTasksIndirectNV");
   vkCmdDrawMeshTasksNV = (PFN_vkCmdDrawMeshTasksNV)(this->*(load))(context, "vkCmdDrawMeshTasksNV");
 #endif /* defined(VK_NV_mesh_shader) */
+#if defined(VK_NV_mesh_shader) && (defined(VK_KHR_draw_indirect_count) || defined(VK_VERSION_1_2))
+  vkCmdDrawMeshTasksIndirectCountNV = (PFN_vkCmdDrawMeshTasksIndirectCountNV)(this->*(load))(context, "vkCmdDrawMeshTasksIndirectCountNV");
+#endif /* defined(VK_NV_mesh_shader) && (defined(VK_KHR_draw_indirect_count) || defined(VK_VERSION_1_2)) */
 #if defined(VK_NV_optical_flow)
   vkBindOpticalFlowSessionImageNV = (PFN_vkBindOpticalFlowSessionImageNV)(this->*(load))(context, "vkBindOpticalFlowSessionImageNV");
   vkCmdOpticalFlowExecuteNV = (PFN_vkCmdOpticalFlowExecuteNV)(this->*(load))(context, "vkCmdOpticalFlowExecuteNV");
