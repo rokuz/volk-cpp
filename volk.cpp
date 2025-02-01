@@ -346,6 +346,9 @@ void Volk::genLoadInstance(void* context, PFN_vkVoidFunction (Volk::*load)(void*
 #if defined(VK_NV_cooperative_matrix2)
   vkGetPhysicalDeviceCooperativeMatrixFlexibleDimensionsPropertiesNV = (PFN_vkGetPhysicalDeviceCooperativeMatrixFlexibleDimensionsPropertiesNV)(this->*(load))(context, "vkGetPhysicalDeviceCooperativeMatrixFlexibleDimensionsPropertiesNV");
 #endif /* defined(VK_NV_cooperative_matrix2) */
+#if defined(VK_NV_cooperative_vector)
+  vkGetPhysicalDeviceCooperativeVectorPropertiesNV = (PFN_vkGetPhysicalDeviceCooperativeVectorPropertiesNV)(this->*(load))(context, "vkGetPhysicalDeviceCooperativeVectorPropertiesNV");
+#endif /* defined(VK_NV_cooperative_vector) */
 #if defined(VK_NV_coverage_reduction_mode)
   vkGetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNV = (PFN_vkGetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNV)(this->*(load))(context, "vkGetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNV");
 #endif /* defined(VK_NV_coverage_reduction_mode) */
@@ -684,6 +687,10 @@ void Volk::genLoadDevice(void* context, PFN_vkVoidFunction (Volk::*load)(void*, 
 #if defined(VK_EXT_external_memory_host)
   vkGetMemoryHostPointerPropertiesEXT = (PFN_vkGetMemoryHostPointerPropertiesEXT)(this->*(load))(context, "vkGetMemoryHostPointerPropertiesEXT");
 #endif /* defined(VK_EXT_external_memory_host) */
+#if defined(VK_EXT_external_memory_metal)
+  vkGetMemoryMetalHandleEXT = (PFN_vkGetMemoryMetalHandleEXT)(this->*(load))(context, "vkGetMemoryMetalHandleEXT");
+  vkGetMemoryMetalHandlePropertiesEXT = (PFN_vkGetMemoryMetalHandlePropertiesEXT)(this->*(load))(context, "vkGetMemoryMetalHandlePropertiesEXT");
+#endif /* defined(VK_EXT_external_memory_metal) */
 #if defined(VK_EXT_full_screen_exclusive)
   vkAcquireFullScreenExclusiveModeEXT = (PFN_vkAcquireFullScreenExclusiveModeEXT)(this->*(load))(context, "vkAcquireFullScreenExclusiveModeEXT");
   vkReleaseFullScreenExclusiveModeEXT = (PFN_vkReleaseFullScreenExclusiveModeEXT)(this->*(load))(context, "vkReleaseFullScreenExclusiveModeEXT");
@@ -1061,6 +1068,14 @@ void Volk::genLoadDevice(void* context, PFN_vkVoidFunction (Volk::*load)(void*, 
 #if defined(VK_NV_clip_space_w_scaling)
   vkCmdSetViewportWScalingNV = (PFN_vkCmdSetViewportWScalingNV)(this->*(load))(context, "vkCmdSetViewportWScalingNV");
 #endif /* defined(VK_NV_clip_space_w_scaling) */
+#if defined(VK_NV_cluster_acceleration_structure)
+  vkCmdBuildClusterAccelerationStructureIndirectNV = (PFN_vkCmdBuildClusterAccelerationStructureIndirectNV)(this->*(load))(context, "vkCmdBuildClusterAccelerationStructureIndirectNV");
+  vkGetClusterAccelerationStructureBuildSizesNV = (PFN_vkGetClusterAccelerationStructureBuildSizesNV)(this->*(load))(context, "vkGetClusterAccelerationStructureBuildSizesNV");
+#endif /* defined(VK_NV_cluster_acceleration_structure) */
+#if defined(VK_NV_cooperative_vector)
+  vkCmdConvertCooperativeVectorMatrixNV = (PFN_vkCmdConvertCooperativeVectorMatrixNV)(this->*(load))(context, "vkCmdConvertCooperativeVectorMatrixNV");
+  vkConvertCooperativeVectorMatrixNV = (PFN_vkConvertCooperativeVectorMatrixNV)(this->*(load))(context, "vkConvertCooperativeVectorMatrixNV");
+#endif /* defined(VK_NV_cooperative_vector) */
 #if defined(VK_NV_copy_memory_indirect)
   vkCmdCopyMemoryIndirectNV = (PFN_vkCmdCopyMemoryIndirectNV)(this->*(load))(context, "vkCmdCopyMemoryIndirectNV");
   vkCmdCopyMemoryToImageIndirectNV = (PFN_vkCmdCopyMemoryToImageIndirectNV)(this->*(load))(context, "vkCmdCopyMemoryToImageIndirectNV");
@@ -1126,6 +1141,10 @@ void Volk::genLoadDevice(void* context, PFN_vkVoidFunction (Volk::*load)(void*, 
   vkCreateOpticalFlowSessionNV = (PFN_vkCreateOpticalFlowSessionNV)(this->*(load))(context, "vkCreateOpticalFlowSessionNV");
   vkDestroyOpticalFlowSessionNV = (PFN_vkDestroyOpticalFlowSessionNV)(this->*(load))(context, "vkDestroyOpticalFlowSessionNV");
 #endif /* defined(VK_NV_optical_flow) */
+#if defined(VK_NV_partitioned_acceleration_structure)
+  vkCmdBuildPartitionedAccelerationStructuresNV = (PFN_vkCmdBuildPartitionedAccelerationStructuresNV)(this->*(load))(context, "vkCmdBuildPartitionedAccelerationStructuresNV");
+  vkGetPartitionedAccelerationStructuresBuildSizesNV = (PFN_vkGetPartitionedAccelerationStructuresBuildSizesNV)(this->*(load))(context, "vkGetPartitionedAccelerationStructuresBuildSizesNV");
+#endif /* defined(VK_NV_partitioned_acceleration_structure) */
 #if defined(VK_NV_ray_tracing)
   vkBindAccelerationStructureMemoryNV = (PFN_vkBindAccelerationStructureMemoryNV)(this->*(load))(context, "vkBindAccelerationStructureMemoryNV");
   vkCmdBuildAccelerationStructureNV = (PFN_vkCmdBuildAccelerationStructureNV)(this->*(load))(context, "vkCmdBuildAccelerationStructureNV");
