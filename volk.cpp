@@ -691,6 +691,9 @@ void Volk::genLoadDevice(void* context, PFN_vkVoidFunction (Volk::*load)(void*, 
   vkGetMemoryMetalHandleEXT = (PFN_vkGetMemoryMetalHandleEXT)(this->*(load))(context, "vkGetMemoryMetalHandleEXT");
   vkGetMemoryMetalHandlePropertiesEXT = (PFN_vkGetMemoryMetalHandlePropertiesEXT)(this->*(load))(context, "vkGetMemoryMetalHandlePropertiesEXT");
 #endif /* defined(VK_EXT_external_memory_metal) */
+#if defined(VK_EXT_fragment_density_map_offset)
+  vkCmdEndRendering2EXT = (PFN_vkCmdEndRendering2EXT)(this->*(load))(context, "vkCmdEndRendering2EXT");
+#endif /* defined(VK_EXT_fragment_density_map_offset) */
 #if defined(VK_EXT_full_screen_exclusive)
   vkAcquireFullScreenExclusiveModeEXT = (PFN_vkAcquireFullScreenExclusiveModeEXT)(this->*(load))(context, "vkAcquireFullScreenExclusiveModeEXT");
   vkReleaseFullScreenExclusiveModeEXT = (PFN_vkReleaseFullScreenExclusiveModeEXT)(this->*(load))(context, "vkReleaseFullScreenExclusiveModeEXT");
