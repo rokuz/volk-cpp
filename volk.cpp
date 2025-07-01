@@ -181,6 +181,13 @@ void Volk::genLoadInstance(void* context, PFN_vkVoidFunction (Volk::*load)(void*
 #if defined(VK_VERSION_1_3)
   vkGetPhysicalDeviceToolProperties = (PFN_vkGetPhysicalDeviceToolProperties)(this->*(load))(context, "vkGetPhysicalDeviceToolProperties");
 #endif /* defined(VK_VERSION_1_3) */
+#if defined(VK_ARM_data_graph)
+  vkGetPhysicalDeviceQueueFamilyDataGraphProcessingEnginePropertiesARM = (PFN_vkGetPhysicalDeviceQueueFamilyDataGraphProcessingEnginePropertiesARM)(this->*(load))(context, "vkGetPhysicalDeviceQueueFamilyDataGraphProcessingEnginePropertiesARM");
+  vkGetPhysicalDeviceQueueFamilyDataGraphPropertiesARM = (PFN_vkGetPhysicalDeviceQueueFamilyDataGraphPropertiesARM)(this->*(load))(context, "vkGetPhysicalDeviceQueueFamilyDataGraphPropertiesARM");
+#endif /* defined(VK_ARM_data_graph) */
+#if defined(VK_ARM_tensors)
+  vkGetPhysicalDeviceExternalTensorPropertiesARM = (PFN_vkGetPhysicalDeviceExternalTensorPropertiesARM)(this->*(load))(context, "vkGetPhysicalDeviceExternalTensorPropertiesARM");
+#endif /* defined(VK_ARM_tensors) */
 #if defined(VK_EXT_acquire_drm_display)
   vkAcquireDrmDisplayEXT = (PFN_vkAcquireDrmDisplayEXT)(this->*(load))(context, "vkAcquireDrmDisplayEXT");
   vkGetDrmDisplayEXT = (PFN_vkGetDrmDisplayEXT)(this->*(load))(context, "vkGetDrmDisplayEXT");
@@ -358,6 +365,9 @@ void Volk::genLoadInstance(void* context, PFN_vkVoidFunction (Volk::*load)(void*
 #if defined(VK_NV_optical_flow)
   vkGetPhysicalDeviceOpticalFlowImageFormatsNV = (PFN_vkGetPhysicalDeviceOpticalFlowImageFormatsNV)(this->*(load))(context, "vkGetPhysicalDeviceOpticalFlowImageFormatsNV");
 #endif /* defined(VK_NV_optical_flow) */
+#if defined(VK_OHOS_surface)
+  vkCreateSurfaceOHOS = (PFN_vkCreateSurfaceOHOS)(this->*(load))(context, "vkCreateSurfaceOHOS");
+#endif /* defined(VK_OHOS_surface) */
 #if defined(VK_QNX_screen_surface)
   vkCreateScreenSurfaceQNX = (PFN_vkCreateScreenSurfaceQNX)(this->*(load))(context, "vkCreateScreenSurfaceQNX");
   vkGetPhysicalDeviceScreenPresentationSupportQNX = (PFN_vkGetPhysicalDeviceScreenPresentationSupportQNX)(this->*(load))(context, "vkGetPhysicalDeviceScreenPresentationSupportQNX");
@@ -616,6 +626,31 @@ void Volk::genLoadDevice(void* context, PFN_vkVoidFunction (Volk::*load)(void*, 
   vkGetAndroidHardwareBufferPropertiesANDROID = (PFN_vkGetAndroidHardwareBufferPropertiesANDROID)(this->*(load))(context, "vkGetAndroidHardwareBufferPropertiesANDROID");
   vkGetMemoryAndroidHardwareBufferANDROID = (PFN_vkGetMemoryAndroidHardwareBufferANDROID)(this->*(load))(context, "vkGetMemoryAndroidHardwareBufferANDROID");
 #endif /* defined(VK_ANDROID_external_memory_android_hardware_buffer) */
+#if defined(VK_ARM_data_graph)
+  vkBindDataGraphPipelineSessionMemoryARM = (PFN_vkBindDataGraphPipelineSessionMemoryARM)(this->*(load))(context, "vkBindDataGraphPipelineSessionMemoryARM");
+  vkCmdDispatchDataGraphARM = (PFN_vkCmdDispatchDataGraphARM)(this->*(load))(context, "vkCmdDispatchDataGraphARM");
+  vkCreateDataGraphPipelineSessionARM = (PFN_vkCreateDataGraphPipelineSessionARM)(this->*(load))(context, "vkCreateDataGraphPipelineSessionARM");
+  vkCreateDataGraphPipelinesARM = (PFN_vkCreateDataGraphPipelinesARM)(this->*(load))(context, "vkCreateDataGraphPipelinesARM");
+  vkDestroyDataGraphPipelineSessionARM = (PFN_vkDestroyDataGraphPipelineSessionARM)(this->*(load))(context, "vkDestroyDataGraphPipelineSessionARM");
+  vkGetDataGraphPipelineAvailablePropertiesARM = (PFN_vkGetDataGraphPipelineAvailablePropertiesARM)(this->*(load))(context, "vkGetDataGraphPipelineAvailablePropertiesARM");
+  vkGetDataGraphPipelinePropertiesARM = (PFN_vkGetDataGraphPipelinePropertiesARM)(this->*(load))(context, "vkGetDataGraphPipelinePropertiesARM");
+  vkGetDataGraphPipelineSessionBindPointRequirementsARM = (PFN_vkGetDataGraphPipelineSessionBindPointRequirementsARM)(this->*(load))(context, "vkGetDataGraphPipelineSessionBindPointRequirementsARM");
+  vkGetDataGraphPipelineSessionMemoryRequirementsARM = (PFN_vkGetDataGraphPipelineSessionMemoryRequirementsARM)(this->*(load))(context, "vkGetDataGraphPipelineSessionMemoryRequirementsARM");
+#endif /* defined(VK_ARM_data_graph) */
+#if defined(VK_ARM_tensors)
+  vkBindTensorMemoryARM = (PFN_vkBindTensorMemoryARM)(this->*(load))(context, "vkBindTensorMemoryARM");
+  vkCmdCopyTensorARM = (PFN_vkCmdCopyTensorARM)(this->*(load))(context, "vkCmdCopyTensorARM");
+  vkCreateTensorARM = (PFN_vkCreateTensorARM)(this->*(load))(context, "vkCreateTensorARM");
+  vkCreateTensorViewARM = (PFN_vkCreateTensorViewARM)(this->*(load))(context, "vkCreateTensorViewARM");
+  vkDestroyTensorARM = (PFN_vkDestroyTensorARM)(this->*(load))(context, "vkDestroyTensorARM");
+  vkDestroyTensorViewARM = (PFN_vkDestroyTensorViewARM)(this->*(load))(context, "vkDestroyTensorViewARM");
+  vkGetDeviceTensorMemoryRequirementsARM = (PFN_vkGetDeviceTensorMemoryRequirementsARM)(this->*(load))(context, "vkGetDeviceTensorMemoryRequirementsARM");
+  vkGetTensorMemoryRequirementsARM = (PFN_vkGetTensorMemoryRequirementsARM)(this->*(load))(context, "vkGetTensorMemoryRequirementsARM");
+#endif /* defined(VK_ARM_tensors) */
+#if defined(VK_ARM_tensors) && defined(VK_EXT_descriptor_buffer)
+  vkGetTensorOpaqueCaptureDescriptorDataARM = (PFN_vkGetTensorOpaqueCaptureDescriptorDataARM)(this->*(load))(context, "vkGetTensorOpaqueCaptureDescriptorDataARM");
+  vkGetTensorViewOpaqueCaptureDescriptorDataARM = (PFN_vkGetTensorViewOpaqueCaptureDescriptorDataARM)(this->*(load))(context, "vkGetTensorViewOpaqueCaptureDescriptorDataARM");
+#endif /* defined(VK_ARM_tensors) && defined(VK_EXT_descriptor_buffer) */
 #if defined(VK_EXT_attachment_feedback_loop_dynamic_state)
   vkCmdSetAttachmentFeedbackLoopEnableEXT = (PFN_vkCmdSetAttachmentFeedbackLoopEnableEXT)(this->*(load))(context, "vkCmdSetAttachmentFeedbackLoopEnableEXT");
 #endif /* defined(VK_EXT_attachment_feedback_loop_dynamic_state) */
@@ -995,6 +1030,9 @@ void Volk::genLoadDevice(void* context, PFN_vkVoidFunction (Volk::*load)(void*, 
 #if defined(VK_KHR_present_wait)
   vkWaitForPresentKHR = (PFN_vkWaitForPresentKHR)(this->*(load))(context, "vkWaitForPresentKHR");
 #endif /* defined(VK_KHR_present_wait) */
+#if defined(VK_KHR_present_wait2)
+  vkWaitForPresent2KHR = (PFN_vkWaitForPresent2KHR)(this->*(load))(context, "vkWaitForPresent2KHR");
+#endif /* defined(VK_KHR_present_wait2) */
 #if defined(VK_KHR_push_descriptor)
   vkCmdPushDescriptorSetKHR = (PFN_vkCmdPushDescriptorSetKHR)(this->*(load))(context, "vkCmdPushDescriptorSetKHR");
 #endif /* defined(VK_KHR_push_descriptor) */
