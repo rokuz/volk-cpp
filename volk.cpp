@@ -1062,6 +1062,9 @@ void Volk::genLoadDevice(void* context, PFN_vkVoidFunction (Volk::*load)(void*, 
   vkGetSwapchainImagesKHR = (PFN_vkGetSwapchainImagesKHR)(this->*(load))(context, "vkGetSwapchainImagesKHR");
   vkQueuePresentKHR = (PFN_vkQueuePresentKHR)(this->*(load))(context, "vkQueuePresentKHR");
 #endif /* defined(VK_KHR_swapchain) */
+#if defined(VK_KHR_swapchain_maintenance1)
+  vkReleaseSwapchainImagesKHR = (PFN_vkReleaseSwapchainImagesKHR)(this->*(load))(context, "vkReleaseSwapchainImagesKHR");
+#endif /* defined(VK_KHR_swapchain_maintenance1) */
 #if defined(VK_KHR_synchronization2)
   vkCmdPipelineBarrier2KHR = (PFN_vkCmdPipelineBarrier2KHR)(this->*(load))(context, "vkCmdPipelineBarrier2KHR");
   vkCmdResetEvent2KHR = (PFN_vkCmdResetEvent2KHR)(this->*(load))(context, "vkCmdResetEvent2KHR");

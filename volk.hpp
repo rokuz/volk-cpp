@@ -20,7 +20,7 @@
 #endif
 
 /* VOLK_CPP_GENERATE_VERSION_DEFINE */
-#define VOLK_CPP_HEADER_VERSION 320
+#define VOLK_CPP_HEADER_VERSION 323
 /* VOLK_CPP_GENERATE_VERSION_DEFINE */
 
 #ifndef VK_NO_PROTOTYPES
@@ -1222,6 +1222,11 @@ public:
 #else 
   ALIGNMENT_ARRAY(125, 5);
 #endif /* defined(VK_KHR_swapchain) */
+#if defined(VK_KHR_swapchain_maintenance1)
+  PFN_vkReleaseSwapchainImagesKHR vkReleaseSwapchainImagesKHR = nullptr;
+#else 
+  ALIGNMENT(126);
+#endif /* defined(VK_KHR_swapchain_maintenance1) */
 #if defined(VK_KHR_synchronization2)
   PFN_vkCmdPipelineBarrier2KHR vkCmdPipelineBarrier2KHR = nullptr;
   PFN_vkCmdResetEvent2KHR vkCmdResetEvent2KHR = nullptr;
@@ -1230,26 +1235,26 @@ public:
   PFN_vkCmdWriteTimestamp2KHR vkCmdWriteTimestamp2KHR = nullptr;
   PFN_vkQueueSubmit2KHR vkQueueSubmit2KHR = nullptr;
 #else 
-  ALIGNMENT_ARRAY(126, 6);
+  ALIGNMENT_ARRAY(127, 6);
 #endif /* defined(VK_KHR_synchronization2) */
 #if defined(VK_KHR_timeline_semaphore)
   PFN_vkGetSemaphoreCounterValueKHR vkGetSemaphoreCounterValueKHR = nullptr;
   PFN_vkSignalSemaphoreKHR vkSignalSemaphoreKHR = nullptr;
   PFN_vkWaitSemaphoresKHR vkWaitSemaphoresKHR = nullptr;
 #else 
-  ALIGNMENT_ARRAY(127, 3);
+  ALIGNMENT_ARRAY(128, 3);
 #endif /* defined(VK_KHR_timeline_semaphore) */
 #if defined(VK_KHR_video_decode_queue)
   PFN_vkCmdDecodeVideoKHR vkCmdDecodeVideoKHR = nullptr;
 #else 
-  ALIGNMENT(128);
+  ALIGNMENT(129);
 #endif /* defined(VK_KHR_video_decode_queue) */
 #if defined(VK_KHR_video_encode_queue)
   PFN_vkCmdEncodeVideoKHR vkCmdEncodeVideoKHR = nullptr;
   PFN_vkGetEncodedVideoSessionParametersKHR vkGetEncodedVideoSessionParametersKHR = nullptr;
   PFN_vkGetPhysicalDeviceVideoEncodeQualityLevelPropertiesKHR vkGetPhysicalDeviceVideoEncodeQualityLevelPropertiesKHR = nullptr;
 #else 
-  ALIGNMENT_ARRAY(129, 3);
+  ALIGNMENT_ARRAY(130, 3);
 #endif /* defined(VK_KHR_video_encode_queue) */
 #if defined(VK_KHR_video_queue)
   PFN_vkBindVideoSessionMemoryKHR vkBindVideoSessionMemoryKHR = nullptr;
@@ -1265,46 +1270,46 @@ public:
   PFN_vkGetVideoSessionMemoryRequirementsKHR vkGetVideoSessionMemoryRequirementsKHR = nullptr;
   PFN_vkUpdateVideoSessionParametersKHR vkUpdateVideoSessionParametersKHR = nullptr;
 #else 
-  ALIGNMENT_ARRAY(130, 12);
+  ALIGNMENT_ARRAY(131, 12);
 #endif /* defined(VK_KHR_video_queue) */
 #if defined(VK_KHR_wayland_surface)
   PFN_vkCreateWaylandSurfaceKHR vkCreateWaylandSurfaceKHR = nullptr;
   PFN_vkGetPhysicalDeviceWaylandPresentationSupportKHR vkGetPhysicalDeviceWaylandPresentationSupportKHR = nullptr;
 #else 
-  ALIGNMENT_ARRAY(131, 2);
+  ALIGNMENT_ARRAY(132, 2);
 #endif /* defined(VK_KHR_wayland_surface) */
 #if defined(VK_KHR_win32_surface)
   PFN_vkCreateWin32SurfaceKHR vkCreateWin32SurfaceKHR = nullptr;
   PFN_vkGetPhysicalDeviceWin32PresentationSupportKHR vkGetPhysicalDeviceWin32PresentationSupportKHR = nullptr;
 #else 
-  ALIGNMENT_ARRAY(132, 2);
+  ALIGNMENT_ARRAY(133, 2);
 #endif /* defined(VK_KHR_win32_surface) */
 #if defined(VK_KHR_xcb_surface)
   PFN_vkCreateXcbSurfaceKHR vkCreateXcbSurfaceKHR = nullptr;
   PFN_vkGetPhysicalDeviceXcbPresentationSupportKHR vkGetPhysicalDeviceXcbPresentationSupportKHR = nullptr;
 #else 
-  ALIGNMENT_ARRAY(133, 2);
+  ALIGNMENT_ARRAY(134, 2);
 #endif /* defined(VK_KHR_xcb_surface) */
 #if defined(VK_KHR_xlib_surface)
   PFN_vkCreateXlibSurfaceKHR vkCreateXlibSurfaceKHR = nullptr;
   PFN_vkGetPhysicalDeviceXlibPresentationSupportKHR vkGetPhysicalDeviceXlibPresentationSupportKHR = nullptr;
 #else 
-  ALIGNMENT_ARRAY(134, 2);
+  ALIGNMENT_ARRAY(135, 2);
 #endif /* defined(VK_KHR_xlib_surface) */
 #if defined(VK_MVK_ios_surface)
   PFN_vkCreateIOSSurfaceMVK vkCreateIOSSurfaceMVK = nullptr;
 #else 
-  ALIGNMENT(135);
+  ALIGNMENT(136);
 #endif /* defined(VK_MVK_ios_surface) */
 #if defined(VK_MVK_macos_surface)
   PFN_vkCreateMacOSSurfaceMVK vkCreateMacOSSurfaceMVK = nullptr;
 #else 
-  ALIGNMENT(136);
+  ALIGNMENT(137);
 #endif /* defined(VK_MVK_macos_surface) */
 #if defined(VK_NN_vi_surface)
   PFN_vkCreateViSurfaceNN vkCreateViSurfaceNN = nullptr;
 #else 
-  ALIGNMENT(137);
+  ALIGNMENT(138);
 #endif /* defined(VK_NN_vi_surface) */
 #if defined(VK_NVX_binary_import)
   PFN_vkCmdCuLaunchKernelNVX vkCmdCuLaunchKernelNVX = nullptr;
@@ -1313,59 +1318,59 @@ public:
   PFN_vkDestroyCuFunctionNVX vkDestroyCuFunctionNVX = nullptr;
   PFN_vkDestroyCuModuleNVX vkDestroyCuModuleNVX = nullptr;
 #else 
-  ALIGNMENT_ARRAY(138, 5);
+  ALIGNMENT_ARRAY(139, 5);
 #endif /* defined(VK_NVX_binary_import) */
 #if defined(VK_NVX_image_view_handle)
   PFN_vkGetImageViewAddressNVX vkGetImageViewAddressNVX = nullptr;
   PFN_vkGetImageViewHandle64NVX vkGetImageViewHandle64NVX = nullptr;
   PFN_vkGetImageViewHandleNVX vkGetImageViewHandleNVX = nullptr;
 #else 
-  ALIGNMENT_ARRAY(139, 3);
+  ALIGNMENT_ARRAY(140, 3);
 #endif /* defined(VK_NVX_image_view_handle) */
 #if defined(VK_NV_acquire_winrt_display)
   PFN_vkAcquireWinrtDisplayNV vkAcquireWinrtDisplayNV = nullptr;
   PFN_vkGetWinrtDisplayNV vkGetWinrtDisplayNV = nullptr;
 #else 
-  ALIGNMENT_ARRAY(140, 2);
+  ALIGNMENT_ARRAY(141, 2);
 #endif /* defined(VK_NV_acquire_winrt_display) */
 #if defined(VK_NV_clip_space_w_scaling)
   PFN_vkCmdSetViewportWScalingNV vkCmdSetViewportWScalingNV = nullptr;
 #else 
-  ALIGNMENT(141);
+  ALIGNMENT(142);
 #endif /* defined(VK_NV_clip_space_w_scaling) */
 #if defined(VK_NV_cluster_acceleration_structure)
   PFN_vkCmdBuildClusterAccelerationStructureIndirectNV vkCmdBuildClusterAccelerationStructureIndirectNV = nullptr;
   PFN_vkGetClusterAccelerationStructureBuildSizesNV vkGetClusterAccelerationStructureBuildSizesNV = nullptr;
 #else 
-  ALIGNMENT_ARRAY(142, 2);
+  ALIGNMENT_ARRAY(143, 2);
 #endif /* defined(VK_NV_cluster_acceleration_structure) */
 #if defined(VK_NV_cooperative_matrix)
   PFN_vkGetPhysicalDeviceCooperativeMatrixPropertiesNV vkGetPhysicalDeviceCooperativeMatrixPropertiesNV = nullptr;
 #else 
-  ALIGNMENT(143);
+  ALIGNMENT(144);
 #endif /* defined(VK_NV_cooperative_matrix) */
 #if defined(VK_NV_cooperative_matrix2)
   PFN_vkGetPhysicalDeviceCooperativeMatrixFlexibleDimensionsPropertiesNV vkGetPhysicalDeviceCooperativeMatrixFlexibleDimensionsPropertiesNV = nullptr;
 #else 
-  ALIGNMENT(144);
+  ALIGNMENT(145);
 #endif /* defined(VK_NV_cooperative_matrix2) */
 #if defined(VK_NV_cooperative_vector)
   PFN_vkCmdConvertCooperativeVectorMatrixNV vkCmdConvertCooperativeVectorMatrixNV = nullptr;
   PFN_vkConvertCooperativeVectorMatrixNV vkConvertCooperativeVectorMatrixNV = nullptr;
   PFN_vkGetPhysicalDeviceCooperativeVectorPropertiesNV vkGetPhysicalDeviceCooperativeVectorPropertiesNV = nullptr;
 #else 
-  ALIGNMENT_ARRAY(145, 3);
+  ALIGNMENT_ARRAY(146, 3);
 #endif /* defined(VK_NV_cooperative_vector) */
 #if defined(VK_NV_copy_memory_indirect)
   PFN_vkCmdCopyMemoryIndirectNV vkCmdCopyMemoryIndirectNV = nullptr;
   PFN_vkCmdCopyMemoryToImageIndirectNV vkCmdCopyMemoryToImageIndirectNV = nullptr;
 #else 
-  ALIGNMENT_ARRAY(146, 2);
+  ALIGNMENT_ARRAY(147, 2);
 #endif /* defined(VK_NV_copy_memory_indirect) */
 #if defined(VK_NV_coverage_reduction_mode)
   PFN_vkGetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNV vkGetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNV = nullptr;
 #else 
-  ALIGNMENT(147);
+  ALIGNMENT(148);
 #endif /* defined(VK_NV_coverage_reduction_mode) */
 #if defined(VK_NV_cuda_kernel_launch)
   PFN_vkCmdCudaLaunchKernelNV vkCmdCudaLaunchKernelNV = nullptr;
@@ -1375,18 +1380,18 @@ public:
   PFN_vkDestroyCudaModuleNV vkDestroyCudaModuleNV = nullptr;
   PFN_vkGetCudaModuleCacheNV vkGetCudaModuleCacheNV = nullptr;
 #else 
-  ALIGNMENT_ARRAY(148, 6);
+  ALIGNMENT_ARRAY(149, 6);
 #endif /* defined(VK_NV_cuda_kernel_launch) */
 #if defined(VK_NV_device_diagnostic_checkpoints)
   PFN_vkCmdSetCheckpointNV vkCmdSetCheckpointNV = nullptr;
   PFN_vkGetQueueCheckpointDataNV vkGetQueueCheckpointDataNV = nullptr;
 #else 
-  ALIGNMENT_ARRAY(149, 2);
+  ALIGNMENT_ARRAY(150, 2);
 #endif /* defined(VK_NV_device_diagnostic_checkpoints) */
 #if defined(VK_NV_device_diagnostic_checkpoints) && (defined(VK_VERSION_1_3) || defined(VK_KHR_synchronization2))
   PFN_vkGetQueueCheckpointData2NV vkGetQueueCheckpointData2NV = nullptr;
 #else 
-  ALIGNMENT(150);
+  ALIGNMENT(151);
 #endif /* defined(VK_NV_device_diagnostic_checkpoints) && (defined(VK_VERSION_1_3) || defined(VK_KHR_synchronization2)) */
 #if defined(VK_NV_device_generated_commands)
   PFN_vkCmdBindPipelineShaderGroupNV vkCmdBindPipelineShaderGroupNV = nullptr;
@@ -1396,41 +1401,41 @@ public:
   PFN_vkDestroyIndirectCommandsLayoutNV vkDestroyIndirectCommandsLayoutNV = nullptr;
   PFN_vkGetGeneratedCommandsMemoryRequirementsNV vkGetGeneratedCommandsMemoryRequirementsNV = nullptr;
 #else 
-  ALIGNMENT_ARRAY(151, 6);
+  ALIGNMENT_ARRAY(152, 6);
 #endif /* defined(VK_NV_device_generated_commands) */
 #if defined(VK_NV_device_generated_commands_compute)
   PFN_vkCmdUpdatePipelineIndirectBufferNV vkCmdUpdatePipelineIndirectBufferNV = nullptr;
   PFN_vkGetPipelineIndirectDeviceAddressNV vkGetPipelineIndirectDeviceAddressNV = nullptr;
   PFN_vkGetPipelineIndirectMemoryRequirementsNV vkGetPipelineIndirectMemoryRequirementsNV = nullptr;
 #else 
-  ALIGNMENT_ARRAY(152, 3);
+  ALIGNMENT_ARRAY(153, 3);
 #endif /* defined(VK_NV_device_generated_commands_compute) */
 #if defined(VK_NV_external_compute_queue)
   PFN_vkCreateExternalComputeQueueNV vkCreateExternalComputeQueueNV = nullptr;
   PFN_vkDestroyExternalComputeQueueNV vkDestroyExternalComputeQueueNV = nullptr;
   PFN_vkGetExternalComputeQueueDataNV vkGetExternalComputeQueueDataNV = nullptr;
 #else 
-  ALIGNMENT_ARRAY(153, 3);
+  ALIGNMENT_ARRAY(154, 3);
 #endif /* defined(VK_NV_external_compute_queue) */
 #if defined(VK_NV_external_memory_capabilities)
   PFN_vkGetPhysicalDeviceExternalImageFormatPropertiesNV vkGetPhysicalDeviceExternalImageFormatPropertiesNV = nullptr;
 #else 
-  ALIGNMENT(154);
+  ALIGNMENT(155);
 #endif /* defined(VK_NV_external_memory_capabilities) */
 #if defined(VK_NV_external_memory_rdma)
   PFN_vkGetMemoryRemoteAddressNV vkGetMemoryRemoteAddressNV = nullptr;
 #else 
-  ALIGNMENT(155);
+  ALIGNMENT(156);
 #endif /* defined(VK_NV_external_memory_rdma) */
 #if defined(VK_NV_external_memory_win32)
   PFN_vkGetMemoryWin32HandleNV vkGetMemoryWin32HandleNV = nullptr;
 #else 
-  ALIGNMENT(156);
+  ALIGNMENT(157);
 #endif /* defined(VK_NV_external_memory_win32) */
 #if defined(VK_NV_fragment_shading_rate_enums)
   PFN_vkCmdSetFragmentShadingRateEnumNV vkCmdSetFragmentShadingRateEnumNV = nullptr;
 #else 
-  ALIGNMENT(157);
+  ALIGNMENT(158);
 #endif /* defined(VK_NV_fragment_shading_rate_enums) */
 #if defined(VK_NV_low_latency2)
   PFN_vkGetLatencyTimingsNV vkGetLatencyTimingsNV = nullptr;
@@ -1439,24 +1444,24 @@ public:
   PFN_vkSetLatencyMarkerNV vkSetLatencyMarkerNV = nullptr;
   PFN_vkSetLatencySleepModeNV vkSetLatencySleepModeNV = nullptr;
 #else 
-  ALIGNMENT_ARRAY(158, 5);
+  ALIGNMENT_ARRAY(159, 5);
 #endif /* defined(VK_NV_low_latency2) */
 #if defined(VK_NV_memory_decompression)
   PFN_vkCmdDecompressMemoryIndirectCountNV vkCmdDecompressMemoryIndirectCountNV = nullptr;
   PFN_vkCmdDecompressMemoryNV vkCmdDecompressMemoryNV = nullptr;
 #else 
-  ALIGNMENT_ARRAY(159, 2);
+  ALIGNMENT_ARRAY(160, 2);
 #endif /* defined(VK_NV_memory_decompression) */
 #if defined(VK_NV_mesh_shader)
   PFN_vkCmdDrawMeshTasksIndirectNV vkCmdDrawMeshTasksIndirectNV = nullptr;
   PFN_vkCmdDrawMeshTasksNV vkCmdDrawMeshTasksNV = nullptr;
 #else 
-  ALIGNMENT_ARRAY(160, 2);
+  ALIGNMENT_ARRAY(161, 2);
 #endif /* defined(VK_NV_mesh_shader) */
 #if defined(VK_NV_mesh_shader) && (defined(VK_KHR_draw_indirect_count) || defined(VK_VERSION_1_2))
   PFN_vkCmdDrawMeshTasksIndirectCountNV vkCmdDrawMeshTasksIndirectCountNV = nullptr;
 #else 
-  ALIGNMENT(161);
+  ALIGNMENT(162);
 #endif /* defined(VK_NV_mesh_shader) && (defined(VK_KHR_draw_indirect_count) || defined(VK_VERSION_1_2)) */
 #if defined(VK_NV_optical_flow)
   PFN_vkBindOpticalFlowSessionImageNV vkBindOpticalFlowSessionImageNV = nullptr;
@@ -1465,13 +1470,13 @@ public:
   PFN_vkDestroyOpticalFlowSessionNV vkDestroyOpticalFlowSessionNV = nullptr;
   PFN_vkGetPhysicalDeviceOpticalFlowImageFormatsNV vkGetPhysicalDeviceOpticalFlowImageFormatsNV = nullptr;
 #else 
-  ALIGNMENT_ARRAY(162, 5);
+  ALIGNMENT_ARRAY(163, 5);
 #endif /* defined(VK_NV_optical_flow) */
 #if defined(VK_NV_partitioned_acceleration_structure)
   PFN_vkCmdBuildPartitionedAccelerationStructuresNV vkCmdBuildPartitionedAccelerationStructuresNV = nullptr;
   PFN_vkGetPartitionedAccelerationStructuresBuildSizesNV vkGetPartitionedAccelerationStructuresBuildSizesNV = nullptr;
 #else 
-  ALIGNMENT_ARRAY(163, 2);
+  ALIGNMENT_ARRAY(164, 2);
 #endif /* defined(VK_NV_partitioned_acceleration_structure) */
 #if defined(VK_NV_ray_tracing)
   PFN_vkBindAccelerationStructureMemoryNV vkBindAccelerationStructureMemoryNV = nullptr;
@@ -1487,69 +1492,69 @@ public:
   PFN_vkGetAccelerationStructureMemoryRequirementsNV vkGetAccelerationStructureMemoryRequirementsNV = nullptr;
   PFN_vkGetRayTracingShaderGroupHandlesNV vkGetRayTracingShaderGroupHandlesNV = nullptr;
 #else 
-  ALIGNMENT_ARRAY(164, 12);
+  ALIGNMENT_ARRAY(165, 12);
 #endif /* defined(VK_NV_ray_tracing) */
 #if defined(VK_NV_scissor_exclusive) && VK_NV_SCISSOR_EXCLUSIVE_SPEC_VERSION >= 2
   PFN_vkCmdSetExclusiveScissorEnableNV vkCmdSetExclusiveScissorEnableNV = nullptr;
 #else 
-  ALIGNMENT(165);
+  ALIGNMENT(166);
 #endif /* defined(VK_NV_scissor_exclusive) && VK_NV_SCISSOR_EXCLUSIVE_SPEC_VERSION >= 2 */
 #if defined(VK_NV_scissor_exclusive)
   PFN_vkCmdSetExclusiveScissorNV vkCmdSetExclusiveScissorNV = nullptr;
 #else 
-  ALIGNMENT(166);
+  ALIGNMENT(167);
 #endif /* defined(VK_NV_scissor_exclusive) */
 #if defined(VK_NV_shading_rate_image)
   PFN_vkCmdBindShadingRateImageNV vkCmdBindShadingRateImageNV = nullptr;
   PFN_vkCmdSetCoarseSampleOrderNV vkCmdSetCoarseSampleOrderNV = nullptr;
   PFN_vkCmdSetViewportShadingRatePaletteNV vkCmdSetViewportShadingRatePaletteNV = nullptr;
 #else 
-  ALIGNMENT_ARRAY(167, 3);
+  ALIGNMENT_ARRAY(168, 3);
 #endif /* defined(VK_NV_shading_rate_image) */
 #if defined(VK_OHOS_surface)
   PFN_vkCreateSurfaceOHOS vkCreateSurfaceOHOS = nullptr;
 #else 
-  ALIGNMENT(168);
+  ALIGNMENT(169);
 #endif /* defined(VK_OHOS_surface) */
 #if defined(VK_QCOM_tile_memory_heap)
   PFN_vkCmdBindTileMemoryQCOM vkCmdBindTileMemoryQCOM = nullptr;
 #else 
-  ALIGNMENT(169);
+  ALIGNMENT(170);
 #endif /* defined(VK_QCOM_tile_memory_heap) */
 #if defined(VK_QCOM_tile_properties)
   PFN_vkGetDynamicRenderingTilePropertiesQCOM vkGetDynamicRenderingTilePropertiesQCOM = nullptr;
   PFN_vkGetFramebufferTilePropertiesQCOM vkGetFramebufferTilePropertiesQCOM = nullptr;
 #else 
-  ALIGNMENT_ARRAY(170, 2);
+  ALIGNMENT_ARRAY(171, 2);
 #endif /* defined(VK_QCOM_tile_properties) */
 #if defined(VK_QCOM_tile_shading)
   PFN_vkCmdBeginPerTileExecutionQCOM vkCmdBeginPerTileExecutionQCOM = nullptr;
   PFN_vkCmdDispatchTileQCOM vkCmdDispatchTileQCOM = nullptr;
   PFN_vkCmdEndPerTileExecutionQCOM vkCmdEndPerTileExecutionQCOM = nullptr;
 #else 
-  ALIGNMENT_ARRAY(171, 3);
+  ALIGNMENT_ARRAY(172, 3);
 #endif /* defined(VK_QCOM_tile_shading) */
 #if defined(VK_QNX_external_memory_screen_buffer)
   PFN_vkGetScreenBufferPropertiesQNX vkGetScreenBufferPropertiesQNX = nullptr;
 #else 
-  ALIGNMENT(172);
+  ALIGNMENT(173);
 #endif /* defined(VK_QNX_external_memory_screen_buffer) */
 #if defined(VK_QNX_screen_surface)
   PFN_vkCreateScreenSurfaceQNX vkCreateScreenSurfaceQNX = nullptr;
   PFN_vkGetPhysicalDeviceScreenPresentationSupportQNX vkGetPhysicalDeviceScreenPresentationSupportQNX = nullptr;
 #else 
-  ALIGNMENT_ARRAY(173, 2);
+  ALIGNMENT_ARRAY(174, 2);
 #endif /* defined(VK_QNX_screen_surface) */
 #if defined(VK_VALVE_descriptor_set_host_mapping)
   PFN_vkGetDescriptorSetHostMappingVALVE vkGetDescriptorSetHostMappingVALVE = nullptr;
   PFN_vkGetDescriptorSetLayoutHostMappingInfoVALVE vkGetDescriptorSetLayoutHostMappingInfoVALVE = nullptr;
 #else 
-  ALIGNMENT_ARRAY(174, 2);
+  ALIGNMENT_ARRAY(175, 2);
 #endif /* defined(VK_VALVE_descriptor_set_host_mapping) */
 #if (defined(VK_EXT_depth_clamp_control)) || (defined(VK_EXT_shader_object) && defined(VK_EXT_depth_clamp_control))
   PFN_vkCmdSetDepthClampRangeEXT vkCmdSetDepthClampRangeEXT = nullptr;
 #else 
-  ALIGNMENT(175);
+  ALIGNMENT(176);
 #endif /* (defined(VK_EXT_depth_clamp_control)) || (defined(VK_EXT_shader_object) && defined(VK_EXT_depth_clamp_control)) */
 #if (defined(VK_EXT_extended_dynamic_state)) || (defined(VK_EXT_shader_object))
   PFN_vkCmdBindVertexBuffers2EXT vkCmdBindVertexBuffers2EXT = nullptr;
@@ -1565,7 +1570,7 @@ public:
   PFN_vkCmdSetStencilTestEnableEXT vkCmdSetStencilTestEnableEXT = nullptr;
   PFN_vkCmdSetViewportWithCountEXT vkCmdSetViewportWithCountEXT = nullptr;
 #else 
-  ALIGNMENT_ARRAY(176, 12);
+  ALIGNMENT_ARRAY(177, 12);
 #endif /* (defined(VK_EXT_extended_dynamic_state)) || (defined(VK_EXT_shader_object)) */
 #if (defined(VK_EXT_extended_dynamic_state2)) || (defined(VK_EXT_shader_object))
   PFN_vkCmdSetDepthBiasEnableEXT vkCmdSetDepthBiasEnableEXT = nullptr;
@@ -1574,7 +1579,7 @@ public:
   PFN_vkCmdSetPrimitiveRestartEnableEXT vkCmdSetPrimitiveRestartEnableEXT = nullptr;
   PFN_vkCmdSetRasterizerDiscardEnableEXT vkCmdSetRasterizerDiscardEnableEXT = nullptr;
 #else 
-  ALIGNMENT_ARRAY(177, 5);
+  ALIGNMENT_ARRAY(178, 5);
 #endif /* (defined(VK_EXT_extended_dynamic_state2)) || (defined(VK_EXT_shader_object)) */
 #if (defined(VK_EXT_extended_dynamic_state3)) || (defined(VK_EXT_shader_object))
   PFN_vkCmdSetAlphaToCoverageEnableEXT vkCmdSetAlphaToCoverageEnableEXT = nullptr;
@@ -1588,119 +1593,119 @@ public:
   PFN_vkCmdSetRasterizationSamplesEXT vkCmdSetRasterizationSamplesEXT = nullptr;
   PFN_vkCmdSetSampleMaskEXT vkCmdSetSampleMaskEXT = nullptr;
 #else 
-  ALIGNMENT_ARRAY(178, 10);
+  ALIGNMENT_ARRAY(179, 10);
 #endif /* (defined(VK_EXT_extended_dynamic_state3)) || (defined(VK_EXT_shader_object)) */
 #if (defined(VK_EXT_extended_dynamic_state3) && (defined(VK_KHR_maintenance2) || defined(VK_VERSION_1_1))) || (defined(VK_EXT_shader_object))
   PFN_vkCmdSetTessellationDomainOriginEXT vkCmdSetTessellationDomainOriginEXT = nullptr;
 #else 
-  ALIGNMENT(179);
+  ALIGNMENT(180);
 #endif /* (defined(VK_EXT_extended_dynamic_state3) && (defined(VK_KHR_maintenance2) || defined(VK_VERSION_1_1))) || (defined(VK_EXT_shader_object)) */
 #if (defined(VK_EXT_extended_dynamic_state3) && defined(VK_EXT_transform_feedback)) || (defined(VK_EXT_shader_object) && defined(VK_EXT_transform_feedback))
   PFN_vkCmdSetRasterizationStreamEXT vkCmdSetRasterizationStreamEXT = nullptr;
 #else 
-  ALIGNMENT(180);
+  ALIGNMENT(181);
 #endif /* (defined(VK_EXT_extended_dynamic_state3) && defined(VK_EXT_transform_feedback)) || (defined(VK_EXT_shader_object) && defined(VK_EXT_transform_feedback)) */
 #if (defined(VK_EXT_extended_dynamic_state3) && defined(VK_EXT_conservative_rasterization)) || (defined(VK_EXT_shader_object) && defined(VK_EXT_conservative_rasterization))
   PFN_vkCmdSetConservativeRasterizationModeEXT vkCmdSetConservativeRasterizationModeEXT = nullptr;
   PFN_vkCmdSetExtraPrimitiveOverestimationSizeEXT vkCmdSetExtraPrimitiveOverestimationSizeEXT = nullptr;
 #else 
-  ALIGNMENT_ARRAY(181, 2);
+  ALIGNMENT_ARRAY(182, 2);
 #endif /* (defined(VK_EXT_extended_dynamic_state3) && defined(VK_EXT_conservative_rasterization)) || (defined(VK_EXT_shader_object) && defined(VK_EXT_conservative_rasterization)) */
 #if (defined(VK_EXT_extended_dynamic_state3) && defined(VK_EXT_depth_clip_enable)) || (defined(VK_EXT_shader_object) && defined(VK_EXT_depth_clip_enable))
   PFN_vkCmdSetDepthClipEnableEXT vkCmdSetDepthClipEnableEXT = nullptr;
 #else 
-  ALIGNMENT(182);
+  ALIGNMENT(183);
 #endif /* (defined(VK_EXT_extended_dynamic_state3) && defined(VK_EXT_depth_clip_enable)) || (defined(VK_EXT_shader_object) && defined(VK_EXT_depth_clip_enable)) */
 #if (defined(VK_EXT_extended_dynamic_state3) && defined(VK_EXT_sample_locations)) || (defined(VK_EXT_shader_object) && defined(VK_EXT_sample_locations))
   PFN_vkCmdSetSampleLocationsEnableEXT vkCmdSetSampleLocationsEnableEXT = nullptr;
 #else 
-  ALIGNMENT(183);
+  ALIGNMENT(184);
 #endif /* (defined(VK_EXT_extended_dynamic_state3) && defined(VK_EXT_sample_locations)) || (defined(VK_EXT_shader_object) && defined(VK_EXT_sample_locations)) */
 #if (defined(VK_EXT_extended_dynamic_state3) && defined(VK_EXT_blend_operation_advanced)) || (defined(VK_EXT_shader_object) && defined(VK_EXT_blend_operation_advanced))
   PFN_vkCmdSetColorBlendAdvancedEXT vkCmdSetColorBlendAdvancedEXT = nullptr;
 #else 
-  ALIGNMENT(184);
+  ALIGNMENT(185);
 #endif /* (defined(VK_EXT_extended_dynamic_state3) && defined(VK_EXT_blend_operation_advanced)) || (defined(VK_EXT_shader_object) && defined(VK_EXT_blend_operation_advanced)) */
 #if (defined(VK_EXT_extended_dynamic_state3) && defined(VK_EXT_provoking_vertex)) || (defined(VK_EXT_shader_object) && defined(VK_EXT_provoking_vertex))
   PFN_vkCmdSetProvokingVertexModeEXT vkCmdSetProvokingVertexModeEXT = nullptr;
 #else 
-  ALIGNMENT(185);
+  ALIGNMENT(186);
 #endif /* (defined(VK_EXT_extended_dynamic_state3) && defined(VK_EXT_provoking_vertex)) || (defined(VK_EXT_shader_object) && defined(VK_EXT_provoking_vertex)) */
 #if (defined(VK_EXT_extended_dynamic_state3) && defined(VK_EXT_line_rasterization)) || (defined(VK_EXT_shader_object) && defined(VK_EXT_line_rasterization))
   PFN_vkCmdSetLineRasterizationModeEXT vkCmdSetLineRasterizationModeEXT = nullptr;
   PFN_vkCmdSetLineStippleEnableEXT vkCmdSetLineStippleEnableEXT = nullptr;
 #else 
-  ALIGNMENT_ARRAY(186, 2);
+  ALIGNMENT_ARRAY(187, 2);
 #endif /* (defined(VK_EXT_extended_dynamic_state3) && defined(VK_EXT_line_rasterization)) || (defined(VK_EXT_shader_object) && defined(VK_EXT_line_rasterization)) */
 #if (defined(VK_EXT_extended_dynamic_state3) && defined(VK_EXT_depth_clip_control)) || (defined(VK_EXT_shader_object) && defined(VK_EXT_depth_clip_control))
   PFN_vkCmdSetDepthClipNegativeOneToOneEXT vkCmdSetDepthClipNegativeOneToOneEXT = nullptr;
 #else 
-  ALIGNMENT(187);
+  ALIGNMENT(188);
 #endif /* (defined(VK_EXT_extended_dynamic_state3) && defined(VK_EXT_depth_clip_control)) || (defined(VK_EXT_shader_object) && defined(VK_EXT_depth_clip_control)) */
 #if (defined(VK_EXT_extended_dynamic_state3) && defined(VK_NV_clip_space_w_scaling)) || (defined(VK_EXT_shader_object) && defined(VK_NV_clip_space_w_scaling))
   PFN_vkCmdSetViewportWScalingEnableNV vkCmdSetViewportWScalingEnableNV = nullptr;
 #else 
-  ALIGNMENT(188);
+  ALIGNMENT(189);
 #endif /* (defined(VK_EXT_extended_dynamic_state3) && defined(VK_NV_clip_space_w_scaling)) || (defined(VK_EXT_shader_object) && defined(VK_NV_clip_space_w_scaling)) */
 #if (defined(VK_EXT_extended_dynamic_state3) && defined(VK_NV_viewport_swizzle)) || (defined(VK_EXT_shader_object) && defined(VK_NV_viewport_swizzle))
   PFN_vkCmdSetViewportSwizzleNV vkCmdSetViewportSwizzleNV = nullptr;
 #else 
-  ALIGNMENT(189);
+  ALIGNMENT(190);
 #endif /* (defined(VK_EXT_extended_dynamic_state3) && defined(VK_NV_viewport_swizzle)) || (defined(VK_EXT_shader_object) && defined(VK_NV_viewport_swizzle)) */
 #if (defined(VK_EXT_extended_dynamic_state3) && defined(VK_NV_fragment_coverage_to_color)) || (defined(VK_EXT_shader_object) && defined(VK_NV_fragment_coverage_to_color))
   PFN_vkCmdSetCoverageToColorEnableNV vkCmdSetCoverageToColorEnableNV = nullptr;
   PFN_vkCmdSetCoverageToColorLocationNV vkCmdSetCoverageToColorLocationNV = nullptr;
 #else 
-  ALIGNMENT_ARRAY(190, 2);
+  ALIGNMENT_ARRAY(191, 2);
 #endif /* (defined(VK_EXT_extended_dynamic_state3) && defined(VK_NV_fragment_coverage_to_color)) || (defined(VK_EXT_shader_object) && defined(VK_NV_fragment_coverage_to_color)) */
 #if (defined(VK_EXT_extended_dynamic_state3) && defined(VK_NV_framebuffer_mixed_samples)) || (defined(VK_EXT_shader_object) && defined(VK_NV_framebuffer_mixed_samples))
   PFN_vkCmdSetCoverageModulationModeNV vkCmdSetCoverageModulationModeNV = nullptr;
   PFN_vkCmdSetCoverageModulationTableEnableNV vkCmdSetCoverageModulationTableEnableNV = nullptr;
   PFN_vkCmdSetCoverageModulationTableNV vkCmdSetCoverageModulationTableNV = nullptr;
 #else 
-  ALIGNMENT_ARRAY(191, 3);
+  ALIGNMENT_ARRAY(192, 3);
 #endif /* (defined(VK_EXT_extended_dynamic_state3) && defined(VK_NV_framebuffer_mixed_samples)) || (defined(VK_EXT_shader_object) && defined(VK_NV_framebuffer_mixed_samples)) */
 #if (defined(VK_EXT_extended_dynamic_state3) && defined(VK_NV_shading_rate_image)) || (defined(VK_EXT_shader_object) && defined(VK_NV_shading_rate_image))
   PFN_vkCmdSetShadingRateImageEnableNV vkCmdSetShadingRateImageEnableNV = nullptr;
 #else 
-  ALIGNMENT(192);
+  ALIGNMENT(193);
 #endif /* (defined(VK_EXT_extended_dynamic_state3) && defined(VK_NV_shading_rate_image)) || (defined(VK_EXT_shader_object) && defined(VK_NV_shading_rate_image)) */
 #if (defined(VK_EXT_extended_dynamic_state3) && defined(VK_NV_representative_fragment_test)) || (defined(VK_EXT_shader_object) && defined(VK_NV_representative_fragment_test))
   PFN_vkCmdSetRepresentativeFragmentTestEnableNV vkCmdSetRepresentativeFragmentTestEnableNV = nullptr;
 #else 
-  ALIGNMENT(193);
+  ALIGNMENT(194);
 #endif /* (defined(VK_EXT_extended_dynamic_state3) && defined(VK_NV_representative_fragment_test)) || (defined(VK_EXT_shader_object) && defined(VK_NV_representative_fragment_test)) */
 #if (defined(VK_EXT_extended_dynamic_state3) && defined(VK_NV_coverage_reduction_mode)) || (defined(VK_EXT_shader_object) && defined(VK_NV_coverage_reduction_mode))
   PFN_vkCmdSetCoverageReductionModeNV vkCmdSetCoverageReductionModeNV = nullptr;
 #else 
-  ALIGNMENT(194);
+  ALIGNMENT(195);
 #endif /* (defined(VK_EXT_extended_dynamic_state3) && defined(VK_NV_coverage_reduction_mode)) || (defined(VK_EXT_shader_object) && defined(VK_NV_coverage_reduction_mode)) */
 #if (defined(VK_EXT_host_image_copy)) || (defined(VK_EXT_image_compression_control))
   PFN_vkGetImageSubresourceLayout2EXT vkGetImageSubresourceLayout2EXT = nullptr;
 #else 
-  ALIGNMENT(195);
+  ALIGNMENT(196);
 #endif /* (defined(VK_EXT_host_image_copy)) || (defined(VK_EXT_image_compression_control)) */
 #if (defined(VK_EXT_shader_object)) || (defined(VK_EXT_vertex_input_dynamic_state))
   PFN_vkCmdSetVertexInputEXT vkCmdSetVertexInputEXT = nullptr;
 #else 
-  ALIGNMENT(196);
+  ALIGNMENT(197);
 #endif /* (defined(VK_EXT_shader_object)) || (defined(VK_EXT_vertex_input_dynamic_state)) */
 #if (defined(VK_KHR_descriptor_update_template) && defined(VK_KHR_push_descriptor)) || (defined(VK_KHR_push_descriptor) && (defined(VK_VERSION_1_1) || defined(VK_KHR_descriptor_update_template)))
   PFN_vkCmdPushDescriptorSetWithTemplateKHR vkCmdPushDescriptorSetWithTemplateKHR = nullptr;
 #else 
-  ALIGNMENT(197);
+  ALIGNMENT(198);
 #endif /* (defined(VK_KHR_descriptor_update_template) && defined(VK_KHR_push_descriptor)) || (defined(VK_KHR_push_descriptor) && (defined(VK_VERSION_1_1) || defined(VK_KHR_descriptor_update_template))) */
 #if (defined(VK_KHR_device_group) && defined(VK_KHR_surface)) || (defined(VK_KHR_swapchain) && defined(VK_VERSION_1_1))
   PFN_vkGetDeviceGroupPresentCapabilitiesKHR vkGetDeviceGroupPresentCapabilitiesKHR = nullptr;
   PFN_vkGetDeviceGroupSurfacePresentModesKHR vkGetDeviceGroupSurfacePresentModesKHR = nullptr;
   PFN_vkGetPhysicalDevicePresentRectanglesKHR vkGetPhysicalDevicePresentRectanglesKHR = nullptr;
 #else 
-  ALIGNMENT_ARRAY(198, 3);
+  ALIGNMENT_ARRAY(199, 3);
 #endif /* (defined(VK_KHR_device_group) && defined(VK_KHR_surface)) || (defined(VK_KHR_swapchain) && defined(VK_VERSION_1_1)) */
 #if (defined(VK_KHR_device_group) && defined(VK_KHR_swapchain)) || (defined(VK_KHR_swapchain) && defined(VK_VERSION_1_1))
   PFN_vkAcquireNextImage2KHR vkAcquireNextImage2KHR = nullptr;
 #else 
-  ALIGNMENT(199);
+  ALIGNMENT(200);
 #endif /* (defined(VK_KHR_device_group) && defined(VK_KHR_swapchain)) || (defined(VK_KHR_swapchain) && defined(VK_VERSION_1_1)) */
   /* VOLK_CPP_GENERATE_CLASS_FUNCTION_POINTERS */
   
