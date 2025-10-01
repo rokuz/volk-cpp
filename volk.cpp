@@ -758,9 +758,9 @@ void Volk::genLoadDevice(void* context, PFN_vkVoidFunction (Volk::*load)(void*, 
   vkCmdDrawMeshTasksEXT = (PFN_vkCmdDrawMeshTasksEXT)(this->*(load))(context, "vkCmdDrawMeshTasksEXT");
   vkCmdDrawMeshTasksIndirectEXT = (PFN_vkCmdDrawMeshTasksIndirectEXT)(this->*(load))(context, "vkCmdDrawMeshTasksIndirectEXT");
 #endif /* defined(VK_EXT_mesh_shader) */
-#if defined(VK_EXT_mesh_shader) && (defined(VK_KHR_draw_indirect_count) || defined(VK_VERSION_1_2))
+#if defined(VK_EXT_mesh_shader) && (defined(VK_VERSION_1_2) || defined(VK_KHR_draw_indirect_count) || defined(VK_AMD_draw_indirect_count))
   vkCmdDrawMeshTasksIndirectCountEXT = (PFN_vkCmdDrawMeshTasksIndirectCountEXT)(this->*(load))(context, "vkCmdDrawMeshTasksIndirectCountEXT");
-#endif /* defined(VK_EXT_mesh_shader) && (defined(VK_KHR_draw_indirect_count) || defined(VK_VERSION_1_2)) */
+#endif /* defined(VK_EXT_mesh_shader) && (defined(VK_VERSION_1_2) || defined(VK_KHR_draw_indirect_count) || defined(VK_AMD_draw_indirect_count)) */
 #if defined(VK_EXT_metal_objects)
   vkExportMetalObjectsEXT = (PFN_vkExportMetalObjectsEXT)(this->*(load))(context, "vkExportMetalObjectsEXT");
 #endif /* defined(VK_EXT_metal_objects) */
@@ -905,6 +905,10 @@ void Volk::genLoadDevice(void* context, PFN_vkVoidFunction (Volk::*load)(void*, 
   vkCmdCopyImageToBuffer2KHR = (PFN_vkCmdCopyImageToBuffer2KHR)(this->*(load))(context, "vkCmdCopyImageToBuffer2KHR");
   vkCmdResolveImage2KHR = (PFN_vkCmdResolveImage2KHR)(this->*(load))(context, "vkCmdResolveImage2KHR");
 #endif /* defined(VK_KHR_copy_commands2) */
+#if defined(VK_KHR_copy_memory_indirect)
+  vkCmdCopyMemoryIndirectKHR = (PFN_vkCmdCopyMemoryIndirectKHR)(this->*(load))(context, "vkCmdCopyMemoryIndirectKHR");
+  vkCmdCopyMemoryToImageIndirectKHR = (PFN_vkCmdCopyMemoryToImageIndirectKHR)(this->*(load))(context, "vkCmdCopyMemoryToImageIndirectKHR");
+#endif /* defined(VK_KHR_copy_memory_indirect) */
 #if defined(VK_KHR_create_renderpass2)
   vkCmdBeginRenderPass2KHR = (PFN_vkCmdBeginRenderPass2KHR)(this->*(load))(context, "vkCmdBeginRenderPass2KHR");
   vkCmdEndRenderPass2KHR = (PFN_vkCmdEndRenderPass2KHR)(this->*(load))(context, "vkCmdEndRenderPass2KHR");
@@ -1181,9 +1185,9 @@ void Volk::genLoadDevice(void* context, PFN_vkVoidFunction (Volk::*load)(void*, 
   vkCmdDrawMeshTasksIndirectNV = (PFN_vkCmdDrawMeshTasksIndirectNV)(this->*(load))(context, "vkCmdDrawMeshTasksIndirectNV");
   vkCmdDrawMeshTasksNV = (PFN_vkCmdDrawMeshTasksNV)(this->*(load))(context, "vkCmdDrawMeshTasksNV");
 #endif /* defined(VK_NV_mesh_shader) */
-#if defined(VK_NV_mesh_shader) && (defined(VK_KHR_draw_indirect_count) || defined(VK_VERSION_1_2))
+#if defined(VK_NV_mesh_shader) && (defined(VK_VERSION_1_2) || defined(VK_KHR_draw_indirect_count) || defined(VK_AMD_draw_indirect_count))
   vkCmdDrawMeshTasksIndirectCountNV = (PFN_vkCmdDrawMeshTasksIndirectCountNV)(this->*(load))(context, "vkCmdDrawMeshTasksIndirectCountNV");
-#endif /* defined(VK_NV_mesh_shader) && (defined(VK_KHR_draw_indirect_count) || defined(VK_VERSION_1_2)) */
+#endif /* defined(VK_NV_mesh_shader) && (defined(VK_VERSION_1_2) || defined(VK_KHR_draw_indirect_count) || defined(VK_AMD_draw_indirect_count)) */
 #if defined(VK_NV_optical_flow)
   vkBindOpticalFlowSessionImageNV = (PFN_vkBindOpticalFlowSessionImageNV)(this->*(load))(context, "vkBindOpticalFlowSessionImageNV");
   vkCmdOpticalFlowExecuteNV = (PFN_vkCmdOpticalFlowExecuteNV)(this->*(load))(context, "vkCmdOpticalFlowExecuteNV");
