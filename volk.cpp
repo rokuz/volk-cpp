@@ -137,20 +137,20 @@ PFN_vkVoidFunction Volk::nullProcAddrStub(void* context, char const* name) noexc
 
 void Volk::genLoadLoader(void* context, PFN_vkVoidFunction (Volk::*load)(void*, char const*)) noexcept {
   /* VOLK_CPP_GENERATE_LOAD_LOADER */
-#if defined(VK_VERSION_1_0)
+#if defined(VK_BASE_VERSION_1_0)
   vkCreateInstance = (PFN_vkCreateInstance)(this->*(load))(context, "vkCreateInstance");
   vkEnumerateInstanceExtensionProperties = (PFN_vkEnumerateInstanceExtensionProperties)(this->*(load))(context, "vkEnumerateInstanceExtensionProperties");
   vkEnumerateInstanceLayerProperties = (PFN_vkEnumerateInstanceLayerProperties)(this->*(load))(context, "vkEnumerateInstanceLayerProperties");
-#endif /* defined(VK_VERSION_1_0) */
-#if defined(VK_VERSION_1_1)
+#endif /* defined(VK_BASE_VERSION_1_0) */
+#if defined(VK_BASE_VERSION_1_1)
   vkEnumerateInstanceVersion = (PFN_vkEnumerateInstanceVersion)(this->*(load))(context, "vkEnumerateInstanceVersion");
-#endif /* defined(VK_VERSION_1_1) */
+#endif /* defined(VK_BASE_VERSION_1_1) */
   /* VOLK_CPP_GENERATE_LOAD_LOADER */
 }
 
 void Volk::genLoadInstance(void* context, PFN_vkVoidFunction (Volk::*load)(void*, char const*)) noexcept {
   /* VOLK_CPP_GENERATE_LOAD_INSTANCE */
-#if defined(VK_VERSION_1_0)
+#if defined(VK_BASE_VERSION_1_0)
   vkCreateDevice = (PFN_vkCreateDevice)(this->*(load))(context, "vkCreateDevice");
   vkDestroyInstance = (PFN_vkDestroyInstance)(this->*(load))(context, "vkDestroyInstance");
   vkEnumerateDeviceExtensionProperties = (PFN_vkEnumerateDeviceExtensionProperties)(this->*(load))(context, "vkEnumerateDeviceExtensionProperties");
@@ -164,8 +164,8 @@ void Volk::genLoadInstance(void* context, PFN_vkVoidFunction (Volk::*load)(void*
   vkGetPhysicalDeviceProperties = (PFN_vkGetPhysicalDeviceProperties)(this->*(load))(context, "vkGetPhysicalDeviceProperties");
   vkGetPhysicalDeviceQueueFamilyProperties = (PFN_vkGetPhysicalDeviceQueueFamilyProperties)(this->*(load))(context, "vkGetPhysicalDeviceQueueFamilyProperties");
   vkGetPhysicalDeviceSparseImageFormatProperties = (PFN_vkGetPhysicalDeviceSparseImageFormatProperties)(this->*(load))(context, "vkGetPhysicalDeviceSparseImageFormatProperties");
-#endif /* defined(VK_VERSION_1_0) */
-#if defined(VK_VERSION_1_1)
+#endif /* defined(VK_BASE_VERSION_1_0) */
+#if defined(VK_BASE_VERSION_1_1)
   vkEnumeratePhysicalDeviceGroups = (PFN_vkEnumeratePhysicalDeviceGroups)(this->*(load))(context, "vkEnumeratePhysicalDeviceGroups");
   vkGetPhysicalDeviceExternalBufferProperties = (PFN_vkGetPhysicalDeviceExternalBufferProperties)(this->*(load))(context, "vkGetPhysicalDeviceExternalBufferProperties");
   vkGetPhysicalDeviceExternalFenceProperties = (PFN_vkGetPhysicalDeviceExternalFenceProperties)(this->*(load))(context, "vkGetPhysicalDeviceExternalFenceProperties");
@@ -177,14 +177,17 @@ void Volk::genLoadInstance(void* context, PFN_vkVoidFunction (Volk::*load)(void*
   vkGetPhysicalDeviceProperties2 = (PFN_vkGetPhysicalDeviceProperties2)(this->*(load))(context, "vkGetPhysicalDeviceProperties2");
   vkGetPhysicalDeviceQueueFamilyProperties2 = (PFN_vkGetPhysicalDeviceQueueFamilyProperties2)(this->*(load))(context, "vkGetPhysicalDeviceQueueFamilyProperties2");
   vkGetPhysicalDeviceSparseImageFormatProperties2 = (PFN_vkGetPhysicalDeviceSparseImageFormatProperties2)(this->*(load))(context, "vkGetPhysicalDeviceSparseImageFormatProperties2");
-#endif /* defined(VK_VERSION_1_1) */
-#if defined(VK_VERSION_1_3)
+#endif /* defined(VK_BASE_VERSION_1_1) */
+#if defined(VK_BASE_VERSION_1_3)
   vkGetPhysicalDeviceToolProperties = (PFN_vkGetPhysicalDeviceToolProperties)(this->*(load))(context, "vkGetPhysicalDeviceToolProperties");
-#endif /* defined(VK_VERSION_1_3) */
+#endif /* defined(VK_BASE_VERSION_1_3) */
 #if defined(VK_ARM_data_graph)
   vkGetPhysicalDeviceQueueFamilyDataGraphProcessingEnginePropertiesARM = (PFN_vkGetPhysicalDeviceQueueFamilyDataGraphProcessingEnginePropertiesARM)(this->*(load))(context, "vkGetPhysicalDeviceQueueFamilyDataGraphProcessingEnginePropertiesARM");
   vkGetPhysicalDeviceQueueFamilyDataGraphPropertiesARM = (PFN_vkGetPhysicalDeviceQueueFamilyDataGraphPropertiesARM)(this->*(load))(context, "vkGetPhysicalDeviceQueueFamilyDataGraphPropertiesARM");
 #endif /* defined(VK_ARM_data_graph) */
+#if defined(VK_ARM_performance_counters_by_region)
+  vkEnumeratePhysicalDeviceQueueFamilyPerformanceCountersByRegionARM = (PFN_vkEnumeratePhysicalDeviceQueueFamilyPerformanceCountersByRegionARM)(this->*(load))(context, "vkEnumeratePhysicalDeviceQueueFamilyPerformanceCountersByRegionARM");
+#endif /* defined(VK_ARM_performance_counters_by_region) */
 #if defined(VK_ARM_tensors)
   vkGetPhysicalDeviceExternalTensorPropertiesARM = (PFN_vkGetPhysicalDeviceExternalTensorPropertiesARM)(this->*(load))(context, "vkGetPhysicalDeviceExternalTensorPropertiesARM");
 #endif /* defined(VK_ARM_tensors) */
@@ -380,153 +383,153 @@ void Volk::genLoadInstance(void* context, PFN_vkVoidFunction (Volk::*load)(void*
 
 void Volk::genLoadDevice(void* context, PFN_vkVoidFunction (Volk::*load)(void*, char const*)) noexcept {
   /* VOLK_CPP_GENERATE_LOAD_DEVICE */
-#if defined(VK_VERSION_1_0)
+#if defined(VK_BASE_VERSION_1_0)
   vkAllocateCommandBuffers = (PFN_vkAllocateCommandBuffers)(this->*(load))(context, "vkAllocateCommandBuffers");
-  vkAllocateDescriptorSets = (PFN_vkAllocateDescriptorSets)(this->*(load))(context, "vkAllocateDescriptorSets");
   vkAllocateMemory = (PFN_vkAllocateMemory)(this->*(load))(context, "vkAllocateMemory");
   vkBeginCommandBuffer = (PFN_vkBeginCommandBuffer)(this->*(load))(context, "vkBeginCommandBuffer");
   vkBindBufferMemory = (PFN_vkBindBufferMemory)(this->*(load))(context, "vkBindBufferMemory");
   vkBindImageMemory = (PFN_vkBindImageMemory)(this->*(load))(context, "vkBindImageMemory");
   vkCmdBeginQuery = (PFN_vkCmdBeginQuery)(this->*(load))(context, "vkCmdBeginQuery");
-  vkCmdBeginRenderPass = (PFN_vkCmdBeginRenderPass)(this->*(load))(context, "vkCmdBeginRenderPass");
-  vkCmdBindDescriptorSets = (PFN_vkCmdBindDescriptorSets)(this->*(load))(context, "vkCmdBindDescriptorSets");
-  vkCmdBindIndexBuffer = (PFN_vkCmdBindIndexBuffer)(this->*(load))(context, "vkCmdBindIndexBuffer");
-  vkCmdBindPipeline = (PFN_vkCmdBindPipeline)(this->*(load))(context, "vkCmdBindPipeline");
-  vkCmdBindVertexBuffers = (PFN_vkCmdBindVertexBuffers)(this->*(load))(context, "vkCmdBindVertexBuffers");
-  vkCmdBlitImage = (PFN_vkCmdBlitImage)(this->*(load))(context, "vkCmdBlitImage");
-  vkCmdClearAttachments = (PFN_vkCmdClearAttachments)(this->*(load))(context, "vkCmdClearAttachments");
-  vkCmdClearColorImage = (PFN_vkCmdClearColorImage)(this->*(load))(context, "vkCmdClearColorImage");
-  vkCmdClearDepthStencilImage = (PFN_vkCmdClearDepthStencilImage)(this->*(load))(context, "vkCmdClearDepthStencilImage");
   vkCmdCopyBuffer = (PFN_vkCmdCopyBuffer)(this->*(load))(context, "vkCmdCopyBuffer");
   vkCmdCopyBufferToImage = (PFN_vkCmdCopyBufferToImage)(this->*(load))(context, "vkCmdCopyBufferToImage");
   vkCmdCopyImage = (PFN_vkCmdCopyImage)(this->*(load))(context, "vkCmdCopyImage");
   vkCmdCopyImageToBuffer = (PFN_vkCmdCopyImageToBuffer)(this->*(load))(context, "vkCmdCopyImageToBuffer");
   vkCmdCopyQueryPoolResults = (PFN_vkCmdCopyQueryPoolResults)(this->*(load))(context, "vkCmdCopyQueryPoolResults");
+  vkCmdEndQuery = (PFN_vkCmdEndQuery)(this->*(load))(context, "vkCmdEndQuery");
+  vkCmdExecuteCommands = (PFN_vkCmdExecuteCommands)(this->*(load))(context, "vkCmdExecuteCommands");
+  vkCmdFillBuffer = (PFN_vkCmdFillBuffer)(this->*(load))(context, "vkCmdFillBuffer");
+  vkCmdPipelineBarrier = (PFN_vkCmdPipelineBarrier)(this->*(load))(context, "vkCmdPipelineBarrier");
+  vkCmdResetQueryPool = (PFN_vkCmdResetQueryPool)(this->*(load))(context, "vkCmdResetQueryPool");
+  vkCmdUpdateBuffer = (PFN_vkCmdUpdateBuffer)(this->*(load))(context, "vkCmdUpdateBuffer");
+  vkCmdWriteTimestamp = (PFN_vkCmdWriteTimestamp)(this->*(load))(context, "vkCmdWriteTimestamp");
+  vkCreateBuffer = (PFN_vkCreateBuffer)(this->*(load))(context, "vkCreateBuffer");
+  vkCreateCommandPool = (PFN_vkCreateCommandPool)(this->*(load))(context, "vkCreateCommandPool");
+  vkCreateFence = (PFN_vkCreateFence)(this->*(load))(context, "vkCreateFence");
+  vkCreateImage = (PFN_vkCreateImage)(this->*(load))(context, "vkCreateImage");
+  vkCreateImageView = (PFN_vkCreateImageView)(this->*(load))(context, "vkCreateImageView");
+  vkCreateQueryPool = (PFN_vkCreateQueryPool)(this->*(load))(context, "vkCreateQueryPool");
+  vkCreateSemaphore = (PFN_vkCreateSemaphore)(this->*(load))(context, "vkCreateSemaphore");
+  vkDestroyBuffer = (PFN_vkDestroyBuffer)(this->*(load))(context, "vkDestroyBuffer");
+  vkDestroyCommandPool = (PFN_vkDestroyCommandPool)(this->*(load))(context, "vkDestroyCommandPool");
+  vkDestroyDevice = (PFN_vkDestroyDevice)(this->*(load))(context, "vkDestroyDevice");
+  vkDestroyFence = (PFN_vkDestroyFence)(this->*(load))(context, "vkDestroyFence");
+  vkDestroyImage = (PFN_vkDestroyImage)(this->*(load))(context, "vkDestroyImage");
+  vkDestroyImageView = (PFN_vkDestroyImageView)(this->*(load))(context, "vkDestroyImageView");
+  vkDestroyQueryPool = (PFN_vkDestroyQueryPool)(this->*(load))(context, "vkDestroyQueryPool");
+  vkDestroySemaphore = (PFN_vkDestroySemaphore)(this->*(load))(context, "vkDestroySemaphore");
+  vkDeviceWaitIdle = (PFN_vkDeviceWaitIdle)(this->*(load))(context, "vkDeviceWaitIdle");
+  vkEndCommandBuffer = (PFN_vkEndCommandBuffer)(this->*(load))(context, "vkEndCommandBuffer");
+  vkFlushMappedMemoryRanges = (PFN_vkFlushMappedMemoryRanges)(this->*(load))(context, "vkFlushMappedMemoryRanges");
+  vkFreeCommandBuffers = (PFN_vkFreeCommandBuffers)(this->*(load))(context, "vkFreeCommandBuffers");
+  vkFreeMemory = (PFN_vkFreeMemory)(this->*(load))(context, "vkFreeMemory");
+  vkGetBufferMemoryRequirements = (PFN_vkGetBufferMemoryRequirements)(this->*(load))(context, "vkGetBufferMemoryRequirements");
+  vkGetDeviceMemoryCommitment = (PFN_vkGetDeviceMemoryCommitment)(this->*(load))(context, "vkGetDeviceMemoryCommitment");
+  vkGetDeviceQueue = (PFN_vkGetDeviceQueue)(this->*(load))(context, "vkGetDeviceQueue");
+  vkGetFenceStatus = (PFN_vkGetFenceStatus)(this->*(load))(context, "vkGetFenceStatus");
+  vkGetImageMemoryRequirements = (PFN_vkGetImageMemoryRequirements)(this->*(load))(context, "vkGetImageMemoryRequirements");
+  vkGetImageSparseMemoryRequirements = (PFN_vkGetImageSparseMemoryRequirements)(this->*(load))(context, "vkGetImageSparseMemoryRequirements");
+  vkGetImageSubresourceLayout = (PFN_vkGetImageSubresourceLayout)(this->*(load))(context, "vkGetImageSubresourceLayout");
+  vkGetQueryPoolResults = (PFN_vkGetQueryPoolResults)(this->*(load))(context, "vkGetQueryPoolResults");
+  vkInvalidateMappedMemoryRanges = (PFN_vkInvalidateMappedMemoryRanges)(this->*(load))(context, "vkInvalidateMappedMemoryRanges");
+  vkMapMemory = (PFN_vkMapMemory)(this->*(load))(context, "vkMapMemory");
+  vkQueueBindSparse = (PFN_vkQueueBindSparse)(this->*(load))(context, "vkQueueBindSparse");
+  vkQueueSubmit = (PFN_vkQueueSubmit)(this->*(load))(context, "vkQueueSubmit");
+  vkQueueWaitIdle = (PFN_vkQueueWaitIdle)(this->*(load))(context, "vkQueueWaitIdle");
+  vkResetCommandBuffer = (PFN_vkResetCommandBuffer)(this->*(load))(context, "vkResetCommandBuffer");
+  vkResetCommandPool = (PFN_vkResetCommandPool)(this->*(load))(context, "vkResetCommandPool");
+  vkResetFences = (PFN_vkResetFences)(this->*(load))(context, "vkResetFences");
+  vkUnmapMemory = (PFN_vkUnmapMemory)(this->*(load))(context, "vkUnmapMemory");
+  vkWaitForFences = (PFN_vkWaitForFences)(this->*(load))(context, "vkWaitForFences");
+#endif /* defined(VK_BASE_VERSION_1_0) */
+#if defined(VK_COMPUTE_VERSION_1_0)
+  vkAllocateDescriptorSets = (PFN_vkAllocateDescriptorSets)(this->*(load))(context, "vkAllocateDescriptorSets");
+  vkCmdBindDescriptorSets = (PFN_vkCmdBindDescriptorSets)(this->*(load))(context, "vkCmdBindDescriptorSets");
+  vkCmdBindPipeline = (PFN_vkCmdBindPipeline)(this->*(load))(context, "vkCmdBindPipeline");
+  vkCmdClearColorImage = (PFN_vkCmdClearColorImage)(this->*(load))(context, "vkCmdClearColorImage");
   vkCmdDispatch = (PFN_vkCmdDispatch)(this->*(load))(context, "vkCmdDispatch");
   vkCmdDispatchIndirect = (PFN_vkCmdDispatchIndirect)(this->*(load))(context, "vkCmdDispatchIndirect");
+  vkCmdPushConstants = (PFN_vkCmdPushConstants)(this->*(load))(context, "vkCmdPushConstants");
+  vkCmdResetEvent = (PFN_vkCmdResetEvent)(this->*(load))(context, "vkCmdResetEvent");
+  vkCmdSetEvent = (PFN_vkCmdSetEvent)(this->*(load))(context, "vkCmdSetEvent");
+  vkCmdWaitEvents = (PFN_vkCmdWaitEvents)(this->*(load))(context, "vkCmdWaitEvents");
+  vkCreateBufferView = (PFN_vkCreateBufferView)(this->*(load))(context, "vkCreateBufferView");
+  vkCreateComputePipelines = (PFN_vkCreateComputePipelines)(this->*(load))(context, "vkCreateComputePipelines");
+  vkCreateDescriptorPool = (PFN_vkCreateDescriptorPool)(this->*(load))(context, "vkCreateDescriptorPool");
+  vkCreateDescriptorSetLayout = (PFN_vkCreateDescriptorSetLayout)(this->*(load))(context, "vkCreateDescriptorSetLayout");
+  vkCreateEvent = (PFN_vkCreateEvent)(this->*(load))(context, "vkCreateEvent");
+  vkCreatePipelineCache = (PFN_vkCreatePipelineCache)(this->*(load))(context, "vkCreatePipelineCache");
+  vkCreatePipelineLayout = (PFN_vkCreatePipelineLayout)(this->*(load))(context, "vkCreatePipelineLayout");
+  vkCreateSampler = (PFN_vkCreateSampler)(this->*(load))(context, "vkCreateSampler");
+  vkCreateShaderModule = (PFN_vkCreateShaderModule)(this->*(load))(context, "vkCreateShaderModule");
+  vkDestroyBufferView = (PFN_vkDestroyBufferView)(this->*(load))(context, "vkDestroyBufferView");
+  vkDestroyDescriptorPool = (PFN_vkDestroyDescriptorPool)(this->*(load))(context, "vkDestroyDescriptorPool");
+  vkDestroyDescriptorSetLayout = (PFN_vkDestroyDescriptorSetLayout)(this->*(load))(context, "vkDestroyDescriptorSetLayout");
+  vkDestroyEvent = (PFN_vkDestroyEvent)(this->*(load))(context, "vkDestroyEvent");
+  vkDestroyPipeline = (PFN_vkDestroyPipeline)(this->*(load))(context, "vkDestroyPipeline");
+  vkDestroyPipelineCache = (PFN_vkDestroyPipelineCache)(this->*(load))(context, "vkDestroyPipelineCache");
+  vkDestroyPipelineLayout = (PFN_vkDestroyPipelineLayout)(this->*(load))(context, "vkDestroyPipelineLayout");
+  vkDestroySampler = (PFN_vkDestroySampler)(this->*(load))(context, "vkDestroySampler");
+  vkDestroyShaderModule = (PFN_vkDestroyShaderModule)(this->*(load))(context, "vkDestroyShaderModule");
+  vkFreeDescriptorSets = (PFN_vkFreeDescriptorSets)(this->*(load))(context, "vkFreeDescriptorSets");
+  vkGetEventStatus = (PFN_vkGetEventStatus)(this->*(load))(context, "vkGetEventStatus");
+  vkGetPipelineCacheData = (PFN_vkGetPipelineCacheData)(this->*(load))(context, "vkGetPipelineCacheData");
+  vkMergePipelineCaches = (PFN_vkMergePipelineCaches)(this->*(load))(context, "vkMergePipelineCaches");
+  vkResetDescriptorPool = (PFN_vkResetDescriptorPool)(this->*(load))(context, "vkResetDescriptorPool");
+  vkResetEvent = (PFN_vkResetEvent)(this->*(load))(context, "vkResetEvent");
+  vkSetEvent = (PFN_vkSetEvent)(this->*(load))(context, "vkSetEvent");
+  vkUpdateDescriptorSets = (PFN_vkUpdateDescriptorSets)(this->*(load))(context, "vkUpdateDescriptorSets");
+#endif /* defined(VK_COMPUTE_VERSION_1_0) */
+#if defined(VK_GRAPHICS_VERSION_1_0)
+  vkCmdBeginRenderPass = (PFN_vkCmdBeginRenderPass)(this->*(load))(context, "vkCmdBeginRenderPass");
+  vkCmdBindIndexBuffer = (PFN_vkCmdBindIndexBuffer)(this->*(load))(context, "vkCmdBindIndexBuffer");
+  vkCmdBindVertexBuffers = (PFN_vkCmdBindVertexBuffers)(this->*(load))(context, "vkCmdBindVertexBuffers");
+  vkCmdBlitImage = (PFN_vkCmdBlitImage)(this->*(load))(context, "vkCmdBlitImage");
+  vkCmdClearAttachments = (PFN_vkCmdClearAttachments)(this->*(load))(context, "vkCmdClearAttachments");
+  vkCmdClearDepthStencilImage = (PFN_vkCmdClearDepthStencilImage)(this->*(load))(context, "vkCmdClearDepthStencilImage");
   vkCmdDraw = (PFN_vkCmdDraw)(this->*(load))(context, "vkCmdDraw");
   vkCmdDrawIndexed = (PFN_vkCmdDrawIndexed)(this->*(load))(context, "vkCmdDrawIndexed");
   vkCmdDrawIndexedIndirect = (PFN_vkCmdDrawIndexedIndirect)(this->*(load))(context, "vkCmdDrawIndexedIndirect");
   vkCmdDrawIndirect = (PFN_vkCmdDrawIndirect)(this->*(load))(context, "vkCmdDrawIndirect");
-  vkCmdEndQuery = (PFN_vkCmdEndQuery)(this->*(load))(context, "vkCmdEndQuery");
   vkCmdEndRenderPass = (PFN_vkCmdEndRenderPass)(this->*(load))(context, "vkCmdEndRenderPass");
-  vkCmdExecuteCommands = (PFN_vkCmdExecuteCommands)(this->*(load))(context, "vkCmdExecuteCommands");
-  vkCmdFillBuffer = (PFN_vkCmdFillBuffer)(this->*(load))(context, "vkCmdFillBuffer");
   vkCmdNextSubpass = (PFN_vkCmdNextSubpass)(this->*(load))(context, "vkCmdNextSubpass");
-  vkCmdPipelineBarrier = (PFN_vkCmdPipelineBarrier)(this->*(load))(context, "vkCmdPipelineBarrier");
-  vkCmdPushConstants = (PFN_vkCmdPushConstants)(this->*(load))(context, "vkCmdPushConstants");
-  vkCmdResetEvent = (PFN_vkCmdResetEvent)(this->*(load))(context, "vkCmdResetEvent");
-  vkCmdResetQueryPool = (PFN_vkCmdResetQueryPool)(this->*(load))(context, "vkCmdResetQueryPool");
   vkCmdResolveImage = (PFN_vkCmdResolveImage)(this->*(load))(context, "vkCmdResolveImage");
   vkCmdSetBlendConstants = (PFN_vkCmdSetBlendConstants)(this->*(load))(context, "vkCmdSetBlendConstants");
   vkCmdSetDepthBias = (PFN_vkCmdSetDepthBias)(this->*(load))(context, "vkCmdSetDepthBias");
   vkCmdSetDepthBounds = (PFN_vkCmdSetDepthBounds)(this->*(load))(context, "vkCmdSetDepthBounds");
-  vkCmdSetEvent = (PFN_vkCmdSetEvent)(this->*(load))(context, "vkCmdSetEvent");
   vkCmdSetLineWidth = (PFN_vkCmdSetLineWidth)(this->*(load))(context, "vkCmdSetLineWidth");
   vkCmdSetScissor = (PFN_vkCmdSetScissor)(this->*(load))(context, "vkCmdSetScissor");
   vkCmdSetStencilCompareMask = (PFN_vkCmdSetStencilCompareMask)(this->*(load))(context, "vkCmdSetStencilCompareMask");
   vkCmdSetStencilReference = (PFN_vkCmdSetStencilReference)(this->*(load))(context, "vkCmdSetStencilReference");
   vkCmdSetStencilWriteMask = (PFN_vkCmdSetStencilWriteMask)(this->*(load))(context, "vkCmdSetStencilWriteMask");
   vkCmdSetViewport = (PFN_vkCmdSetViewport)(this->*(load))(context, "vkCmdSetViewport");
-  vkCmdUpdateBuffer = (PFN_vkCmdUpdateBuffer)(this->*(load))(context, "vkCmdUpdateBuffer");
-  vkCmdWaitEvents = (PFN_vkCmdWaitEvents)(this->*(load))(context, "vkCmdWaitEvents");
-  vkCmdWriteTimestamp = (PFN_vkCmdWriteTimestamp)(this->*(load))(context, "vkCmdWriteTimestamp");
-  vkCreateBuffer = (PFN_vkCreateBuffer)(this->*(load))(context, "vkCreateBuffer");
-  vkCreateBufferView = (PFN_vkCreateBufferView)(this->*(load))(context, "vkCreateBufferView");
-  vkCreateCommandPool = (PFN_vkCreateCommandPool)(this->*(load))(context, "vkCreateCommandPool");
-  vkCreateComputePipelines = (PFN_vkCreateComputePipelines)(this->*(load))(context, "vkCreateComputePipelines");
-  vkCreateDescriptorPool = (PFN_vkCreateDescriptorPool)(this->*(load))(context, "vkCreateDescriptorPool");
-  vkCreateDescriptorSetLayout = (PFN_vkCreateDescriptorSetLayout)(this->*(load))(context, "vkCreateDescriptorSetLayout");
-  vkCreateEvent = (PFN_vkCreateEvent)(this->*(load))(context, "vkCreateEvent");
-  vkCreateFence = (PFN_vkCreateFence)(this->*(load))(context, "vkCreateFence");
   vkCreateFramebuffer = (PFN_vkCreateFramebuffer)(this->*(load))(context, "vkCreateFramebuffer");
   vkCreateGraphicsPipelines = (PFN_vkCreateGraphicsPipelines)(this->*(load))(context, "vkCreateGraphicsPipelines");
-  vkCreateImage = (PFN_vkCreateImage)(this->*(load))(context, "vkCreateImage");
-  vkCreateImageView = (PFN_vkCreateImageView)(this->*(load))(context, "vkCreateImageView");
-  vkCreatePipelineCache = (PFN_vkCreatePipelineCache)(this->*(load))(context, "vkCreatePipelineCache");
-  vkCreatePipelineLayout = (PFN_vkCreatePipelineLayout)(this->*(load))(context, "vkCreatePipelineLayout");
-  vkCreateQueryPool = (PFN_vkCreateQueryPool)(this->*(load))(context, "vkCreateQueryPool");
   vkCreateRenderPass = (PFN_vkCreateRenderPass)(this->*(load))(context, "vkCreateRenderPass");
-  vkCreateSampler = (PFN_vkCreateSampler)(this->*(load))(context, "vkCreateSampler");
-  vkCreateSemaphore = (PFN_vkCreateSemaphore)(this->*(load))(context, "vkCreateSemaphore");
-  vkCreateShaderModule = (PFN_vkCreateShaderModule)(this->*(load))(context, "vkCreateShaderModule");
-  vkDestroyBuffer = (PFN_vkDestroyBuffer)(this->*(load))(context, "vkDestroyBuffer");
-  vkDestroyBufferView = (PFN_vkDestroyBufferView)(this->*(load))(context, "vkDestroyBufferView");
-  vkDestroyCommandPool = (PFN_vkDestroyCommandPool)(this->*(load))(context, "vkDestroyCommandPool");
-  vkDestroyDescriptorPool = (PFN_vkDestroyDescriptorPool)(this->*(load))(context, "vkDestroyDescriptorPool");
-  vkDestroyDescriptorSetLayout = (PFN_vkDestroyDescriptorSetLayout)(this->*(load))(context, "vkDestroyDescriptorSetLayout");
-  vkDestroyDevice = (PFN_vkDestroyDevice)(this->*(load))(context, "vkDestroyDevice");
-  vkDestroyEvent = (PFN_vkDestroyEvent)(this->*(load))(context, "vkDestroyEvent");
-  vkDestroyFence = (PFN_vkDestroyFence)(this->*(load))(context, "vkDestroyFence");
   vkDestroyFramebuffer = (PFN_vkDestroyFramebuffer)(this->*(load))(context, "vkDestroyFramebuffer");
-  vkDestroyImage = (PFN_vkDestroyImage)(this->*(load))(context, "vkDestroyImage");
-  vkDestroyImageView = (PFN_vkDestroyImageView)(this->*(load))(context, "vkDestroyImageView");
-  vkDestroyPipeline = (PFN_vkDestroyPipeline)(this->*(load))(context, "vkDestroyPipeline");
-  vkDestroyPipelineCache = (PFN_vkDestroyPipelineCache)(this->*(load))(context, "vkDestroyPipelineCache");
-  vkDestroyPipelineLayout = (PFN_vkDestroyPipelineLayout)(this->*(load))(context, "vkDestroyPipelineLayout");
-  vkDestroyQueryPool = (PFN_vkDestroyQueryPool)(this->*(load))(context, "vkDestroyQueryPool");
   vkDestroyRenderPass = (PFN_vkDestroyRenderPass)(this->*(load))(context, "vkDestroyRenderPass");
-  vkDestroySampler = (PFN_vkDestroySampler)(this->*(load))(context, "vkDestroySampler");
-  vkDestroySemaphore = (PFN_vkDestroySemaphore)(this->*(load))(context, "vkDestroySemaphore");
-  vkDestroyShaderModule = (PFN_vkDestroyShaderModule)(this->*(load))(context, "vkDestroyShaderModule");
-  vkDeviceWaitIdle = (PFN_vkDeviceWaitIdle)(this->*(load))(context, "vkDeviceWaitIdle");
-  vkEndCommandBuffer = (PFN_vkEndCommandBuffer)(this->*(load))(context, "vkEndCommandBuffer");
-  vkFlushMappedMemoryRanges = (PFN_vkFlushMappedMemoryRanges)(this->*(load))(context, "vkFlushMappedMemoryRanges");
-  vkFreeCommandBuffers = (PFN_vkFreeCommandBuffers)(this->*(load))(context, "vkFreeCommandBuffers");
-  vkFreeDescriptorSets = (PFN_vkFreeDescriptorSets)(this->*(load))(context, "vkFreeDescriptorSets");
-  vkFreeMemory = (PFN_vkFreeMemory)(this->*(load))(context, "vkFreeMemory");
-  vkGetBufferMemoryRequirements = (PFN_vkGetBufferMemoryRequirements)(this->*(load))(context, "vkGetBufferMemoryRequirements");
-  vkGetDeviceMemoryCommitment = (PFN_vkGetDeviceMemoryCommitment)(this->*(load))(context, "vkGetDeviceMemoryCommitment");
-  vkGetDeviceQueue = (PFN_vkGetDeviceQueue)(this->*(load))(context, "vkGetDeviceQueue");
-  vkGetEventStatus = (PFN_vkGetEventStatus)(this->*(load))(context, "vkGetEventStatus");
-  vkGetFenceStatus = (PFN_vkGetFenceStatus)(this->*(load))(context, "vkGetFenceStatus");
-  vkGetImageMemoryRequirements = (PFN_vkGetImageMemoryRequirements)(this->*(load))(context, "vkGetImageMemoryRequirements");
-  vkGetImageSparseMemoryRequirements = (PFN_vkGetImageSparseMemoryRequirements)(this->*(load))(context, "vkGetImageSparseMemoryRequirements");
-  vkGetImageSubresourceLayout = (PFN_vkGetImageSubresourceLayout)(this->*(load))(context, "vkGetImageSubresourceLayout");
-  vkGetPipelineCacheData = (PFN_vkGetPipelineCacheData)(this->*(load))(context, "vkGetPipelineCacheData");
-  vkGetQueryPoolResults = (PFN_vkGetQueryPoolResults)(this->*(load))(context, "vkGetQueryPoolResults");
   vkGetRenderAreaGranularity = (PFN_vkGetRenderAreaGranularity)(this->*(load))(context, "vkGetRenderAreaGranularity");
-  vkInvalidateMappedMemoryRanges = (PFN_vkInvalidateMappedMemoryRanges)(this->*(load))(context, "vkInvalidateMappedMemoryRanges");
-  vkMapMemory = (PFN_vkMapMemory)(this->*(load))(context, "vkMapMemory");
-  vkMergePipelineCaches = (PFN_vkMergePipelineCaches)(this->*(load))(context, "vkMergePipelineCaches");
-  vkQueueBindSparse = (PFN_vkQueueBindSparse)(this->*(load))(context, "vkQueueBindSparse");
-  vkQueueSubmit = (PFN_vkQueueSubmit)(this->*(load))(context, "vkQueueSubmit");
-  vkQueueWaitIdle = (PFN_vkQueueWaitIdle)(this->*(load))(context, "vkQueueWaitIdle");
-  vkResetCommandBuffer = (PFN_vkResetCommandBuffer)(this->*(load))(context, "vkResetCommandBuffer");
-  vkResetCommandPool = (PFN_vkResetCommandPool)(this->*(load))(context, "vkResetCommandPool");
-  vkResetDescriptorPool = (PFN_vkResetDescriptorPool)(this->*(load))(context, "vkResetDescriptorPool");
-  vkResetEvent = (PFN_vkResetEvent)(this->*(load))(context, "vkResetEvent");
-  vkResetFences = (PFN_vkResetFences)(this->*(load))(context, "vkResetFences");
-  vkSetEvent = (PFN_vkSetEvent)(this->*(load))(context, "vkSetEvent");
-  vkUnmapMemory = (PFN_vkUnmapMemory)(this->*(load))(context, "vkUnmapMemory");
-  vkUpdateDescriptorSets = (PFN_vkUpdateDescriptorSets)(this->*(load))(context, "vkUpdateDescriptorSets");
-  vkWaitForFences = (PFN_vkWaitForFences)(this->*(load))(context, "vkWaitForFences");
-#endif /* defined(VK_VERSION_1_0) */
-#if defined(VK_VERSION_1_1)
+#endif /* defined(VK_GRAPHICS_VERSION_1_0) */
+#if defined(VK_BASE_VERSION_1_1)
   vkBindBufferMemory2 = (PFN_vkBindBufferMemory2)(this->*(load))(context, "vkBindBufferMemory2");
   vkBindImageMemory2 = (PFN_vkBindImageMemory2)(this->*(load))(context, "vkBindImageMemory2");
-  vkCmdDispatchBase = (PFN_vkCmdDispatchBase)(this->*(load))(context, "vkCmdDispatchBase");
   vkCmdSetDeviceMask = (PFN_vkCmdSetDeviceMask)(this->*(load))(context, "vkCmdSetDeviceMask");
-  vkCreateDescriptorUpdateTemplate = (PFN_vkCreateDescriptorUpdateTemplate)(this->*(load))(context, "vkCreateDescriptorUpdateTemplate");
-  vkCreateSamplerYcbcrConversion = (PFN_vkCreateSamplerYcbcrConversion)(this->*(load))(context, "vkCreateSamplerYcbcrConversion");
-  vkDestroyDescriptorUpdateTemplate = (PFN_vkDestroyDescriptorUpdateTemplate)(this->*(load))(context, "vkDestroyDescriptorUpdateTemplate");
-  vkDestroySamplerYcbcrConversion = (PFN_vkDestroySamplerYcbcrConversion)(this->*(load))(context, "vkDestroySamplerYcbcrConversion");
   vkGetBufferMemoryRequirements2 = (PFN_vkGetBufferMemoryRequirements2)(this->*(load))(context, "vkGetBufferMemoryRequirements2");
-  vkGetDescriptorSetLayoutSupport = (PFN_vkGetDescriptorSetLayoutSupport)(this->*(load))(context, "vkGetDescriptorSetLayoutSupport");
   vkGetDeviceGroupPeerMemoryFeatures = (PFN_vkGetDeviceGroupPeerMemoryFeatures)(this->*(load))(context, "vkGetDeviceGroupPeerMemoryFeatures");
   vkGetDeviceQueue2 = (PFN_vkGetDeviceQueue2)(this->*(load))(context, "vkGetDeviceQueue2");
   vkGetImageMemoryRequirements2 = (PFN_vkGetImageMemoryRequirements2)(this->*(load))(context, "vkGetImageMemoryRequirements2");
   vkGetImageSparseMemoryRequirements2 = (PFN_vkGetImageSparseMemoryRequirements2)(this->*(load))(context, "vkGetImageSparseMemoryRequirements2");
   vkTrimCommandPool = (PFN_vkTrimCommandPool)(this->*(load))(context, "vkTrimCommandPool");
+#endif /* defined(VK_BASE_VERSION_1_1) */
+#if defined(VK_COMPUTE_VERSION_1_1)
+  vkCmdDispatchBase = (PFN_vkCmdDispatchBase)(this->*(load))(context, "vkCmdDispatchBase");
+  vkCreateDescriptorUpdateTemplate = (PFN_vkCreateDescriptorUpdateTemplate)(this->*(load))(context, "vkCreateDescriptorUpdateTemplate");
+  vkCreateSamplerYcbcrConversion = (PFN_vkCreateSamplerYcbcrConversion)(this->*(load))(context, "vkCreateSamplerYcbcrConversion");
+  vkDestroyDescriptorUpdateTemplate = (PFN_vkDestroyDescriptorUpdateTemplate)(this->*(load))(context, "vkDestroyDescriptorUpdateTemplate");
+  vkDestroySamplerYcbcrConversion = (PFN_vkDestroySamplerYcbcrConversion)(this->*(load))(context, "vkDestroySamplerYcbcrConversion");
+  vkGetDescriptorSetLayoutSupport = (PFN_vkGetDescriptorSetLayoutSupport)(this->*(load))(context, "vkGetDescriptorSetLayoutSupport");
   vkUpdateDescriptorSetWithTemplate = (PFN_vkUpdateDescriptorSetWithTemplate)(this->*(load))(context, "vkUpdateDescriptorSetWithTemplate");
-#endif /* defined(VK_VERSION_1_1) */
-#if defined(VK_VERSION_1_2)
-  vkCmdBeginRenderPass2 = (PFN_vkCmdBeginRenderPass2)(this->*(load))(context, "vkCmdBeginRenderPass2");
-  vkCmdDrawIndexedIndirectCount = (PFN_vkCmdDrawIndexedIndirectCount)(this->*(load))(context, "vkCmdDrawIndexedIndirectCount");
-  vkCmdDrawIndirectCount = (PFN_vkCmdDrawIndirectCount)(this->*(load))(context, "vkCmdDrawIndirectCount");
-  vkCmdEndRenderPass2 = (PFN_vkCmdEndRenderPass2)(this->*(load))(context, "vkCmdEndRenderPass2");
-  vkCmdNextSubpass2 = (PFN_vkCmdNextSubpass2)(this->*(load))(context, "vkCmdNextSubpass2");
-  vkCreateRenderPass2 = (PFN_vkCreateRenderPass2)(this->*(load))(context, "vkCreateRenderPass2");
+#endif /* defined(VK_COMPUTE_VERSION_1_1) */
+#if defined(VK_BASE_VERSION_1_2)
   vkGetBufferDeviceAddress = (PFN_vkGetBufferDeviceAddress)(this->*(load))(context, "vkGetBufferDeviceAddress");
   vkGetBufferOpaqueCaptureAddress = (PFN_vkGetBufferOpaqueCaptureAddress)(this->*(load))(context, "vkGetBufferOpaqueCaptureAddress");
   vkGetDeviceMemoryOpaqueCaptureAddress = (PFN_vkGetDeviceMemoryOpaqueCaptureAddress)(this->*(load))(context, "vkGetDeviceMemoryOpaqueCaptureAddress");
@@ -534,35 +537,21 @@ void Volk::genLoadDevice(void* context, PFN_vkVoidFunction (Volk::*load)(void*, 
   vkResetQueryPool = (PFN_vkResetQueryPool)(this->*(load))(context, "vkResetQueryPool");
   vkSignalSemaphore = (PFN_vkSignalSemaphore)(this->*(load))(context, "vkSignalSemaphore");
   vkWaitSemaphores = (PFN_vkWaitSemaphores)(this->*(load))(context, "vkWaitSemaphores");
-#endif /* defined(VK_VERSION_1_2) */
-#if defined(VK_VERSION_1_3)
-  vkCmdBeginRendering = (PFN_vkCmdBeginRendering)(this->*(load))(context, "vkCmdBeginRendering");
-  vkCmdBindVertexBuffers2 = (PFN_vkCmdBindVertexBuffers2)(this->*(load))(context, "vkCmdBindVertexBuffers2");
-  vkCmdBlitImage2 = (PFN_vkCmdBlitImage2)(this->*(load))(context, "vkCmdBlitImage2");
+#endif /* defined(VK_BASE_VERSION_1_2) */
+#if defined(VK_GRAPHICS_VERSION_1_2)
+  vkCmdBeginRenderPass2 = (PFN_vkCmdBeginRenderPass2)(this->*(load))(context, "vkCmdBeginRenderPass2");
+  vkCmdDrawIndexedIndirectCount = (PFN_vkCmdDrawIndexedIndirectCount)(this->*(load))(context, "vkCmdDrawIndexedIndirectCount");
+  vkCmdDrawIndirectCount = (PFN_vkCmdDrawIndirectCount)(this->*(load))(context, "vkCmdDrawIndirectCount");
+  vkCmdEndRenderPass2 = (PFN_vkCmdEndRenderPass2)(this->*(load))(context, "vkCmdEndRenderPass2");
+  vkCmdNextSubpass2 = (PFN_vkCmdNextSubpass2)(this->*(load))(context, "vkCmdNextSubpass2");
+  vkCreateRenderPass2 = (PFN_vkCreateRenderPass2)(this->*(load))(context, "vkCreateRenderPass2");
+#endif /* defined(VK_GRAPHICS_VERSION_1_2) */
+#if defined(VK_BASE_VERSION_1_3)
   vkCmdCopyBuffer2 = (PFN_vkCmdCopyBuffer2)(this->*(load))(context, "vkCmdCopyBuffer2");
   vkCmdCopyBufferToImage2 = (PFN_vkCmdCopyBufferToImage2)(this->*(load))(context, "vkCmdCopyBufferToImage2");
   vkCmdCopyImage2 = (PFN_vkCmdCopyImage2)(this->*(load))(context, "vkCmdCopyImage2");
   vkCmdCopyImageToBuffer2 = (PFN_vkCmdCopyImageToBuffer2)(this->*(load))(context, "vkCmdCopyImageToBuffer2");
-  vkCmdEndRendering = (PFN_vkCmdEndRendering)(this->*(load))(context, "vkCmdEndRendering");
   vkCmdPipelineBarrier2 = (PFN_vkCmdPipelineBarrier2)(this->*(load))(context, "vkCmdPipelineBarrier2");
-  vkCmdResetEvent2 = (PFN_vkCmdResetEvent2)(this->*(load))(context, "vkCmdResetEvent2");
-  vkCmdResolveImage2 = (PFN_vkCmdResolveImage2)(this->*(load))(context, "vkCmdResolveImage2");
-  vkCmdSetCullMode = (PFN_vkCmdSetCullMode)(this->*(load))(context, "vkCmdSetCullMode");
-  vkCmdSetDepthBiasEnable = (PFN_vkCmdSetDepthBiasEnable)(this->*(load))(context, "vkCmdSetDepthBiasEnable");
-  vkCmdSetDepthBoundsTestEnable = (PFN_vkCmdSetDepthBoundsTestEnable)(this->*(load))(context, "vkCmdSetDepthBoundsTestEnable");
-  vkCmdSetDepthCompareOp = (PFN_vkCmdSetDepthCompareOp)(this->*(load))(context, "vkCmdSetDepthCompareOp");
-  vkCmdSetDepthTestEnable = (PFN_vkCmdSetDepthTestEnable)(this->*(load))(context, "vkCmdSetDepthTestEnable");
-  vkCmdSetDepthWriteEnable = (PFN_vkCmdSetDepthWriteEnable)(this->*(load))(context, "vkCmdSetDepthWriteEnable");
-  vkCmdSetEvent2 = (PFN_vkCmdSetEvent2)(this->*(load))(context, "vkCmdSetEvent2");
-  vkCmdSetFrontFace = (PFN_vkCmdSetFrontFace)(this->*(load))(context, "vkCmdSetFrontFace");
-  vkCmdSetPrimitiveRestartEnable = (PFN_vkCmdSetPrimitiveRestartEnable)(this->*(load))(context, "vkCmdSetPrimitiveRestartEnable");
-  vkCmdSetPrimitiveTopology = (PFN_vkCmdSetPrimitiveTopology)(this->*(load))(context, "vkCmdSetPrimitiveTopology");
-  vkCmdSetRasterizerDiscardEnable = (PFN_vkCmdSetRasterizerDiscardEnable)(this->*(load))(context, "vkCmdSetRasterizerDiscardEnable");
-  vkCmdSetScissorWithCount = (PFN_vkCmdSetScissorWithCount)(this->*(load))(context, "vkCmdSetScissorWithCount");
-  vkCmdSetStencilOp = (PFN_vkCmdSetStencilOp)(this->*(load))(context, "vkCmdSetStencilOp");
-  vkCmdSetStencilTestEnable = (PFN_vkCmdSetStencilTestEnable)(this->*(load))(context, "vkCmdSetStencilTestEnable");
-  vkCmdSetViewportWithCount = (PFN_vkCmdSetViewportWithCount)(this->*(load))(context, "vkCmdSetViewportWithCount");
-  vkCmdWaitEvents2 = (PFN_vkCmdWaitEvents2)(this->*(load))(context, "vkCmdWaitEvents2");
   vkCmdWriteTimestamp2 = (PFN_vkCmdWriteTimestamp2)(this->*(load))(context, "vkCmdWriteTimestamp2");
   vkCreatePrivateDataSlot = (PFN_vkCreatePrivateDataSlot)(this->*(load))(context, "vkCreatePrivateDataSlot");
   vkDestroyPrivateDataSlot = (PFN_vkDestroyPrivateDataSlot)(this->*(load))(context, "vkDestroyPrivateDataSlot");
@@ -572,28 +561,58 @@ void Volk::genLoadDevice(void* context, PFN_vkVoidFunction (Volk::*load)(void*, 
   vkGetPrivateData = (PFN_vkGetPrivateData)(this->*(load))(context, "vkGetPrivateData");
   vkQueueSubmit2 = (PFN_vkQueueSubmit2)(this->*(load))(context, "vkQueueSubmit2");
   vkSetPrivateData = (PFN_vkSetPrivateData)(this->*(load))(context, "vkSetPrivateData");
-#endif /* defined(VK_VERSION_1_3) */
-#if defined(VK_VERSION_1_4)
-  vkCmdBindDescriptorSets2 = (PFN_vkCmdBindDescriptorSets2)(this->*(load))(context, "vkCmdBindDescriptorSets2");
-  vkCmdBindIndexBuffer2 = (PFN_vkCmdBindIndexBuffer2)(this->*(load))(context, "vkCmdBindIndexBuffer2");
-  vkCmdPushConstants2 = (PFN_vkCmdPushConstants2)(this->*(load))(context, "vkCmdPushConstants2");
-  vkCmdPushDescriptorSet = (PFN_vkCmdPushDescriptorSet)(this->*(load))(context, "vkCmdPushDescriptorSet");
-  vkCmdPushDescriptorSet2 = (PFN_vkCmdPushDescriptorSet2)(this->*(load))(context, "vkCmdPushDescriptorSet2");
-  vkCmdPushDescriptorSetWithTemplate = (PFN_vkCmdPushDescriptorSetWithTemplate)(this->*(load))(context, "vkCmdPushDescriptorSetWithTemplate");
-  vkCmdPushDescriptorSetWithTemplate2 = (PFN_vkCmdPushDescriptorSetWithTemplate2)(this->*(load))(context, "vkCmdPushDescriptorSetWithTemplate2");
-  vkCmdSetLineStipple = (PFN_vkCmdSetLineStipple)(this->*(load))(context, "vkCmdSetLineStipple");
-  vkCmdSetRenderingAttachmentLocations = (PFN_vkCmdSetRenderingAttachmentLocations)(this->*(load))(context, "vkCmdSetRenderingAttachmentLocations");
-  vkCmdSetRenderingInputAttachmentIndices = (PFN_vkCmdSetRenderingInputAttachmentIndices)(this->*(load))(context, "vkCmdSetRenderingInputAttachmentIndices");
+#endif /* defined(VK_BASE_VERSION_1_3) */
+#if defined(VK_COMPUTE_VERSION_1_3)
+  vkCmdResetEvent2 = (PFN_vkCmdResetEvent2)(this->*(load))(context, "vkCmdResetEvent2");
+  vkCmdSetEvent2 = (PFN_vkCmdSetEvent2)(this->*(load))(context, "vkCmdSetEvent2");
+  vkCmdWaitEvents2 = (PFN_vkCmdWaitEvents2)(this->*(load))(context, "vkCmdWaitEvents2");
+#endif /* defined(VK_COMPUTE_VERSION_1_3) */
+#if defined(VK_GRAPHICS_VERSION_1_3)
+  vkCmdBeginRendering = (PFN_vkCmdBeginRendering)(this->*(load))(context, "vkCmdBeginRendering");
+  vkCmdBindVertexBuffers2 = (PFN_vkCmdBindVertexBuffers2)(this->*(load))(context, "vkCmdBindVertexBuffers2");
+  vkCmdBlitImage2 = (PFN_vkCmdBlitImage2)(this->*(load))(context, "vkCmdBlitImage2");
+  vkCmdEndRendering = (PFN_vkCmdEndRendering)(this->*(load))(context, "vkCmdEndRendering");
+  vkCmdResolveImage2 = (PFN_vkCmdResolveImage2)(this->*(load))(context, "vkCmdResolveImage2");
+  vkCmdSetCullMode = (PFN_vkCmdSetCullMode)(this->*(load))(context, "vkCmdSetCullMode");
+  vkCmdSetDepthBiasEnable = (PFN_vkCmdSetDepthBiasEnable)(this->*(load))(context, "vkCmdSetDepthBiasEnable");
+  vkCmdSetDepthBoundsTestEnable = (PFN_vkCmdSetDepthBoundsTestEnable)(this->*(load))(context, "vkCmdSetDepthBoundsTestEnable");
+  vkCmdSetDepthCompareOp = (PFN_vkCmdSetDepthCompareOp)(this->*(load))(context, "vkCmdSetDepthCompareOp");
+  vkCmdSetDepthTestEnable = (PFN_vkCmdSetDepthTestEnable)(this->*(load))(context, "vkCmdSetDepthTestEnable");
+  vkCmdSetDepthWriteEnable = (PFN_vkCmdSetDepthWriteEnable)(this->*(load))(context, "vkCmdSetDepthWriteEnable");
+  vkCmdSetFrontFace = (PFN_vkCmdSetFrontFace)(this->*(load))(context, "vkCmdSetFrontFace");
+  vkCmdSetPrimitiveRestartEnable = (PFN_vkCmdSetPrimitiveRestartEnable)(this->*(load))(context, "vkCmdSetPrimitiveRestartEnable");
+  vkCmdSetPrimitiveTopology = (PFN_vkCmdSetPrimitiveTopology)(this->*(load))(context, "vkCmdSetPrimitiveTopology");
+  vkCmdSetRasterizerDiscardEnable = (PFN_vkCmdSetRasterizerDiscardEnable)(this->*(load))(context, "vkCmdSetRasterizerDiscardEnable");
+  vkCmdSetScissorWithCount = (PFN_vkCmdSetScissorWithCount)(this->*(load))(context, "vkCmdSetScissorWithCount");
+  vkCmdSetStencilOp = (PFN_vkCmdSetStencilOp)(this->*(load))(context, "vkCmdSetStencilOp");
+  vkCmdSetStencilTestEnable = (PFN_vkCmdSetStencilTestEnable)(this->*(load))(context, "vkCmdSetStencilTestEnable");
+  vkCmdSetViewportWithCount = (PFN_vkCmdSetViewportWithCount)(this->*(load))(context, "vkCmdSetViewportWithCount");
+#endif /* defined(VK_GRAPHICS_VERSION_1_3) */
+#if defined(VK_BASE_VERSION_1_4)
   vkCopyImageToImage = (PFN_vkCopyImageToImage)(this->*(load))(context, "vkCopyImageToImage");
   vkCopyImageToMemory = (PFN_vkCopyImageToMemory)(this->*(load))(context, "vkCopyImageToMemory");
   vkCopyMemoryToImage = (PFN_vkCopyMemoryToImage)(this->*(load))(context, "vkCopyMemoryToImage");
   vkGetDeviceImageSubresourceLayout = (PFN_vkGetDeviceImageSubresourceLayout)(this->*(load))(context, "vkGetDeviceImageSubresourceLayout");
   vkGetImageSubresourceLayout2 = (PFN_vkGetImageSubresourceLayout2)(this->*(load))(context, "vkGetImageSubresourceLayout2");
-  vkGetRenderingAreaGranularity = (PFN_vkGetRenderingAreaGranularity)(this->*(load))(context, "vkGetRenderingAreaGranularity");
   vkMapMemory2 = (PFN_vkMapMemory2)(this->*(load))(context, "vkMapMemory2");
   vkTransitionImageLayout = (PFN_vkTransitionImageLayout)(this->*(load))(context, "vkTransitionImageLayout");
   vkUnmapMemory2 = (PFN_vkUnmapMemory2)(this->*(load))(context, "vkUnmapMemory2");
-#endif /* defined(VK_VERSION_1_4) */
+#endif /* defined(VK_BASE_VERSION_1_4) */
+#if defined(VK_COMPUTE_VERSION_1_4)
+  vkCmdBindDescriptorSets2 = (PFN_vkCmdBindDescriptorSets2)(this->*(load))(context, "vkCmdBindDescriptorSets2");
+  vkCmdPushConstants2 = (PFN_vkCmdPushConstants2)(this->*(load))(context, "vkCmdPushConstants2");
+  vkCmdPushDescriptorSet = (PFN_vkCmdPushDescriptorSet)(this->*(load))(context, "vkCmdPushDescriptorSet");
+  vkCmdPushDescriptorSet2 = (PFN_vkCmdPushDescriptorSet2)(this->*(load))(context, "vkCmdPushDescriptorSet2");
+  vkCmdPushDescriptorSetWithTemplate = (PFN_vkCmdPushDescriptorSetWithTemplate)(this->*(load))(context, "vkCmdPushDescriptorSetWithTemplate");
+  vkCmdPushDescriptorSetWithTemplate2 = (PFN_vkCmdPushDescriptorSetWithTemplate2)(this->*(load))(context, "vkCmdPushDescriptorSetWithTemplate2");
+#endif /* defined(VK_COMPUTE_VERSION_1_4) */
+#if defined(VK_GRAPHICS_VERSION_1_4)
+  vkCmdBindIndexBuffer2 = (PFN_vkCmdBindIndexBuffer2)(this->*(load))(context, "vkCmdBindIndexBuffer2");
+  vkCmdSetLineStipple = (PFN_vkCmdSetLineStipple)(this->*(load))(context, "vkCmdSetLineStipple");
+  vkCmdSetRenderingAttachmentLocations = (PFN_vkCmdSetRenderingAttachmentLocations)(this->*(load))(context, "vkCmdSetRenderingAttachmentLocations");
+  vkCmdSetRenderingInputAttachmentIndices = (PFN_vkCmdSetRenderingInputAttachmentIndices)(this->*(load))(context, "vkCmdSetRenderingInputAttachmentIndices");
+  vkGetRenderingAreaGranularity = (PFN_vkGetRenderingAreaGranularity)(this->*(load))(context, "vkGetRenderingAreaGranularity");
+#endif /* defined(VK_GRAPHICS_VERSION_1_4) */
 #if defined(VK_AMDX_shader_enqueue)
   vkCmdDispatchGraphAMDX = (PFN_vkCmdDispatchGraphAMDX)(this->*(load))(context, "vkCmdDispatchGraphAMDX");
   vkCmdDispatchGraphIndirectAMDX = (PFN_vkCmdDispatchGraphIndirectAMDX)(this->*(load))(context, "vkCmdDispatchGraphIndirectAMDX");
@@ -754,6 +773,10 @@ void Volk::genLoadDevice(void* context, PFN_vkVoidFunction (Volk::*load)(void*, 
 #if defined(VK_EXT_line_rasterization)
   vkCmdSetLineStippleEXT = (PFN_vkCmdSetLineStippleEXT)(this->*(load))(context, "vkCmdSetLineStippleEXT");
 #endif /* defined(VK_EXT_line_rasterization) */
+#if defined(VK_EXT_memory_decompression)
+  vkCmdDecompressMemoryEXT = (PFN_vkCmdDecompressMemoryEXT)(this->*(load))(context, "vkCmdDecompressMemoryEXT");
+  vkCmdDecompressMemoryIndirectCountEXT = (PFN_vkCmdDecompressMemoryIndirectCountEXT)(this->*(load))(context, "vkCmdDecompressMemoryIndirectCountEXT");
+#endif /* defined(VK_EXT_memory_decompression) */
 #if defined(VK_EXT_mesh_shader)
   vkCmdDrawMeshTasksEXT = (PFN_vkCmdDrawMeshTasksEXT)(this->*(load))(context, "vkCmdDrawMeshTasksEXT");
   vkCmdDrawMeshTasksIndirectEXT = (PFN_vkCmdDrawMeshTasksIndirectEXT)(this->*(load))(context, "vkCmdDrawMeshTasksIndirectEXT");
@@ -985,6 +1008,9 @@ void Volk::genLoadDevice(void* context, PFN_vkVoidFunction (Volk::*load)(void*, 
 #if defined(VK_KHR_maintenance1)
   vkTrimCommandPoolKHR = (PFN_vkTrimCommandPoolKHR)(this->*(load))(context, "vkTrimCommandPoolKHR");
 #endif /* defined(VK_KHR_maintenance1) */
+#if defined(VK_KHR_maintenance10)
+  vkCmdEndRendering2KHR = (PFN_vkCmdEndRendering2KHR)(this->*(load))(context, "vkCmdEndRendering2KHR");
+#endif /* defined(VK_KHR_maintenance10) */
 #if defined(VK_KHR_maintenance3)
   vkGetDescriptorSetLayoutSupportKHR = (PFN_vkGetDescriptorSetLayoutSupportKHR)(this->*(load))(context, "vkGetDescriptorSetLayoutSupportKHR");
 #endif /* defined(VK_KHR_maintenance3) */
@@ -1223,6 +1249,15 @@ void Volk::genLoadDevice(void* context, PFN_vkVoidFunction (Volk::*load)(void*, 
   vkCmdSetCoarseSampleOrderNV = (PFN_vkCmdSetCoarseSampleOrderNV)(this->*(load))(context, "vkCmdSetCoarseSampleOrderNV");
   vkCmdSetViewportShadingRatePaletteNV = (PFN_vkCmdSetViewportShadingRatePaletteNV)(this->*(load))(context, "vkCmdSetViewportShadingRatePaletteNV");
 #endif /* defined(VK_NV_shading_rate_image) */
+#if defined(VK_OHOS_external_memory)
+  vkGetMemoryNativeBufferOHOS = (PFN_vkGetMemoryNativeBufferOHOS)(this->*(load))(context, "vkGetMemoryNativeBufferOHOS");
+  vkGetNativeBufferPropertiesOHOS = (PFN_vkGetNativeBufferPropertiesOHOS)(this->*(load))(context, "vkGetNativeBufferPropertiesOHOS");
+#endif /* defined(VK_OHOS_external_memory) */
+#if defined(VK_OHOS_native_buffer)
+  vkAcquireImageOHOS = (PFN_vkAcquireImageOHOS)(this->*(load))(context, "vkAcquireImageOHOS");
+  vkGetSwapchainGrallocUsageOHOS = (PFN_vkGetSwapchainGrallocUsageOHOS)(this->*(load))(context, "vkGetSwapchainGrallocUsageOHOS");
+  vkQueueSignalReleaseImageOHOS = (PFN_vkQueueSignalReleaseImageOHOS)(this->*(load))(context, "vkQueueSignalReleaseImageOHOS");
+#endif /* defined(VK_OHOS_native_buffer) */
 #if defined(VK_QCOM_tile_memory_heap)
   vkCmdBindTileMemoryQCOM = (PFN_vkCmdBindTileMemoryQCOM)(this->*(load))(context, "vkCmdBindTileMemoryQCOM");
 #endif /* defined(VK_QCOM_tile_memory_heap) */
