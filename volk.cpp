@@ -686,6 +686,9 @@ void Volk::genLoadDevice(void* context, PFN_vkVoidFunction (Volk::*load)(void*, 
   vkCmdBeginConditionalRenderingEXT = (PFN_vkCmdBeginConditionalRenderingEXT)(this->*(load))(context, "vkCmdBeginConditionalRenderingEXT");
   vkCmdEndConditionalRenderingEXT = (PFN_vkCmdEndConditionalRenderingEXT)(this->*(load))(context, "vkCmdEndConditionalRenderingEXT");
 #endif /* defined(VK_EXT_conditional_rendering) */
+#if defined(VK_EXT_custom_resolve) && (defined(VK_KHR_dynamic_rendering) || defined(VK_VERSION_1_3))
+  vkCmdBeginCustomResolveEXT = (PFN_vkCmdBeginCustomResolveEXT)(this->*(load))(context, "vkCmdBeginCustomResolveEXT");
+#endif /* defined(VK_EXT_custom_resolve) && (defined(VK_KHR_dynamic_rendering) || defined(VK_VERSION_1_3)) */
 #if defined(VK_EXT_debug_marker)
   vkCmdDebugMarkerBeginEXT = (PFN_vkCmdDebugMarkerBeginEXT)(this->*(load))(context, "vkCmdDebugMarkerBeginEXT");
   vkCmdDebugMarkerEndEXT = (PFN_vkCmdDebugMarkerEndEXT)(this->*(load))(context, "vkCmdDebugMarkerEndEXT");
@@ -813,6 +816,12 @@ void Volk::genLoadDevice(void* context, PFN_vkVoidFunction (Volk::*load)(void*, 
 #if defined(VK_EXT_pipeline_properties)
   vkGetPipelinePropertiesEXT = (PFN_vkGetPipelinePropertiesEXT)(this->*(load))(context, "vkGetPipelinePropertiesEXT");
 #endif /* defined(VK_EXT_pipeline_properties) */
+#if defined(VK_EXT_present_timing)
+  vkGetPastPresentationTimingEXT = (PFN_vkGetPastPresentationTimingEXT)(this->*(load))(context, "vkGetPastPresentationTimingEXT");
+  vkGetSwapchainTimeDomainPropertiesEXT = (PFN_vkGetSwapchainTimeDomainPropertiesEXT)(this->*(load))(context, "vkGetSwapchainTimeDomainPropertiesEXT");
+  vkGetSwapchainTimingPropertiesEXT = (PFN_vkGetSwapchainTimingPropertiesEXT)(this->*(load))(context, "vkGetSwapchainTimingPropertiesEXT");
+  vkSetSwapchainPresentTimingQueueSizeEXT = (PFN_vkSetSwapchainPresentTimingQueueSizeEXT)(this->*(load))(context, "vkSetSwapchainPresentTimingQueueSizeEXT");
+#endif /* defined(VK_EXT_present_timing) */
 #if defined(VK_EXT_private_data)
   vkCreatePrivateDataSlotEXT = (PFN_vkCreatePrivateDataSlotEXT)(this->*(load))(context, "vkCreatePrivateDataSlotEXT");
   vkDestroyPrivateDataSlotEXT = (PFN_vkDestroyPrivateDataSlotEXT)(this->*(load))(context, "vkDestroyPrivateDataSlotEXT");
