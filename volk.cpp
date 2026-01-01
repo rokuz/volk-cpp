@@ -1155,6 +1155,9 @@ void Volk::genLoadDevice(void* context, PFN_vkVoidFunction (Volk::*load)(void*, 
   vkCmdBuildClusterAccelerationStructureIndirectNV = (PFN_vkCmdBuildClusterAccelerationStructureIndirectNV)(this->*(load))(context, "vkCmdBuildClusterAccelerationStructureIndirectNV");
   vkGetClusterAccelerationStructureBuildSizesNV = (PFN_vkGetClusterAccelerationStructureBuildSizesNV)(this->*(load))(context, "vkGetClusterAccelerationStructureBuildSizesNV");
 #endif /* defined(VK_NV_cluster_acceleration_structure) */
+#if defined(VK_NV_compute_occupancy_priority)
+  vkCmdSetComputeOccupancyPriorityNV = (PFN_vkCmdSetComputeOccupancyPriorityNV)(this->*(load))(context, "vkCmdSetComputeOccupancyPriorityNV");
+#endif /* defined(VK_NV_compute_occupancy_priority) */
 #if defined(VK_NV_cooperative_vector)
   vkCmdConvertCooperativeVectorMatrixNV = (PFN_vkCmdConvertCooperativeVectorMatrixNV)(this->*(load))(context, "vkCmdConvertCooperativeVectorMatrixNV");
   vkConvertCooperativeVectorMatrixNV = (PFN_vkConvertCooperativeVectorMatrixNV)(this->*(load))(context, "vkConvertCooperativeVectorMatrixNV");
@@ -1262,11 +1265,6 @@ void Volk::genLoadDevice(void* context, PFN_vkVoidFunction (Volk::*load)(void*, 
   vkGetMemoryNativeBufferOHOS = (PFN_vkGetMemoryNativeBufferOHOS)(this->*(load))(context, "vkGetMemoryNativeBufferOHOS");
   vkGetNativeBufferPropertiesOHOS = (PFN_vkGetNativeBufferPropertiesOHOS)(this->*(load))(context, "vkGetNativeBufferPropertiesOHOS");
 #endif /* defined(VK_OHOS_external_memory) */
-#if defined(VK_OHOS_native_buffer)
-  vkAcquireImageOHOS = (PFN_vkAcquireImageOHOS)(this->*(load))(context, "vkAcquireImageOHOS");
-  vkGetSwapchainGrallocUsageOHOS = (PFN_vkGetSwapchainGrallocUsageOHOS)(this->*(load))(context, "vkGetSwapchainGrallocUsageOHOS");
-  vkQueueSignalReleaseImageOHOS = (PFN_vkQueueSignalReleaseImageOHOS)(this->*(load))(context, "vkQueueSignalReleaseImageOHOS");
-#endif /* defined(VK_OHOS_native_buffer) */
 #if defined(VK_QCOM_tile_memory_heap)
   vkCmdBindTileMemoryQCOM = (PFN_vkCmdBindTileMemoryQCOM)(this->*(load))(context, "vkCmdBindTileMemoryQCOM");
 #endif /* defined(VK_QCOM_tile_memory_heap) */

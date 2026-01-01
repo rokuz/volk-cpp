@@ -20,7 +20,7 @@
 #endif
 
 /* VOLK_CPP_GENERATE_VERSION_DEFINE */
-#define VOLK_CPP_HEADER_VERSION 335
+#define VOLK_CPP_HEADER_VERSION 337
 /* VOLK_CPP_GENERATE_VERSION_DEFINE */
 
 #ifndef VK_NO_PROTOTYPES
@@ -1411,33 +1411,38 @@ public:
 #else 
   ALIGNMENT_ARRAY(157, 2);
 #endif /* defined(VK_NV_cluster_acceleration_structure) */
+#if defined(VK_NV_compute_occupancy_priority)
+  PFN_vkCmdSetComputeOccupancyPriorityNV vkCmdSetComputeOccupancyPriorityNV = nullptr;
+#else 
+  ALIGNMENT(158);
+#endif /* defined(VK_NV_compute_occupancy_priority) */
 #if defined(VK_NV_cooperative_matrix)
   PFN_vkGetPhysicalDeviceCooperativeMatrixPropertiesNV vkGetPhysicalDeviceCooperativeMatrixPropertiesNV = nullptr;
 #else 
-  ALIGNMENT(158);
+  ALIGNMENT(159);
 #endif /* defined(VK_NV_cooperative_matrix) */
 #if defined(VK_NV_cooperative_matrix2)
   PFN_vkGetPhysicalDeviceCooperativeMatrixFlexibleDimensionsPropertiesNV vkGetPhysicalDeviceCooperativeMatrixFlexibleDimensionsPropertiesNV = nullptr;
 #else 
-  ALIGNMENT(159);
+  ALIGNMENT(160);
 #endif /* defined(VK_NV_cooperative_matrix2) */
 #if defined(VK_NV_cooperative_vector)
   PFN_vkCmdConvertCooperativeVectorMatrixNV vkCmdConvertCooperativeVectorMatrixNV = nullptr;
   PFN_vkConvertCooperativeVectorMatrixNV vkConvertCooperativeVectorMatrixNV = nullptr;
   PFN_vkGetPhysicalDeviceCooperativeVectorPropertiesNV vkGetPhysicalDeviceCooperativeVectorPropertiesNV = nullptr;
 #else 
-  ALIGNMENT_ARRAY(160, 3);
+  ALIGNMENT_ARRAY(161, 3);
 #endif /* defined(VK_NV_cooperative_vector) */
 #if defined(VK_NV_copy_memory_indirect)
   PFN_vkCmdCopyMemoryIndirectNV vkCmdCopyMemoryIndirectNV = nullptr;
   PFN_vkCmdCopyMemoryToImageIndirectNV vkCmdCopyMemoryToImageIndirectNV = nullptr;
 #else 
-  ALIGNMENT_ARRAY(161, 2);
+  ALIGNMENT_ARRAY(162, 2);
 #endif /* defined(VK_NV_copy_memory_indirect) */
 #if defined(VK_NV_coverage_reduction_mode)
   PFN_vkGetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNV vkGetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNV = nullptr;
 #else 
-  ALIGNMENT(162);
+  ALIGNMENT(163);
 #endif /* defined(VK_NV_coverage_reduction_mode) */
 #if defined(VK_NV_cuda_kernel_launch)
   PFN_vkCmdCudaLaunchKernelNV vkCmdCudaLaunchKernelNV = nullptr;
@@ -1447,18 +1452,18 @@ public:
   PFN_vkDestroyCudaModuleNV vkDestroyCudaModuleNV = nullptr;
   PFN_vkGetCudaModuleCacheNV vkGetCudaModuleCacheNV = nullptr;
 #else 
-  ALIGNMENT_ARRAY(163, 6);
+  ALIGNMENT_ARRAY(164, 6);
 #endif /* defined(VK_NV_cuda_kernel_launch) */
 #if defined(VK_NV_device_diagnostic_checkpoints)
   PFN_vkCmdSetCheckpointNV vkCmdSetCheckpointNV = nullptr;
   PFN_vkGetQueueCheckpointDataNV vkGetQueueCheckpointDataNV = nullptr;
 #else 
-  ALIGNMENT_ARRAY(164, 2);
+  ALIGNMENT_ARRAY(165, 2);
 #endif /* defined(VK_NV_device_diagnostic_checkpoints) */
 #if defined(VK_NV_device_diagnostic_checkpoints) && (defined(VK_VERSION_1_3) || defined(VK_KHR_synchronization2))
   PFN_vkGetQueueCheckpointData2NV vkGetQueueCheckpointData2NV = nullptr;
 #else 
-  ALIGNMENT(165);
+  ALIGNMENT(166);
 #endif /* defined(VK_NV_device_diagnostic_checkpoints) && (defined(VK_VERSION_1_3) || defined(VK_KHR_synchronization2)) */
 #if defined(VK_NV_device_generated_commands)
   PFN_vkCmdBindPipelineShaderGroupNV vkCmdBindPipelineShaderGroupNV = nullptr;
@@ -1468,41 +1473,41 @@ public:
   PFN_vkDestroyIndirectCommandsLayoutNV vkDestroyIndirectCommandsLayoutNV = nullptr;
   PFN_vkGetGeneratedCommandsMemoryRequirementsNV vkGetGeneratedCommandsMemoryRequirementsNV = nullptr;
 #else 
-  ALIGNMENT_ARRAY(166, 6);
+  ALIGNMENT_ARRAY(167, 6);
 #endif /* defined(VK_NV_device_generated_commands) */
 #if defined(VK_NV_device_generated_commands_compute)
   PFN_vkCmdUpdatePipelineIndirectBufferNV vkCmdUpdatePipelineIndirectBufferNV = nullptr;
   PFN_vkGetPipelineIndirectDeviceAddressNV vkGetPipelineIndirectDeviceAddressNV = nullptr;
   PFN_vkGetPipelineIndirectMemoryRequirementsNV vkGetPipelineIndirectMemoryRequirementsNV = nullptr;
 #else 
-  ALIGNMENT_ARRAY(167, 3);
+  ALIGNMENT_ARRAY(168, 3);
 #endif /* defined(VK_NV_device_generated_commands_compute) */
 #if defined(VK_NV_external_compute_queue)
   PFN_vkCreateExternalComputeQueueNV vkCreateExternalComputeQueueNV = nullptr;
   PFN_vkDestroyExternalComputeQueueNV vkDestroyExternalComputeQueueNV = nullptr;
   PFN_vkGetExternalComputeQueueDataNV vkGetExternalComputeQueueDataNV = nullptr;
 #else 
-  ALIGNMENT_ARRAY(168, 3);
+  ALIGNMENT_ARRAY(169, 3);
 #endif /* defined(VK_NV_external_compute_queue) */
 #if defined(VK_NV_external_memory_capabilities)
   PFN_vkGetPhysicalDeviceExternalImageFormatPropertiesNV vkGetPhysicalDeviceExternalImageFormatPropertiesNV = nullptr;
 #else 
-  ALIGNMENT(169);
+  ALIGNMENT(170);
 #endif /* defined(VK_NV_external_memory_capabilities) */
 #if defined(VK_NV_external_memory_rdma)
   PFN_vkGetMemoryRemoteAddressNV vkGetMemoryRemoteAddressNV = nullptr;
 #else 
-  ALIGNMENT(170);
+  ALIGNMENT(171);
 #endif /* defined(VK_NV_external_memory_rdma) */
 #if defined(VK_NV_external_memory_win32)
   PFN_vkGetMemoryWin32HandleNV vkGetMemoryWin32HandleNV = nullptr;
 #else 
-  ALIGNMENT(171);
+  ALIGNMENT(172);
 #endif /* defined(VK_NV_external_memory_win32) */
 #if defined(VK_NV_fragment_shading_rate_enums)
   PFN_vkCmdSetFragmentShadingRateEnumNV vkCmdSetFragmentShadingRateEnumNV = nullptr;
 #else 
-  ALIGNMENT(172);
+  ALIGNMENT(173);
 #endif /* defined(VK_NV_fragment_shading_rate_enums) */
 #if defined(VK_NV_low_latency2)
   PFN_vkGetLatencyTimingsNV vkGetLatencyTimingsNV = nullptr;
@@ -1511,24 +1516,24 @@ public:
   PFN_vkSetLatencyMarkerNV vkSetLatencyMarkerNV = nullptr;
   PFN_vkSetLatencySleepModeNV vkSetLatencySleepModeNV = nullptr;
 #else 
-  ALIGNMENT_ARRAY(173, 5);
+  ALIGNMENT_ARRAY(174, 5);
 #endif /* defined(VK_NV_low_latency2) */
 #if defined(VK_NV_memory_decompression)
   PFN_vkCmdDecompressMemoryIndirectCountNV vkCmdDecompressMemoryIndirectCountNV = nullptr;
   PFN_vkCmdDecompressMemoryNV vkCmdDecompressMemoryNV = nullptr;
 #else 
-  ALIGNMENT_ARRAY(174, 2);
+  ALIGNMENT_ARRAY(175, 2);
 #endif /* defined(VK_NV_memory_decompression) */
 #if defined(VK_NV_mesh_shader)
   PFN_vkCmdDrawMeshTasksIndirectNV vkCmdDrawMeshTasksIndirectNV = nullptr;
   PFN_vkCmdDrawMeshTasksNV vkCmdDrawMeshTasksNV = nullptr;
 #else 
-  ALIGNMENT_ARRAY(175, 2);
+  ALIGNMENT_ARRAY(176, 2);
 #endif /* defined(VK_NV_mesh_shader) */
 #if defined(VK_NV_mesh_shader) && (defined(VK_VERSION_1_2) || defined(VK_KHR_draw_indirect_count) || defined(VK_AMD_draw_indirect_count))
   PFN_vkCmdDrawMeshTasksIndirectCountNV vkCmdDrawMeshTasksIndirectCountNV = nullptr;
 #else 
-  ALIGNMENT(176);
+  ALIGNMENT(177);
 #endif /* defined(VK_NV_mesh_shader) && (defined(VK_VERSION_1_2) || defined(VK_KHR_draw_indirect_count) || defined(VK_AMD_draw_indirect_count)) */
 #if defined(VK_NV_optical_flow)
   PFN_vkBindOpticalFlowSessionImageNV vkBindOpticalFlowSessionImageNV = nullptr;
@@ -1537,13 +1542,13 @@ public:
   PFN_vkDestroyOpticalFlowSessionNV vkDestroyOpticalFlowSessionNV = nullptr;
   PFN_vkGetPhysicalDeviceOpticalFlowImageFormatsNV vkGetPhysicalDeviceOpticalFlowImageFormatsNV = nullptr;
 #else 
-  ALIGNMENT_ARRAY(177, 5);
+  ALIGNMENT_ARRAY(178, 5);
 #endif /* defined(VK_NV_optical_flow) */
 #if defined(VK_NV_partitioned_acceleration_structure)
   PFN_vkCmdBuildPartitionedAccelerationStructuresNV vkCmdBuildPartitionedAccelerationStructuresNV = nullptr;
   PFN_vkGetPartitionedAccelerationStructuresBuildSizesNV vkGetPartitionedAccelerationStructuresBuildSizesNV = nullptr;
 #else 
-  ALIGNMENT_ARRAY(178, 2);
+  ALIGNMENT_ARRAY(179, 2);
 #endif /* defined(VK_NV_partitioned_acceleration_structure) */
 #if defined(VK_NV_ray_tracing)
   PFN_vkBindAccelerationStructureMemoryNV vkBindAccelerationStructureMemoryNV = nullptr;
@@ -1559,38 +1564,31 @@ public:
   PFN_vkGetAccelerationStructureMemoryRequirementsNV vkGetAccelerationStructureMemoryRequirementsNV = nullptr;
   PFN_vkGetRayTracingShaderGroupHandlesNV vkGetRayTracingShaderGroupHandlesNV = nullptr;
 #else 
-  ALIGNMENT_ARRAY(179, 12);
+  ALIGNMENT_ARRAY(180, 12);
 #endif /* defined(VK_NV_ray_tracing) */
 #if defined(VK_NV_scissor_exclusive) && VK_NV_SCISSOR_EXCLUSIVE_SPEC_VERSION >= 2
   PFN_vkCmdSetExclusiveScissorEnableNV vkCmdSetExclusiveScissorEnableNV = nullptr;
 #else 
-  ALIGNMENT(180);
+  ALIGNMENT(181);
 #endif /* defined(VK_NV_scissor_exclusive) && VK_NV_SCISSOR_EXCLUSIVE_SPEC_VERSION >= 2 */
 #if defined(VK_NV_scissor_exclusive)
   PFN_vkCmdSetExclusiveScissorNV vkCmdSetExclusiveScissorNV = nullptr;
 #else 
-  ALIGNMENT(181);
+  ALIGNMENT(182);
 #endif /* defined(VK_NV_scissor_exclusive) */
 #if defined(VK_NV_shading_rate_image)
   PFN_vkCmdBindShadingRateImageNV vkCmdBindShadingRateImageNV = nullptr;
   PFN_vkCmdSetCoarseSampleOrderNV vkCmdSetCoarseSampleOrderNV = nullptr;
   PFN_vkCmdSetViewportShadingRatePaletteNV vkCmdSetViewportShadingRatePaletteNV = nullptr;
 #else 
-  ALIGNMENT_ARRAY(182, 3);
+  ALIGNMENT_ARRAY(183, 3);
 #endif /* defined(VK_NV_shading_rate_image) */
 #if defined(VK_OHOS_external_memory)
   PFN_vkGetMemoryNativeBufferOHOS vkGetMemoryNativeBufferOHOS = nullptr;
   PFN_vkGetNativeBufferPropertiesOHOS vkGetNativeBufferPropertiesOHOS = nullptr;
 #else 
-  ALIGNMENT_ARRAY(183, 2);
+  ALIGNMENT_ARRAY(184, 2);
 #endif /* defined(VK_OHOS_external_memory) */
-#if defined(VK_OHOS_native_buffer)
-  PFN_vkAcquireImageOHOS vkAcquireImageOHOS = nullptr;
-  PFN_vkGetSwapchainGrallocUsageOHOS vkGetSwapchainGrallocUsageOHOS = nullptr;
-  PFN_vkQueueSignalReleaseImageOHOS vkQueueSignalReleaseImageOHOS = nullptr;
-#else 
-  ALIGNMENT_ARRAY(184, 3);
-#endif /* defined(VK_OHOS_native_buffer) */
 #if defined(VK_OHOS_surface)
   PFN_vkCreateSurfaceOHOS vkCreateSurfaceOHOS = nullptr;
 #else 
