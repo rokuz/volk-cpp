@@ -220,6 +220,9 @@ void Volk::genLoadInstance(void* context, PFN_vkVoidFunction (Volk::*load)(void*
   vkSetDebugUtilsObjectTagEXT = (PFN_vkSetDebugUtilsObjectTagEXT)(this->*(load))(context, "vkSetDebugUtilsObjectTagEXT");
   vkSubmitDebugUtilsMessageEXT = (PFN_vkSubmitDebugUtilsMessageEXT)(this->*(load))(context, "vkSubmitDebugUtilsMessageEXT");
 #endif /* defined(VK_EXT_debug_utils) */
+#if defined(VK_EXT_descriptor_heap)
+  vkGetPhysicalDeviceDescriptorSizeEXT = (PFN_vkGetPhysicalDeviceDescriptorSizeEXT)(this->*(load))(context, "vkGetPhysicalDeviceDescriptorSizeEXT");
+#endif /* defined(VK_EXT_descriptor_heap) */
 #if defined(VK_EXT_direct_mode_display)
   vkReleaseDisplayEXT = (PFN_vkReleaseDisplayEXT)(this->*(load))(context, "vkReleaseDisplayEXT");
 #endif /* defined(VK_EXT_direct_mode_display) */
@@ -714,6 +717,21 @@ void Volk::genLoadDevice(void* context, PFN_vkVoidFunction (Volk::*load)(void*, 
 #if defined(VK_EXT_descriptor_buffer) && (defined(VK_KHR_acceleration_structure) || defined(VK_NV_ray_tracing))
   vkGetAccelerationStructureOpaqueCaptureDescriptorDataEXT = (PFN_vkGetAccelerationStructureOpaqueCaptureDescriptorDataEXT)(this->*(load))(context, "vkGetAccelerationStructureOpaqueCaptureDescriptorDataEXT");
 #endif /* defined(VK_EXT_descriptor_buffer) && (defined(VK_KHR_acceleration_structure) || defined(VK_NV_ray_tracing)) */
+#if defined(VK_EXT_descriptor_heap)
+  vkCmdBindResourceHeapEXT = (PFN_vkCmdBindResourceHeapEXT)(this->*(load))(context, "vkCmdBindResourceHeapEXT");
+  vkCmdBindSamplerHeapEXT = (PFN_vkCmdBindSamplerHeapEXT)(this->*(load))(context, "vkCmdBindSamplerHeapEXT");
+  vkCmdPushDataEXT = (PFN_vkCmdPushDataEXT)(this->*(load))(context, "vkCmdPushDataEXT");
+  vkGetImageOpaqueCaptureDataEXT = (PFN_vkGetImageOpaqueCaptureDataEXT)(this->*(load))(context, "vkGetImageOpaqueCaptureDataEXT");
+  vkWriteResourceDescriptorsEXT = (PFN_vkWriteResourceDescriptorsEXT)(this->*(load))(context, "vkWriteResourceDescriptorsEXT");
+  vkWriteSamplerDescriptorsEXT = (PFN_vkWriteSamplerDescriptorsEXT)(this->*(load))(context, "vkWriteSamplerDescriptorsEXT");
+#endif /* defined(VK_EXT_descriptor_heap) */
+#if defined(VK_EXT_descriptor_heap) && defined(VK_EXT_custom_border_color)
+  vkRegisterCustomBorderColorEXT = (PFN_vkRegisterCustomBorderColorEXT)(this->*(load))(context, "vkRegisterCustomBorderColorEXT");
+  vkUnregisterCustomBorderColorEXT = (PFN_vkUnregisterCustomBorderColorEXT)(this->*(load))(context, "vkUnregisterCustomBorderColorEXT");
+#endif /* defined(VK_EXT_descriptor_heap) && defined(VK_EXT_custom_border_color) */
+#if defined(VK_EXT_descriptor_heap) && defined(VK_ARM_tensors)
+  vkGetTensorOpaqueCaptureDataARM = (PFN_vkGetTensorOpaqueCaptureDataARM)(this->*(load))(context, "vkGetTensorOpaqueCaptureDataARM");
+#endif /* defined(VK_EXT_descriptor_heap) && defined(VK_ARM_tensors) */
 #if defined(VK_EXT_device_fault)
   vkGetDeviceFaultInfoEXT = (PFN_vkGetDeviceFaultInfoEXT)(this->*(load))(context, "vkGetDeviceFaultInfoEXT");
 #endif /* defined(VK_EXT_device_fault) */
@@ -1144,6 +1162,7 @@ void Volk::genLoadDevice(void* context, PFN_vkVoidFunction (Volk::*load)(void*, 
   vkDestroyCuModuleNVX = (PFN_vkDestroyCuModuleNVX)(this->*(load))(context, "vkDestroyCuModuleNVX");
 #endif /* defined(VK_NVX_binary_import) */
 #if defined(VK_NVX_image_view_handle)
+  vkGetDeviceCombinedImageSamplerIndexNVX = (PFN_vkGetDeviceCombinedImageSamplerIndexNVX)(this->*(load))(context, "vkGetDeviceCombinedImageSamplerIndexNVX");
   vkGetImageViewAddressNVX = (PFN_vkGetImageViewAddressNVX)(this->*(load))(context, "vkGetImageViewAddressNVX");
   vkGetImageViewHandle64NVX = (PFN_vkGetImageViewHandle64NVX)(this->*(load))(context, "vkGetImageViewHandle64NVX");
   vkGetImageViewHandleNVX = (PFN_vkGetImageViewHandleNVX)(this->*(load))(context, "vkGetImageViewHandleNVX");
