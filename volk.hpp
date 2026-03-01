@@ -20,7 +20,7 @@
 #endif
 
 /* VOLK_CPP_GENERATE_VERSION_DEFINE */
-#define VOLK_CPP_HEADER_VERSION 342
+#define VOLK_CPP_HEADER_VERSION 344
 /* VOLK_CPP_GENERATE_VERSION_DEFINE */
 
 #ifndef VK_NO_PROTOTYPES
@@ -1646,16 +1646,22 @@ public:
 #else 
   ALIGNMENT_ARRAY(193, 2);
 #endif /* defined(VK_QNX_screen_surface) */
+#if defined(VK_SEC_ubm_surface)
+  PFN_vkCreateUbmSurfaceSEC vkCreateUbmSurfaceSEC = nullptr;
+  PFN_vkGetPhysicalDeviceUbmPresentationSupportSEC vkGetPhysicalDeviceUbmPresentationSupportSEC = nullptr;
+#else 
+  ALIGNMENT_ARRAY(194, 2);
+#endif /* defined(VK_SEC_ubm_surface) */
 #if defined(VK_VALVE_descriptor_set_host_mapping)
   PFN_vkGetDescriptorSetHostMappingVALVE vkGetDescriptorSetHostMappingVALVE = nullptr;
   PFN_vkGetDescriptorSetLayoutHostMappingInfoVALVE vkGetDescriptorSetLayoutHostMappingInfoVALVE = nullptr;
 #else 
-  ALIGNMENT_ARRAY(194, 2);
+  ALIGNMENT_ARRAY(195, 2);
 #endif /* defined(VK_VALVE_descriptor_set_host_mapping) */
 #if (defined(VK_EXT_depth_clamp_control)) || (defined(VK_EXT_shader_object) && defined(VK_EXT_depth_clamp_control))
   PFN_vkCmdSetDepthClampRangeEXT vkCmdSetDepthClampRangeEXT = nullptr;
 #else 
-  ALIGNMENT(195);
+  ALIGNMENT(196);
 #endif /* (defined(VK_EXT_depth_clamp_control)) || (defined(VK_EXT_shader_object) && defined(VK_EXT_depth_clamp_control)) */
 #if (defined(VK_EXT_extended_dynamic_state)) || (defined(VK_EXT_shader_object))
   PFN_vkCmdBindVertexBuffers2EXT vkCmdBindVertexBuffers2EXT = nullptr;
@@ -1671,7 +1677,7 @@ public:
   PFN_vkCmdSetStencilTestEnableEXT vkCmdSetStencilTestEnableEXT = nullptr;
   PFN_vkCmdSetViewportWithCountEXT vkCmdSetViewportWithCountEXT = nullptr;
 #else 
-  ALIGNMENT_ARRAY(196, 12);
+  ALIGNMENT_ARRAY(197, 12);
 #endif /* (defined(VK_EXT_extended_dynamic_state)) || (defined(VK_EXT_shader_object)) */
 #if (defined(VK_EXT_extended_dynamic_state2)) || (defined(VK_EXT_shader_object))
   PFN_vkCmdSetDepthBiasEnableEXT vkCmdSetDepthBiasEnableEXT = nullptr;
@@ -1680,7 +1686,7 @@ public:
   PFN_vkCmdSetPrimitiveRestartEnableEXT vkCmdSetPrimitiveRestartEnableEXT = nullptr;
   PFN_vkCmdSetRasterizerDiscardEnableEXT vkCmdSetRasterizerDiscardEnableEXT = nullptr;
 #else 
-  ALIGNMENT_ARRAY(197, 5);
+  ALIGNMENT_ARRAY(198, 5);
 #endif /* (defined(VK_EXT_extended_dynamic_state2)) || (defined(VK_EXT_shader_object)) */
 #if (defined(VK_EXT_extended_dynamic_state3)) || (defined(VK_EXT_shader_object))
   PFN_vkCmdSetAlphaToCoverageEnableEXT vkCmdSetAlphaToCoverageEnableEXT = nullptr;
@@ -1694,119 +1700,119 @@ public:
   PFN_vkCmdSetRasterizationSamplesEXT vkCmdSetRasterizationSamplesEXT = nullptr;
   PFN_vkCmdSetSampleMaskEXT vkCmdSetSampleMaskEXT = nullptr;
 #else 
-  ALIGNMENT_ARRAY(198, 10);
+  ALIGNMENT_ARRAY(199, 10);
 #endif /* (defined(VK_EXT_extended_dynamic_state3)) || (defined(VK_EXT_shader_object)) */
 #if (defined(VK_EXT_extended_dynamic_state3) && (defined(VK_KHR_maintenance2) || defined(VK_VERSION_1_1))) || (defined(VK_EXT_shader_object))
   PFN_vkCmdSetTessellationDomainOriginEXT vkCmdSetTessellationDomainOriginEXT = nullptr;
 #else 
-  ALIGNMENT(199);
+  ALIGNMENT(200);
 #endif /* (defined(VK_EXT_extended_dynamic_state3) && (defined(VK_KHR_maintenance2) || defined(VK_VERSION_1_1))) || (defined(VK_EXT_shader_object)) */
 #if (defined(VK_EXT_extended_dynamic_state3) && defined(VK_EXT_transform_feedback)) || (defined(VK_EXT_shader_object) && defined(VK_EXT_transform_feedback))
   PFN_vkCmdSetRasterizationStreamEXT vkCmdSetRasterizationStreamEXT = nullptr;
 #else 
-  ALIGNMENT(200);
+  ALIGNMENT(201);
 #endif /* (defined(VK_EXT_extended_dynamic_state3) && defined(VK_EXT_transform_feedback)) || (defined(VK_EXT_shader_object) && defined(VK_EXT_transform_feedback)) */
 #if (defined(VK_EXT_extended_dynamic_state3) && defined(VK_EXT_conservative_rasterization)) || (defined(VK_EXT_shader_object) && defined(VK_EXT_conservative_rasterization))
   PFN_vkCmdSetConservativeRasterizationModeEXT vkCmdSetConservativeRasterizationModeEXT = nullptr;
   PFN_vkCmdSetExtraPrimitiveOverestimationSizeEXT vkCmdSetExtraPrimitiveOverestimationSizeEXT = nullptr;
 #else 
-  ALIGNMENT_ARRAY(201, 2);
+  ALIGNMENT_ARRAY(202, 2);
 #endif /* (defined(VK_EXT_extended_dynamic_state3) && defined(VK_EXT_conservative_rasterization)) || (defined(VK_EXT_shader_object) && defined(VK_EXT_conservative_rasterization)) */
 #if (defined(VK_EXT_extended_dynamic_state3) && defined(VK_EXT_depth_clip_enable)) || (defined(VK_EXT_shader_object) && defined(VK_EXT_depth_clip_enable))
   PFN_vkCmdSetDepthClipEnableEXT vkCmdSetDepthClipEnableEXT = nullptr;
 #else 
-  ALIGNMENT(202);
+  ALIGNMENT(203);
 #endif /* (defined(VK_EXT_extended_dynamic_state3) && defined(VK_EXT_depth_clip_enable)) || (defined(VK_EXT_shader_object) && defined(VK_EXT_depth_clip_enable)) */
 #if (defined(VK_EXT_extended_dynamic_state3) && defined(VK_EXT_sample_locations)) || (defined(VK_EXT_shader_object) && defined(VK_EXT_sample_locations))
   PFN_vkCmdSetSampleLocationsEnableEXT vkCmdSetSampleLocationsEnableEXT = nullptr;
 #else 
-  ALIGNMENT(203);
+  ALIGNMENT(204);
 #endif /* (defined(VK_EXT_extended_dynamic_state3) && defined(VK_EXT_sample_locations)) || (defined(VK_EXT_shader_object) && defined(VK_EXT_sample_locations)) */
 #if (defined(VK_EXT_extended_dynamic_state3) && defined(VK_EXT_blend_operation_advanced)) || (defined(VK_EXT_shader_object) && defined(VK_EXT_blend_operation_advanced))
   PFN_vkCmdSetColorBlendAdvancedEXT vkCmdSetColorBlendAdvancedEXT = nullptr;
 #else 
-  ALIGNMENT(204);
+  ALIGNMENT(205);
 #endif /* (defined(VK_EXT_extended_dynamic_state3) && defined(VK_EXT_blend_operation_advanced)) || (defined(VK_EXT_shader_object) && defined(VK_EXT_blend_operation_advanced)) */
 #if (defined(VK_EXT_extended_dynamic_state3) && defined(VK_EXT_provoking_vertex)) || (defined(VK_EXT_shader_object) && defined(VK_EXT_provoking_vertex))
   PFN_vkCmdSetProvokingVertexModeEXT vkCmdSetProvokingVertexModeEXT = nullptr;
 #else 
-  ALIGNMENT(205);
+  ALIGNMENT(206);
 #endif /* (defined(VK_EXT_extended_dynamic_state3) && defined(VK_EXT_provoking_vertex)) || (defined(VK_EXT_shader_object) && defined(VK_EXT_provoking_vertex)) */
 #if (defined(VK_EXT_extended_dynamic_state3) && defined(VK_EXT_line_rasterization)) || (defined(VK_EXT_shader_object) && defined(VK_EXT_line_rasterization))
   PFN_vkCmdSetLineRasterizationModeEXT vkCmdSetLineRasterizationModeEXT = nullptr;
   PFN_vkCmdSetLineStippleEnableEXT vkCmdSetLineStippleEnableEXT = nullptr;
 #else 
-  ALIGNMENT_ARRAY(206, 2);
+  ALIGNMENT_ARRAY(207, 2);
 #endif /* (defined(VK_EXT_extended_dynamic_state3) && defined(VK_EXT_line_rasterization)) || (defined(VK_EXT_shader_object) && defined(VK_EXT_line_rasterization)) */
 #if (defined(VK_EXT_extended_dynamic_state3) && defined(VK_EXT_depth_clip_control)) || (defined(VK_EXT_shader_object) && defined(VK_EXT_depth_clip_control))
   PFN_vkCmdSetDepthClipNegativeOneToOneEXT vkCmdSetDepthClipNegativeOneToOneEXT = nullptr;
 #else 
-  ALIGNMENT(207);
+  ALIGNMENT(208);
 #endif /* (defined(VK_EXT_extended_dynamic_state3) && defined(VK_EXT_depth_clip_control)) || (defined(VK_EXT_shader_object) && defined(VK_EXT_depth_clip_control)) */
 #if (defined(VK_EXT_extended_dynamic_state3) && defined(VK_NV_clip_space_w_scaling)) || (defined(VK_EXT_shader_object) && defined(VK_NV_clip_space_w_scaling))
   PFN_vkCmdSetViewportWScalingEnableNV vkCmdSetViewportWScalingEnableNV = nullptr;
 #else 
-  ALIGNMENT(208);
+  ALIGNMENT(209);
 #endif /* (defined(VK_EXT_extended_dynamic_state3) && defined(VK_NV_clip_space_w_scaling)) || (defined(VK_EXT_shader_object) && defined(VK_NV_clip_space_w_scaling)) */
 #if (defined(VK_EXT_extended_dynamic_state3) && defined(VK_NV_viewport_swizzle)) || (defined(VK_EXT_shader_object) && defined(VK_NV_viewport_swizzle))
   PFN_vkCmdSetViewportSwizzleNV vkCmdSetViewportSwizzleNV = nullptr;
 #else 
-  ALIGNMENT(209);
+  ALIGNMENT(210);
 #endif /* (defined(VK_EXT_extended_dynamic_state3) && defined(VK_NV_viewport_swizzle)) || (defined(VK_EXT_shader_object) && defined(VK_NV_viewport_swizzle)) */
 #if (defined(VK_EXT_extended_dynamic_state3) && defined(VK_NV_fragment_coverage_to_color)) || (defined(VK_EXT_shader_object) && defined(VK_NV_fragment_coverage_to_color))
   PFN_vkCmdSetCoverageToColorEnableNV vkCmdSetCoverageToColorEnableNV = nullptr;
   PFN_vkCmdSetCoverageToColorLocationNV vkCmdSetCoverageToColorLocationNV = nullptr;
 #else 
-  ALIGNMENT_ARRAY(210, 2);
+  ALIGNMENT_ARRAY(211, 2);
 #endif /* (defined(VK_EXT_extended_dynamic_state3) && defined(VK_NV_fragment_coverage_to_color)) || (defined(VK_EXT_shader_object) && defined(VK_NV_fragment_coverage_to_color)) */
 #if (defined(VK_EXT_extended_dynamic_state3) && defined(VK_NV_framebuffer_mixed_samples)) || (defined(VK_EXT_shader_object) && defined(VK_NV_framebuffer_mixed_samples))
   PFN_vkCmdSetCoverageModulationModeNV vkCmdSetCoverageModulationModeNV = nullptr;
   PFN_vkCmdSetCoverageModulationTableEnableNV vkCmdSetCoverageModulationTableEnableNV = nullptr;
   PFN_vkCmdSetCoverageModulationTableNV vkCmdSetCoverageModulationTableNV = nullptr;
 #else 
-  ALIGNMENT_ARRAY(211, 3);
+  ALIGNMENT_ARRAY(212, 3);
 #endif /* (defined(VK_EXT_extended_dynamic_state3) && defined(VK_NV_framebuffer_mixed_samples)) || (defined(VK_EXT_shader_object) && defined(VK_NV_framebuffer_mixed_samples)) */
 #if (defined(VK_EXT_extended_dynamic_state3) && defined(VK_NV_shading_rate_image)) || (defined(VK_EXT_shader_object) && defined(VK_NV_shading_rate_image))
   PFN_vkCmdSetShadingRateImageEnableNV vkCmdSetShadingRateImageEnableNV = nullptr;
 #else 
-  ALIGNMENT(212);
+  ALIGNMENT(213);
 #endif /* (defined(VK_EXT_extended_dynamic_state3) && defined(VK_NV_shading_rate_image)) || (defined(VK_EXT_shader_object) && defined(VK_NV_shading_rate_image)) */
 #if (defined(VK_EXT_extended_dynamic_state3) && defined(VK_NV_representative_fragment_test)) || (defined(VK_EXT_shader_object) && defined(VK_NV_representative_fragment_test))
   PFN_vkCmdSetRepresentativeFragmentTestEnableNV vkCmdSetRepresentativeFragmentTestEnableNV = nullptr;
 #else 
-  ALIGNMENT(213);
+  ALIGNMENT(214);
 #endif /* (defined(VK_EXT_extended_dynamic_state3) && defined(VK_NV_representative_fragment_test)) || (defined(VK_EXT_shader_object) && defined(VK_NV_representative_fragment_test)) */
 #if (defined(VK_EXT_extended_dynamic_state3) && defined(VK_NV_coverage_reduction_mode)) || (defined(VK_EXT_shader_object) && defined(VK_NV_coverage_reduction_mode))
   PFN_vkCmdSetCoverageReductionModeNV vkCmdSetCoverageReductionModeNV = nullptr;
 #else 
-  ALIGNMENT(214);
+  ALIGNMENT(215);
 #endif /* (defined(VK_EXT_extended_dynamic_state3) && defined(VK_NV_coverage_reduction_mode)) || (defined(VK_EXT_shader_object) && defined(VK_NV_coverage_reduction_mode)) */
 #if (defined(VK_EXT_host_image_copy)) || (defined(VK_EXT_image_compression_control))
   PFN_vkGetImageSubresourceLayout2EXT vkGetImageSubresourceLayout2EXT = nullptr;
 #else 
-  ALIGNMENT(215);
+  ALIGNMENT(216);
 #endif /* (defined(VK_EXT_host_image_copy)) || (defined(VK_EXT_image_compression_control)) */
 #if (defined(VK_EXT_shader_object)) || (defined(VK_EXT_vertex_input_dynamic_state))
   PFN_vkCmdSetVertexInputEXT vkCmdSetVertexInputEXT = nullptr;
 #else 
-  ALIGNMENT(216);
+  ALIGNMENT(217);
 #endif /* (defined(VK_EXT_shader_object)) || (defined(VK_EXT_vertex_input_dynamic_state)) */
 #if (defined(VK_KHR_descriptor_update_template) && defined(VK_KHR_push_descriptor)) || (defined(VK_KHR_push_descriptor) && (defined(VK_VERSION_1_1) || defined(VK_KHR_descriptor_update_template)))
   PFN_vkCmdPushDescriptorSetWithTemplateKHR vkCmdPushDescriptorSetWithTemplateKHR = nullptr;
 #else 
-  ALIGNMENT(217);
+  ALIGNMENT(218);
 #endif /* (defined(VK_KHR_descriptor_update_template) && defined(VK_KHR_push_descriptor)) || (defined(VK_KHR_push_descriptor) && (defined(VK_VERSION_1_1) || defined(VK_KHR_descriptor_update_template))) */
 #if (defined(VK_KHR_device_group) && defined(VK_KHR_surface)) || (defined(VK_KHR_swapchain) && defined(VK_VERSION_1_1))
   PFN_vkGetDeviceGroupPresentCapabilitiesKHR vkGetDeviceGroupPresentCapabilitiesKHR = nullptr;
   PFN_vkGetDeviceGroupSurfacePresentModesKHR vkGetDeviceGroupSurfacePresentModesKHR = nullptr;
   PFN_vkGetPhysicalDevicePresentRectanglesKHR vkGetPhysicalDevicePresentRectanglesKHR = nullptr;
 #else 
-  ALIGNMENT_ARRAY(218, 3);
+  ALIGNMENT_ARRAY(219, 3);
 #endif /* (defined(VK_KHR_device_group) && defined(VK_KHR_surface)) || (defined(VK_KHR_swapchain) && defined(VK_VERSION_1_1)) */
 #if (defined(VK_KHR_device_group) && defined(VK_KHR_swapchain)) || (defined(VK_KHR_swapchain) && defined(VK_VERSION_1_1))
   PFN_vkAcquireNextImage2KHR vkAcquireNextImage2KHR = nullptr;
 #else 
-  ALIGNMENT(219);
+  ALIGNMENT(220);
 #endif /* (defined(VK_KHR_device_group) && defined(VK_KHR_swapchain)) || (defined(VK_KHR_swapchain) && defined(VK_VERSION_1_1)) */
   /* VOLK_CPP_GENERATE_CLASS_FUNCTION_POINTERS */
   
