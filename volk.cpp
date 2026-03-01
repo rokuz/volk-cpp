@@ -378,6 +378,10 @@ void Volk::genLoadInstance(void* context, PFN_vkVoidFunction (Volk::*load)(void*
   vkCreateScreenSurfaceQNX = (PFN_vkCreateScreenSurfaceQNX)(this->*(load))(context, "vkCreateScreenSurfaceQNX");
   vkGetPhysicalDeviceScreenPresentationSupportQNX = (PFN_vkGetPhysicalDeviceScreenPresentationSupportQNX)(this->*(load))(context, "vkGetPhysicalDeviceScreenPresentationSupportQNX");
 #endif /* defined(VK_QNX_screen_surface) */
+#if defined(VK_SEC_ubm_surface)
+  vkCreateUbmSurfaceSEC = (PFN_vkCreateUbmSurfaceSEC)(this->*(load))(context, "vkCreateUbmSurfaceSEC");
+  vkGetPhysicalDeviceUbmPresentationSupportSEC = (PFN_vkGetPhysicalDeviceUbmPresentationSupportSEC)(this->*(load))(context, "vkGetPhysicalDeviceUbmPresentationSupportSEC");
+#endif /* defined(VK_SEC_ubm_surface) */
 #if (defined(VK_KHR_device_group) && defined(VK_KHR_surface)) || (defined(VK_KHR_swapchain) && defined(VK_VERSION_1_1))
   vkGetPhysicalDevicePresentRectanglesKHR = (PFN_vkGetPhysicalDevicePresentRectanglesKHR)(this->*(load))(context, "vkGetPhysicalDevicePresentRectanglesKHR");
 #endif /* (defined(VK_KHR_device_group) && defined(VK_KHR_surface)) || (defined(VK_KHR_swapchain) && defined(VK_VERSION_1_1)) */
