@@ -188,6 +188,9 @@ void Volk::genLoadInstance(void* context, PFN_vkVoidFunction (Volk::*load)(void*
 #if defined(VK_ARM_performance_counters_by_region)
   vkEnumeratePhysicalDeviceQueueFamilyPerformanceCountersByRegionARM = (PFN_vkEnumeratePhysicalDeviceQueueFamilyPerformanceCountersByRegionARM)(this->*(load))(context, "vkEnumeratePhysicalDeviceQueueFamilyPerformanceCountersByRegionARM");
 #endif /* defined(VK_ARM_performance_counters_by_region) */
+#if defined(VK_ARM_shader_instrumentation)
+  vkEnumeratePhysicalDeviceShaderInstrumentationMetricsARM = (PFN_vkEnumeratePhysicalDeviceShaderInstrumentationMetricsARM)(this->*(load))(context, "vkEnumeratePhysicalDeviceShaderInstrumentationMetricsARM");
+#endif /* defined(VK_ARM_shader_instrumentation) */
 #if defined(VK_ARM_tensors)
   vkGetPhysicalDeviceExternalTensorPropertiesARM = (PFN_vkGetPhysicalDeviceExternalTensorPropertiesARM)(this->*(load))(context, "vkGetPhysicalDeviceExternalTensorPropertiesARM");
 #endif /* defined(VK_ARM_tensors) */
@@ -663,6 +666,14 @@ void Volk::genLoadDevice(void* context, PFN_vkVoidFunction (Volk::*load)(void*, 
   vkGetDataGraphPipelineSessionBindPointRequirementsARM = (PFN_vkGetDataGraphPipelineSessionBindPointRequirementsARM)(this->*(load))(context, "vkGetDataGraphPipelineSessionBindPointRequirementsARM");
   vkGetDataGraphPipelineSessionMemoryRequirementsARM = (PFN_vkGetDataGraphPipelineSessionMemoryRequirementsARM)(this->*(load))(context, "vkGetDataGraphPipelineSessionMemoryRequirementsARM");
 #endif /* defined(VK_ARM_data_graph) */
+#if defined(VK_ARM_shader_instrumentation)
+  vkClearShaderInstrumentationMetricsARM = (PFN_vkClearShaderInstrumentationMetricsARM)(this->*(load))(context, "vkClearShaderInstrumentationMetricsARM");
+  vkCmdBeginShaderInstrumentationARM = (PFN_vkCmdBeginShaderInstrumentationARM)(this->*(load))(context, "vkCmdBeginShaderInstrumentationARM");
+  vkCmdEndShaderInstrumentationARM = (PFN_vkCmdEndShaderInstrumentationARM)(this->*(load))(context, "vkCmdEndShaderInstrumentationARM");
+  vkCreateShaderInstrumentationARM = (PFN_vkCreateShaderInstrumentationARM)(this->*(load))(context, "vkCreateShaderInstrumentationARM");
+  vkDestroyShaderInstrumentationARM = (PFN_vkDestroyShaderInstrumentationARM)(this->*(load))(context, "vkDestroyShaderInstrumentationARM");
+  vkGetShaderInstrumentationValuesARM = (PFN_vkGetShaderInstrumentationValuesARM)(this->*(load))(context, "vkGetShaderInstrumentationValuesARM");
+#endif /* defined(VK_ARM_shader_instrumentation) */
 #if defined(VK_ARM_tensors)
   vkBindTensorMemoryARM = (PFN_vkBindTensorMemoryARM)(this->*(load))(context, "vkBindTensorMemoryARM");
   vkCmdCopyTensorARM = (PFN_vkCmdCopyTensorARM)(this->*(load))(context, "vkCmdCopyTensorARM");
@@ -981,6 +992,48 @@ void Volk::genLoadDevice(void* context, PFN_vkVoidFunction (Volk::*load)(void*, 
   vkDestroyDescriptorUpdateTemplateKHR = (PFN_vkDestroyDescriptorUpdateTemplateKHR)(this->*(load))(context, "vkDestroyDescriptorUpdateTemplateKHR");
   vkUpdateDescriptorSetWithTemplateKHR = (PFN_vkUpdateDescriptorSetWithTemplateKHR)(this->*(load))(context, "vkUpdateDescriptorSetWithTemplateKHR");
 #endif /* defined(VK_KHR_descriptor_update_template) */
+#if defined(VK_KHR_device_address_commands)
+  vkCmdBindIndexBuffer3KHR = (PFN_vkCmdBindIndexBuffer3KHR)(this->*(load))(context, "vkCmdBindIndexBuffer3KHR");
+  vkCmdBindVertexBuffers3KHR = (PFN_vkCmdBindVertexBuffers3KHR)(this->*(load))(context, "vkCmdBindVertexBuffers3KHR");
+  vkCmdCopyImageToMemoryKHR = (PFN_vkCmdCopyImageToMemoryKHR)(this->*(load))(context, "vkCmdCopyImageToMemoryKHR");
+  vkCmdCopyMemoryKHR = (PFN_vkCmdCopyMemoryKHR)(this->*(load))(context, "vkCmdCopyMemoryKHR");
+  vkCmdCopyMemoryToImageKHR = (PFN_vkCmdCopyMemoryToImageKHR)(this->*(load))(context, "vkCmdCopyMemoryToImageKHR");
+  vkCmdCopyQueryPoolResultsToMemoryKHR = (PFN_vkCmdCopyQueryPoolResultsToMemoryKHR)(this->*(load))(context, "vkCmdCopyQueryPoolResultsToMemoryKHR");
+  vkCmdDispatchIndirect2KHR = (PFN_vkCmdDispatchIndirect2KHR)(this->*(load))(context, "vkCmdDispatchIndirect2KHR");
+  vkCmdDrawIndexedIndirect2KHR = (PFN_vkCmdDrawIndexedIndirect2KHR)(this->*(load))(context, "vkCmdDrawIndexedIndirect2KHR");
+  vkCmdDrawIndirect2KHR = (PFN_vkCmdDrawIndirect2KHR)(this->*(load))(context, "vkCmdDrawIndirect2KHR");
+  vkCmdFillMemoryKHR = (PFN_vkCmdFillMemoryKHR)(this->*(load))(context, "vkCmdFillMemoryKHR");
+  vkCmdUpdateMemoryKHR = (PFN_vkCmdUpdateMemoryKHR)(this->*(load))(context, "vkCmdUpdateMemoryKHR");
+#endif /* defined(VK_KHR_device_address_commands) */
+#if defined(VK_KHR_device_address_commands) && (defined(VK_KHR_draw_indirect_count) || defined(VK_VERSION_1_2))
+  vkCmdDrawIndexedIndirectCount2KHR = (PFN_vkCmdDrawIndexedIndirectCount2KHR)(this->*(load))(context, "vkCmdDrawIndexedIndirectCount2KHR");
+  vkCmdDrawIndirectCount2KHR = (PFN_vkCmdDrawIndirectCount2KHR)(this->*(load))(context, "vkCmdDrawIndirectCount2KHR");
+#endif /* defined(VK_KHR_device_address_commands) && (defined(VK_KHR_draw_indirect_count) || defined(VK_VERSION_1_2)) */
+#if defined(VK_KHR_device_address_commands) && defined(VK_EXT_conditional_rendering)
+  vkCmdBeginConditionalRendering2EXT = (PFN_vkCmdBeginConditionalRendering2EXT)(this->*(load))(context, "vkCmdBeginConditionalRendering2EXT");
+#endif /* defined(VK_KHR_device_address_commands) && defined(VK_EXT_conditional_rendering) */
+#if defined(VK_KHR_device_address_commands) && defined(VK_EXT_transform_feedback)
+  vkCmdBeginTransformFeedback2EXT = (PFN_vkCmdBeginTransformFeedback2EXT)(this->*(load))(context, "vkCmdBeginTransformFeedback2EXT");
+  vkCmdBindTransformFeedbackBuffers2EXT = (PFN_vkCmdBindTransformFeedbackBuffers2EXT)(this->*(load))(context, "vkCmdBindTransformFeedbackBuffers2EXT");
+  vkCmdDrawIndirectByteCount2EXT = (PFN_vkCmdDrawIndirectByteCount2EXT)(this->*(load))(context, "vkCmdDrawIndirectByteCount2EXT");
+  vkCmdEndTransformFeedback2EXT = (PFN_vkCmdEndTransformFeedback2EXT)(this->*(load))(context, "vkCmdEndTransformFeedback2EXT");
+#endif /* defined(VK_KHR_device_address_commands) && defined(VK_EXT_transform_feedback) */
+#if defined(VK_KHR_device_address_commands) && defined(VK_EXT_mesh_shader)
+  vkCmdDrawMeshTasksIndirect2EXT = (PFN_vkCmdDrawMeshTasksIndirect2EXT)(this->*(load))(context, "vkCmdDrawMeshTasksIndirect2EXT");
+#endif /* defined(VK_KHR_device_address_commands) && defined(VK_EXT_mesh_shader) */
+#if defined(VK_KHR_device_address_commands) && ((defined(VK_KHR_draw_indirect_count) || defined(VK_VERSION_1_2)) && defined(VK_EXT_mesh_shader))
+  vkCmdDrawMeshTasksIndirectCount2EXT = (PFN_vkCmdDrawMeshTasksIndirectCount2EXT)(this->*(load))(context, "vkCmdDrawMeshTasksIndirectCount2EXT");
+#endif /* defined(VK_KHR_device_address_commands) && ((defined(VK_KHR_draw_indirect_count) || defined(VK_VERSION_1_2)) && defined(VK_EXT_mesh_shader)) */
+#if defined(VK_KHR_device_address_commands) && defined(VK_AMD_buffer_marker)
+  vkCmdWriteMarkerToMemoryAMD = (PFN_vkCmdWriteMarkerToMemoryAMD)(this->*(load))(context, "vkCmdWriteMarkerToMemoryAMD");
+#endif /* defined(VK_KHR_device_address_commands) && defined(VK_AMD_buffer_marker) */
+#if defined(VK_KHR_device_address_commands) && defined(VK_KHR_acceleration_structure)
+  vkCreateAccelerationStructure2KHR = (PFN_vkCreateAccelerationStructure2KHR)(this->*(load))(context, "vkCreateAccelerationStructure2KHR");
+#endif /* defined(VK_KHR_device_address_commands) && defined(VK_KHR_acceleration_structure) */
+#if defined(VK_KHR_device_fault)
+  vkGetDeviceFaultDebugInfoKHR = (PFN_vkGetDeviceFaultDebugInfoKHR)(this->*(load))(context, "vkGetDeviceFaultDebugInfoKHR");
+  vkGetDeviceFaultReportsKHR = (PFN_vkGetDeviceFaultReportsKHR)(this->*(load))(context, "vkGetDeviceFaultReportsKHR");
+#endif /* defined(VK_KHR_device_fault) */
 #if defined(VK_KHR_device_group)
   vkCmdDispatchBaseKHR = (PFN_vkCmdDispatchBaseKHR)(this->*(load))(context, "vkCmdDispatchBaseKHR");
   vkCmdSetDeviceMaskKHR = (PFN_vkCmdSetDeviceMaskKHR)(this->*(load))(context, "vkCmdSetDeviceMaskKHR");
